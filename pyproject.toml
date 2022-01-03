@@ -6,6 +6,10 @@ authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+PyQt5 = "^5.15.6"
+matplotlib = "^3.5.1"
+geopy = "^2.2.0"
+pyqt-feedback-flow = "^0.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
