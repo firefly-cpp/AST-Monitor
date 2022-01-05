@@ -26,14 +26,30 @@ A Serial Peripheral Interface (SPI) protocol was dedicated for communication bet
 
 ## Software outline
 
-### Software libraries
+### Dependencies
 
-Note: openant package should be installed manually. Please follow to the [official instructions](https://github.com/Tigge/openant).
+List of dependencies:
+
+| Package      | Version    | Platform |
+| ------------ |:----------:|:--------:|
+| PyQt5        | ^5.15.6    | All      |
+| matplotlib   | ^3.5.1     | All      |
+| geopy        | ^2.2.0     | All      |
+| openant        | v0.4     | All      |
+| pyqt-feedback-flow       | ^0.1.0     | All      |
+| tcxreader       | ^0.3.8     | All      |
+| sport-activities-features       | ^0.2.9     | All      |
+
+Note: openant package should be installed manually. Please follow to the [official instructions](https://github.com/Tigge/openant). If you use Fedora OS, you can install openant package using dnf package manager:
+
+```sh
+$ dnf install python-openant
+```
 
 ## Deployment
 
 
-## Licence
+## License
 
 This package is distributed under the MIT License. This license can be found online at <http://www.opensource.org/licenses/MIT>.
 

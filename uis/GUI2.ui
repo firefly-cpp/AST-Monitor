@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>TrainingFeedback</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="5" column="2">
+     <widget class="QPushButton" name="button_stop_interval">
+      <property name="text">
+       <string>STOP INTERVAL</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLCDNumber" name="interval_odstevalnik"/>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="button_start_interval">
+      <property name="text">
+       <string>START INTERVAL</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="title">
+       <string>CURRENT HEART RATE</string>
+      </property>
+      <widget class="QLabel" name="current_hr">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>241</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>n/a</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="shutdown">
+      <property name="text">
+       <string>POWEROFF</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLCDNumber" name="odstevalnik">
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+      <property name="digitCount">
+       <number>10</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="title">
+       <string>TOTAL DISTANCE</string>
+      </property>
+      <widget class="QLabel" name="total_distance">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>241</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>800</width>
+         <height>480</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>n/a</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="stop_tracking">
+      <property name="text">
+       <string>STOP TRACKING</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="start_tracking">
+      <property name="text">
+       <string>START TRACKING</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="title">
+       <string>ASCENT</string>
+      </property>
+      <widget class="QLabel" name="ascent">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>30</y>
+         <width>241</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>n/a</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="title">
+       <string>SPEED</string>
+      </property>
+      <widget class="QLabel" name="speed">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>30</y>
+         <width>241</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>n/a</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="actionAbout_program"/>
+    <addaction name="actionLicense"/>
+    <addaction name="actionDisclaimer"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionLicense">
+   <property name="text">
+    <string>License</string>
+   </property>
+  </action>
+  <action name="actionAbout_program">
+   <property name="text">
+    <string>About program</string>
+   </property>
+  </action>
+  <action name="actionDisclaimer">
+   <property name="text">
+    <string>Disclaimer</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

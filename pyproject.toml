@@ -10,6 +10,8 @@ PyQt5 = "^5.15.6"
 matplotlib = "^3.5.1"
 geopy = "^2.2.0"
 pyqt-feedback-flow = "^0.1.0"
+tcxreader = "^0.3.8"
+sport-activities-features = "^0.2.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
