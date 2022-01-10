@@ -19,9 +19,10 @@ class HrSensor():
     def on_data(self, data):
         heartrate = data[7]
         print (heartrate)
-        write_file(str(heartrate))
+        self.write_hr_data_to_file(str(heartrate))
 
     def get_hr_data(self):
+        # based on example in https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
         NETWORK_KEY = [0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45]
 
         node = Node()

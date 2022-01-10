@@ -1,15 +1,15 @@
 # AST-Monitor --- A wearable Raspberry Pi computer for cyclists
 
 This repository is devoted to the AST-monitor, i.e. a low-cost and efficient embedded device for monitoring the realization of sport training sessions that is dedicated to monitor cycling training sessions.
-AST-Monitor is a part of Artificial Sport Trainer (AST) system. First bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334). 
+AST-Monitor is a part of Artificial Sport Trainer (AST) system. First bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
 ## Outline of this repository
 
 This repository presents basic code regarded to GUI. It was ported from the initial prototype to poetry.
 
-## Hardware outline 
+## Hardware outline
 
-The complete hardware part is shown in Fig from which it can be seen that the AST-computer is split into the following pieces: 
+The complete hardware part is shown in Fig from which it can be seen that the AST-computer is split into the following pieces:
 
 * a platform with fixing straps that attach to a bicycle,
 * the Raspberry Pi 4 Model B micro-controller with Raspbian OS installed,
@@ -46,8 +46,36 @@ Note: openant package should be installed manually. Please follow to the [offici
 $ dnf install python-openant
 ```
 
+## Installation
+
+Install AST-monitor with pip:
+
+```sh
+$ pip install ast-monitor
+```
+In case you want to install directly from the source code, use:
+
+```sh
+$ git clone https://github.com/firefly-cpp/AST-Monitor.git
+$ cd AST-Monitor
+$ poetry build
+$ python setup.py install
+```
+
 ## Deployment
 
+Our project was deployed on Raspberry Pi device using Raspbian OS.
+
+### Run AST-Monitor on startup
+
+Add following lines in /etc/profile which ensures to run scripts on startup:
+
+```sh
+sudo python3 /home/user/AST-Cycling.py
+sudo nohup python3 /home/user/hr_monitor.py &
+sudo nohup python3 /home/user/gps_monitor.py &
+```
+## Examples
 
 ## License
 
