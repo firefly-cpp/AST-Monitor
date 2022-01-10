@@ -18,7 +18,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 * Adafruit's Ultimate GPS HAT module.
 
 <p align="center">
-  <img width="200" src="img/complete_small.JPG">
+  <img width="200" src=".github/img/complete_small.JPG">
 </p>
 
 
