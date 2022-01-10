@@ -7,7 +7,6 @@ import sys
 hr_data = "sensor_data/hr.txt"
 gps_data = "sensor_data/gps.txt"
 
-gps_data
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = AST(hr_data, gps_data)

@@ -77,6 +77,28 @@ sudo nohup python3 /home/user/gps_monitor.py &
 ```
 ## Examples
 
+### Basic run
+
+```python
+from PyQt5 import QtCore, QtGui, uic, QtWidgets
+from ast_monitor.ast import AST
+import sys
+
+# We need to provide two paths for storing sensor data
+
+hr_data = "sensor_data/hr.txt"
+gps_data = "sensor_data/gps.txt"
+
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = AST(hr_data, gps_data)
+
+    window.show()
+    sys.exit(app.exec_())
+```
+
+    
 ## License
 
 This package is distributed under the MIT License. This license can be found online at <http://www.opensource.org/licenses/MIT>.
