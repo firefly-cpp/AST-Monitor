@@ -3,6 +3,7 @@ name = "ast_monitor"
 version = "0.1.0"
 description = ""
 authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"

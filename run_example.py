@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
-from ast_monitor.ast import AST
+from ast_monitor.model import AST
 import sys
 
 # we need to provide two paths for storing sensor data

@@ -1,20 +1,13 @@
 # -*- coding: utf-8 -*-
-from PyQt5 import QtCore, QtGui, uic, QtWidgets
+from ast_monitor.mainwindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import QProcess
-import csv
-import sys 
 import os
-import pandas as pd
-import numpy as np
-import time
-import random
-import pickle
 from datetime import datetime
-import matplotlib.pyplot as plt
 import geopy.distance
 from ast_monitor.classes import SensorData, Intervals
 from pyqt_feedback_flow.feedback import Feedback
@@ -22,7 +15,7 @@ from pyqt_feedback_flow.feedback import Feedback
 TICK_TIME = 2**6
 
 # when running on Raspberry, full path should be specified
-Ui_MainWindow, QtBaseClass = uic.loadUiType('uis/GUI2.ui')
+#Ui_MainWindow, QtBaseClass = uic.loadUiType('uis/GUI2.ui')
         
 class AST(QtWidgets.QMainWindow, Ui_MainWindow):
     
