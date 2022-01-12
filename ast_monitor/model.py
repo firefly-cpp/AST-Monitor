@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from ast_monitor.mainwindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -13,9 +12,6 @@ from ast_monitor.classes import SensorData, Intervals
 from pyqt_feedback_flow.feedback import Feedback
 
 TICK_TIME = 2**6
-
-# when running on Raspberry, full path should be specified
-#Ui_MainWindow, QtBaseClass = uic.loadUiType('uis/GUI2.ui')
         
 class AST(QtWidgets.QMainWindow, Ui_MainWindow):
     
@@ -30,12 +26,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.time_series = [] #storing all the data in this struct
         
         self.hr_data_collection = []
-
-        #START HR MONITOR
-        #self.start_hr_reader()
         
         #SHOW REAL TIME HR
-        print ("Starting realtime")
         self.timer = QTimer()
         self.timer.timeout.connect(self.real_time_hr)
         self.timer.start(1000)
@@ -46,9 +38,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         #shutdown
         self.shutdown.clicked.connect(self.shutdown_now)
         
-        #update status of sensors
-        self.update_status()
-        
         #on clicked buttons
         self.tracker = QTimer()
         self.tracker.setInterval(TICK_TIME)
@@ -57,6 +46,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         
         # menu buttons
         self.actionAbout_program.triggered.connect(self.about)
+        self.actionLicense.triggered.connect(self.license)
+        self.actionDisclaimer.triggered.connect(self.disclaimer)
 
         self.tracking_flag = False
         self.start_tracking.clicked.connect(self.startTracking)
@@ -64,13 +55,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.stop_tracking.clicked.connect(self.endTracker)
         
     def startTracking(self):
-        #start GPS monitor
-        self.p1 = QProcess()
-        #preveriti ce je to treba
-        self.p1.start("sudo ./run_gps.sh")
-        
-        #counter start
-        print ("Starting Tracker!")
+        # counter start
         self.startTracker()
         self.tracking_flag = True
 
@@ -90,7 +75,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.display_stopwatch()
 
     def display_stopwatch(self):
-        self.odstevalnik.display("%d:%05.2f" % (self.track_time // 60, self.track_time % 60))
+        self.watch.display("%d:%05.2f" % (self.track_time // 60, self.track_time % 60))
 
     def update_distance(self):
         dist = self.calculate_distance()
@@ -115,9 +100,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         time=QDateTime.currentDateTime()
         timeDisplay=time.toString('yyyy-MM-dd hh:mm:ss dddd')
         self.label.setText(timeDisplay)
-        
-    def update_status(self):
-        print ("Loading images")
 
     def shutdown_now(self):
         os.system("shutdown now -h")
@@ -147,7 +129,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             for line in ins:
                 array.append(line)
             final = str(array[-1].rstrip())
-            #print "final je: ", final
         self.current_hr.setText(final)
         
         #build_time_series in case tracker is enabled
@@ -175,11 +156,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             final1 = str(array[-1].rstrip())
             
             final = final1.split(";")
-        return float(final[0]), float(final[1]), float(final[2])    
-    
-    #start python script of HR monitor
-    def start_hr_reader(self):
-        print ("Starting HR monitor")
+        return float(final[0]), float(final[1]), float(final[2])
 
     def calculate_avhr(self):
         # TODO
@@ -202,7 +179,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("Developed by I. Fister Jr., 2021")
-        #msg.setInformativeText("This is additional information")
         msg.setWindowTitle("About this application")
         #msg.setDetailedText("The details are as follows:")
         retval = msg.exec_()
@@ -210,7 +186,14 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
     def license(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        #msg.setInformativeText("This is additional information")
-        msg.setWindowTitle("Licensed under MIT license!")
-        #msg.setDetailedText("The details are as follows:")
+        msg.setText("Licensed under MIT license!")
+        msg.setWindowTitle("License info!")
+        retval = msg.exec_()
+
+    def disclaimer(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        #msg.setText("Developed by I. Fister Jr., 2021")
+        msg.setWindowTitle("Disclaimer")
+        msg.setDetailedText("This framework is provided as-is, and there are no guarantees that it fits your purposes or that it is bug-free. Use it at your own risk!")
         retval = msg.exec_()

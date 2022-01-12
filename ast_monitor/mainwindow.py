@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GUI2.ui'
+# Form implementation generated from reading ui file 'uis/GUI2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -45,12 +45,12 @@ class Ui_MainWindow(object):
         self.shutdown = QtWidgets.QPushButton(self.centralwidget)
         self.shutdown.setObjectName("shutdown")
         self.gridLayout_3.addWidget(self.shutdown, 5, 0, 1, 1)
-        self.odstevalnik = QtWidgets.QLCDNumber(self.centralwidget)
-        self.odstevalnik.setFrameShape(QtWidgets.QFrame.Box)
-        self.odstevalnik.setSmallDecimalPoint(True)
-        self.odstevalnik.setDigitCount(10)
-        self.odstevalnik.setObjectName("odstevalnik")
-        self.gridLayout_3.addWidget(self.odstevalnik, 2, 0, 1, 1)
+        self.watch = QtWidgets.QLCDNumber(self.centralwidget)
+        self.watch.setFrameShape(QtWidgets.QFrame.Box)
+        self.watch.setSmallDecimalPoint(True)
+        self.watch.setDigitCount(10)
+        self.watch.setObjectName("watch")
+        self.gridLayout_3.addWidget(self.watch, 2, 0, 1, 1)
         self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_3.setEnabled(True)
         self.groupBox_3.setObjectName("groupBox_3")
@@ -114,8 +114,6 @@ class Ui_MainWindow(object):
         self.actionAbout_program.setObjectName("actionAbout_program")
         self.actionDisclaimer = QtWidgets.QAction(MainWindow)
         self.actionDisclaimer.setObjectName("actionDisclaimer")
-        self.menuMenu.addAction(self.actionOpen)
-        self.menuMenu.addAction(self.actionSave)
         self.menuMenu.addAction(self.actionExit)
         self.menuAbout.addAction(self.actionAbout_program)
         self.menuAbout.addAction(self.actionLicense)

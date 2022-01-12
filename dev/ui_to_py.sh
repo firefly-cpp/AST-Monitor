@@ -1,2 +1,2 @@
 #!/bin/sh
-pyuic5 -o window.py uis/GUI2.ui
+pyuic5 -o mainwindow.py uis/GUI2.ui
