@@ -1,4 +1,5 @@
 import time
+# it should work on arm architectures only
 try:
     import board
 except:
@@ -8,16 +9,38 @@ import busio
 import adafruit_gps
 
 class GpsSensor():
+    """
+    Class for working with GPS sensor.
+
+    Args:
+        gps_path: path to file for storing gps data
+    """
     def __init__(self, gps_path = "sensor_data/gps.txt"):
+        """
+        Initialisation method for GpsSensor class.
+
+        Args:
+            gps_path: path to file for storing gps data
+        """
         self.gps_path = gps_path
 
     def write_gps_data_to_file(longitude, latitude, altitude):
-        zapis = str(longitude) + ";" + str(latitude) + ";" + str(altitude)
-        with open(self.gps_path,'a') as f:
-            f.write(zapis+"\n")
+        """
+        Method for writing gps data to text file
+        """
 
-    # based on the example from https://github.com/adafruit/Adafruit_CircuitPython_GPS
+        output = str(longitude) + ";" + str(latitude) + ";" + str(altitude)
+        with open(self.gps_path,'a') as f:
+            f.write(output+"\n")
+
     def get_gps_data(self):
+        """
+        Method for listening the channel for obtaining GPS data from sensor.
+
+        Note: Example is based on source code from
+        https://github.com/adafruit/Adafruit_CircuitPython_GPS
+        """
+
         RX = board.RX
         TX = board.TX
 
@@ -30,6 +53,7 @@ class GpsSensor():
         gps.send_command(b'PMTK220,1000')
 
         last_print = time.monotonic()
+
         while True:
 
             gps.update()
@@ -40,9 +64,6 @@ class GpsSensor():
                 if not gps.has_fix:
                     print('Waiting for fix...')
                     continue
-                print('=' * 40)  # Print a separator line.
-                print('Latitude: {0:.6f} degrees'.format(gps.latitude))
-                print('Longitude: {0:.6f} degrees'.format(gps.longitude))
 
                 LATITUDE = gps.latitude
                 LONGITUDE = gps.longitude

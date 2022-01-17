@@ -9,10 +9,26 @@ import sys
 import os
 
 class HrSensor():
+    """
+    Class for working with HR sensor.
+
+    Args:
+        hr_path: path to file for storing hr data
+    """
+
     def __init__(self, hr_path = "sensor_data/hr.txt"):
+        """
+        Initialisation method for HrSensor class.
+
+        Args:
+            hr_path: path to file for storing hr data
+        """
         self.hr_path = hr_path
 
     def write_hr_data_to_file(self, hr):
+        """
+        Method for writing hr data to text file
+        """
         with open(self.hr_path,'a') as f:
             f.write(hr+"\n")
 
@@ -22,7 +38,13 @@ class HrSensor():
         self.write_hr_data_to_file(str(heartrate))
 
     def get_hr_data(self):
-        # based on example in https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
+        """
+        Method for listening the channel for obtaining hr data from sensor.
+
+        Note: Example is based on source code from
+        https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
+        """
+
         NETWORK_KEY = [0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45]
 
         node = Node()

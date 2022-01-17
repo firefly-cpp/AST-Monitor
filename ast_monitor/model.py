@@ -14,8 +14,22 @@ from pyqt_feedback_flow.feedback import Feedback
 TICK_TIME = 2**6
         
 class AST(QtWidgets.QMainWindow, Ui_MainWindow):
-    
+    """
+    Main class that represents the interface between computer and athlete.
+
+    Args:
+        hr_data_path: path to file for storing HR data
+        gps_path: path to file for storing GPS data
+    """
+
     def __init__(self, hr_data_path, gps_data_path):
+        """
+        Initialisation method for AST class.
+
+        Args:
+            hr_data_path: path to file for storing HR data
+            gps_path: path to file for storing GPS data
+        """
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
@@ -27,18 +41,18 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         
         self.hr_data_collection = []
         
-        #SHOW REAL TIME HR
+        # show HR in real time
         self.timer = QTimer()
         self.timer.timeout.connect(self.real_time_hr)
         self.timer.start(1000)
     
-        #taking values from the sensors
+        # taking values from the sensors
         #self.build_time_series()
         
-        #shutdown
+        # shutdown the computer
         self.shutdown.clicked.connect(self.shutdown_now)
         
-        #on clicked buttons
+        # on clicked buttons
         self.tracker = QTimer()
         self.tracker.setInterval(TICK_TIME)
         self.tracker.timeout.connect(self.tick)
@@ -55,7 +69,9 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.stop_tracking.clicked.connect(self.endTracker)
         
     def startTracking(self):
-        # counter start
+        """
+        Start tracker for tracking the workout.
+        """
         self.startTracker()
         self.tracking_flag = True
 
@@ -117,6 +133,9 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
     
     #collect, GPS data, HR data and current time
     def build_time_series(self):
+        """
+        Build time series from the collected GPS data, HR data and current time.
+        """
         HR = self.return_curr_hr()
         GPS_LON, GPS_LAT, GPS_ALT = self.return_curr_gps()
         TIME = self.get_current_time
@@ -124,46 +143,64 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
     @pyqtSlot()
     def real_time_hr(self):
-        with open(self.hr_data_path, "r") as ins:
-            array = []
-            for line in ins:
-                array.append(line)
-            final = str(array[-1].rstrip())
-        self.current_hr.setText(final)
+        """
+        Show current HR value.
+        """
+        hr_val = self.return_curr_hr()
+        self.current_hr.setText(str(hr_val))
         
-        #build_time_series in case tracker is enabled
+        # build_time_series in case tracker is enabled
         if self.tracking_flag == True:
             self.build_time_series()
             self.update_distance()
             #self.update_average_hr()
         
-        return int(final)
-    
+        return int(hr_val)
+
     def return_curr_hr(self):
+        """
+        Get current HR data from file.
+        """
         with open(self.hr_data_path, "r") as ins:
             array = []
             for line in ins:
-                array.append(line)
-            final = str(array[-1].rstrip())
+                array.append(int(line.rstrip()))
+
+            # use data for calculation of average HR
+            self.calculate_avhr(array)
+
+            final = str(array[-1])
             
         return int(final)
     
     def return_curr_gps(self):
+        """
+        Get current GPS data from file.
+        """
         with open(self.gps_data_path, "r") as ins:
             array = []
             for line in ins:
                 array.append(line)
+
             final1 = str(array[-1].rstrip())
-            
             final = final1.split(";")
         return float(final[0]), float(final[1]), float(final[2])
 
-    def calculate_avhr(self):
-        # TODO
-        avg_hr = 0
-        return 150
+    def calculate_avhr(self, hr_data):
+        """
+        Calculate average HR of workout
+
+        Args:
+            hr_data: a list of all HR values of workout.
+        """
+        avhr = sum(hr_data) / len(hr_data)
+
+        return avhr
         
     def calculate_distance(self):
+        """
+        Calculate distance of workout.
+        """
         total_distance = 0.0
         if (len(self.time_series) < 5):
             pass
@@ -176,14 +213,19 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             return round((total_distance / 1000), 3)
 
     def about(self):
+        """
+        Show information about application.
+        """
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("Developed by I. Fister Jr., 2021")
         msg.setWindowTitle("About this application")
-        #msg.setDetailedText("The details are as follows:")
         retval = msg.exec_()
 
     def license(self):
+        """
+        Show license information.
+        """
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("Licensed under MIT license!")
@@ -191,9 +233,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         retval = msg.exec_()
 
     def disclaimer(self):
+        """
+        Show disclaimer info.
+        """
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        #msg.setText("Developed by I. Fister Jr., 2021")
         msg.setWindowTitle("Disclaimer")
         msg.setDetailedText("This framework is provided as-is, and there are no guarantees that it fits your purposes or that it is bug-free. Use it at your own risk!")
         retval = msg.exec_()
