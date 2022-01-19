@@ -6,7 +6,8 @@ class SensorData():
         self.alt = alt
         self.curr_time = curr_time
 
+
 class Intervals():
     def __init__(self, avhr, td):
         self.avhr = avhr
-        self.td = td        
+        self.td = td

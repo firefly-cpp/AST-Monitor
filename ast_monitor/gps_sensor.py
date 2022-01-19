@@ -2,12 +2,13 @@ import time
 # it should work on arm architectures only
 try:
     import board
-except:
+except BaseException:
     pass
 
 import busio
 import serial
 import adafruit_gps
+
 
 class GpsSensor():
     """
@@ -16,7 +17,8 @@ class GpsSensor():
     Args:
         gps_path: path to file for storing gps data
     """
-    def __init__(self, gps_path = "sensor_data/gps.txt"):
+
+    def __init__(self, gps_path="sensor_data/gps.txt"):
         """
         Initialisation method for GpsSensor class.
 
@@ -31,8 +33,8 @@ class GpsSensor():
         """
 
         output = str(longitude) + ";" + str(latitude) + ";" + str(altitude)
-        with open(self.gps_path,'a') as f:
-            f.write(output+"\n")
+        with open(self.gps_path, 'a') as f:
+            f.write(output + "\n")
 
     def get_gps_data(self):
         """
@@ -70,5 +72,6 @@ class GpsSensor():
                 LONGITUDE = gps.longitude
                 ALTITUDE = gps.altitude_m
 
-                if (LATITUDE != None) and (LONGITUDE != None) and (ALTITUDE != None):
+                if (LATITUDE is not None) and (
+                        LONGITUDE is not None) and (ALTITUDE is not None):
                     self.write_gps_data_to_file(LONGITUDE, LATITUDE, ALTITUDE)

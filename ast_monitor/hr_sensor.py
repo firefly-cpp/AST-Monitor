@@ -8,6 +8,7 @@ import threading
 import sys
 import os
 
+
 class HrSensor():
     """
     Class for working with HR sensor.
@@ -16,7 +17,7 @@ class HrSensor():
         hr_path: path to file for storing hr data
     """
 
-    def __init__(self, hr_path = "sensor_data/hr.txt"):
+    def __init__(self, hr_path="sensor_data/hr.txt"):
         """
         Initialisation method for HrSensor class.
 
@@ -29,12 +30,12 @@ class HrSensor():
         """
         Method for writing hr data to text file
         """
-        with open(self.hr_path,'a') as f:
-            f.write(hr+"\n")
+        with open(self.hr_path, 'a') as f:
+            f.write(hr + "\n")
 
     def on_data(self, data):
         heartrate = data[7]
-        print (heartrate)
+        print(heartrate)
         self.write_hr_data_to_file(str(heartrate))
 
     def get_hr_data(self):

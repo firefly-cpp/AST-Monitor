@@ -127,9 +127,14 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TrainingFeedback"))
-        self.button_stop_interval.setText(_translate("MainWindow", "STOP INTERVAL"))
-        self.button_start_interval.setText(_translate("MainWindow", "START INTERVAL"))
-        self.groupBox_6.setTitle(_translate("MainWindow", "CURRENT HEART RATE"))
+        self.button_stop_interval.setText(
+            _translate("MainWindow", "STOP INTERVAL"))
+        self.button_start_interval.setText(
+            _translate("MainWindow", "START INTERVAL"))
+        self.groupBox_6.setTitle(
+            _translate(
+                "MainWindow",
+                "CURRENT HEART RATE"))
         self.current_hr.setText(_translate("MainWindow", "n/a"))
         self.shutdown.setText(_translate("MainWindow", "POWEROFF"))
         self.groupBox_3.setTitle(_translate("MainWindow", "TOTAL DISTANCE"))
@@ -146,5 +151,6 @@ class Ui_MainWindow(object):
         self.actionSave.setText(_translate("MainWindow", "Save"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionLicense.setText(_translate("MainWindow", "License"))
-        self.actionAbout_program.setText(_translate("MainWindow", "About program"))
+        self.actionAbout_program.setText(
+            _translate("MainWindow", "About program"))
         self.actionDisclaimer.setText(_translate("MainWindow", "Disclaimer"))
