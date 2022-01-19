@@ -6,6 +6,7 @@ except:
     pass
 
 import busio
+import serial
 import adafruit_gps
 
 class GpsSensor():
@@ -44,7 +45,7 @@ class GpsSensor():
         RX = board.RX
         TX = board.TX
 
-        uart = busio.UART(TX, RX, baudrate=9600, timeout=30)
+        uart = serial.Serial("/dev/serial0", baudrate=9600, timeout=10)
 
         gps = adafruit_gps.GPS(uart, debug=False)
 
