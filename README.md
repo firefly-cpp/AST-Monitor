@@ -18,7 +18,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 * Adafruit's Ultimate GPS HAT module.
 
 <p align="center">
-  <img width="200" src=".github/img/complete_small.JPG">
+  <img width="600" src=".github/img/complete_small.JPG">
 </p>
 
 
@@ -71,7 +71,7 @@ Our project was deployed on Raspberry Pi device using Raspbian OS.
 Add following lines in /etc/profile which ensures to run scripts on startup:
 
 ```sh
-sudo python3 /home/user/AST-Cycling.py
+sudo python3 /home/user/run_example.py
 sudo nohup python3 /home/user/hr_monitor.py &
 sudo nohup python3 /home/user/gps_monitor.py &
 ```
@@ -84,7 +84,7 @@ from PyQt5 import QtCore, QtGui, uic, QtWidgets
 from ast_monitor.ast import AST
 import sys
 
-# We need to provide two paths for storing sensor data
+# provide data locations
 
 hr_data = "sensor_data/hr.txt"
 gps_data = "sensor_data/gps.txt"
@@ -98,7 +98,7 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 ```
 
-    
+
 ## License
 
 This package is distributed under the MIT License. This license can be found online at <http://www.opensource.org/licenses/MIT>.
