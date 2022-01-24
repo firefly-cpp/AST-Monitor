@@ -27,7 +27,7 @@ class GpsSensor():
         """
         self.gps_path = gps_path
 
-    def write_gps_data_to_file(longitude, latitude, altitude):
+    def write_gps_data_to_file(self, longitude, latitude, altitude):
         """
         Method for writing gps data to text file
         """
