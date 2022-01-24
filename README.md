@@ -14,7 +14,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 * a platform with fixing straps that attach to a bicycle,
 * the Raspberry Pi 4 Model B micro-controller with Raspbian OS installed,
 * a five-inch LCD touch screen display,
-* a USB ANT stick,
+* a USB ANT+ stick,
 * Adafruit's Ultimate GPS HAT module.
 
 <p align="center">
@@ -22,7 +22,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 </p>
 
 
-A Serial Peripheral Interface (SPI) protocol was dedicated for communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power-bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST.
+A Serial Peripheral Interface (SPI) protocol was dedicated for communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT+ stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power-bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST.
 
 ## Software outline
 
