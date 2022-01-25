@@ -1,5 +1,14 @@
 # AST-Monitor --- A wearable Raspberry Pi computer for cyclists
 
+---
+
+[![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/ast-monitor.svg)
+[![GitHub license](https://img.shields.io/github/license/firefly-cpp/ast-monitor.svg)](https://github.com/firefly-cpp/AST-Monitor/blob/master/LICENSE)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
+
 This repository is devoted to the AST-monitor, i.e. a low-cost and efficient embedded device for monitoring the realization of sport training sessions that is dedicated to monitor cycling training sessions.
 AST-Monitor is a part of Artificial Sport Trainer (AST) system. First bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
