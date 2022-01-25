@@ -72,8 +72,8 @@ Add following lines in /etc/profile which ensures to run scripts on startup:
 
 ```sh
 sudo python3 /home/user/run_example.py
-sudo nohup python3 /home/user/hr_monitor.py &
-sudo nohup python3 /home/user/gps_monitor.py &
+sudo nohup python3 /home/user/read_hr_data.py  &
+sudo nohup python3 /home/user/read_gps_data.py  &
 ```
 ## Examples
 
