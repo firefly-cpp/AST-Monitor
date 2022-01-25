@@ -173,6 +173,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Get current HR data from file.
         """
+        # if file is empty
+        # should be improved
+        if os.stat(self.hr_data_path).st_size == 0:
+            return 0
+
         with open(self.hr_data_path, "r") as ins:
             array = []
             for line in ins:
@@ -189,6 +194,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Get current GPS data from file.
         """
+        # if file is empty
+        # should be improved
+        if os.stat(self.gps_data_path).st_size == 0:
+            return 0.0, 0.0, 0.0
+
         with open(self.gps_data_path, "r") as ins:
             array = []
             for line in ins:
