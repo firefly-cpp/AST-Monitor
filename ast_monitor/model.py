@@ -8,7 +8,7 @@ from PyQt5.QtCore import QProcess
 import os
 from datetime import datetime
 import geopy.distance
-from ast_monitor.classes import SensorData, Intervals
+from ast_monitor.classes import SensorData
 from pyqt_feedback_flow.feedback import Feedback
 
 TICK_TIME = 2**6

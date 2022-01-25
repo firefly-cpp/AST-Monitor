@@ -7,7 +7,7 @@ class SensorData():
         self.curr_time = curr_time
 
 
-class Intervals():
+class Interval():
     def __init__(self, avhr, td):
         self.avhr = avhr
         self.td = td
