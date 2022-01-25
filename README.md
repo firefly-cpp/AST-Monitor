@@ -18,7 +18,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 * Adafruit's Ultimate GPS HAT module.
 
 <p align="center">
-  <img width="600" src=".github/img/complete_small.JPG">
+  <img width="600" src="https://raw.githubusercontent.com/firefly-cpp/AST-Monitor/main/.github/img/complete_small.JPG" alt="AST-Monitor">
 </p>
 
 
@@ -81,7 +81,7 @@ sudo nohup python3 /home/user/read_gps_data.py  &
 
 ```python
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
-from ast_monitor.ast import AST
+from ast_monitor.model import AST
 import sys
 
 # provide data locations
