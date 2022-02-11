@@ -5,6 +5,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/ast-monitor.svg)
+[![Downloads](https://pepy.tech/badge/ast-monitor)](https://pepy.tech/project/ast-monitor)
 [![GitHub license](https://img.shields.io/github/license/firefly-cpp/ast-monitor.svg)](https://github.com/firefly-cpp/AST-Monitor/blob/master/LICENSE)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
