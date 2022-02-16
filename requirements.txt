@@ -1,0 +1,7 @@
+PyQt5
+matplotlib
+geopy
+pyqt-feedback-flow
+tcxreader
+sport-activities-features
+adafruit-circuitpython-gps
