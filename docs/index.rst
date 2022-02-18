@@ -31,15 +31,44 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 * a USB ANT stick,
 * Adafruit's Ultimate GPS HAT module.
 
-<p align="center">
-  <img width="600" src=".github/img/complete_small.JPG">
-</p>
+.. image:: ../.github/img/complete_small.JPG
 
 A Serial Peripheral Interface (SPI) protocol was dedicated for communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power-bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST.
 
+The main documentation is organized into a couple of sections:
+
+* :ref:`user-docs`
+* :ref:`dev-docs`
+* :ref:`about-docs`
+
+.. _user-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: User Documentation
+
+   getting_started
+
+.. _dev-docs:
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Developer Documentation
+
+   installation
+   testing
+   documentation
+   api/index
+
+.. _about-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: About
+
+   contributing
+   code_of_conduct
+
 
 Indices and tables
 ==================
