@@ -1,14 +1,13 @@
 import time
+
 # it should work on arm architectures only
 try:
     import board
+    import busio
+    import serial
+    import adafruit_gps
 except BaseException:
     pass
-
-import busio
-import serial
-import adafruit_gps
-
 
 class GpsSensor():
     """

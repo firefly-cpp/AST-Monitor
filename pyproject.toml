@@ -13,7 +13,6 @@ geopy = "*"
 pyqt-feedback-flow = "*"
 tcxreader = "*"
 sport-activities-features = "*"
-adafruit-circuitpython-gps = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

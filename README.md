@@ -56,6 +56,12 @@ Note: openant package should be installed manually. Please follow to the [offici
 $ dnf install python-openant
 ```
 
+Additional note: adafruit-circuitpython-gps package must be installed in order to work with GPS sensor:
+
+```sh
+$ pip install adafruit-circuitpython-gps
+```
+
 ## Installation
 
 Install AST-monitor with pip:
