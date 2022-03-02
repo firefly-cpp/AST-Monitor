@@ -1,5 +1,5 @@
 # if openant dependency is missing
-try
+try:
     from ant.easy.node import Node
     from ant.easy.channel import Channel
     from ant.base.message import Message
