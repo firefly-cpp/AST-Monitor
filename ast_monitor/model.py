@@ -7,7 +7,11 @@ import os
 from datetime import datetime
 import geopy.distance
 from ast_monitor.classes import SensorData
-from pyqt_feedback_flow.feedback import Feedback
+from pyqt_feedback_flow.feedback import (
+    AnimationDirection,
+    AnimationType,
+    TextFeedback
+)
 
 TICK_TIME = 2**6
 
@@ -75,8 +79,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tracking_flag = True
 
         # show simple notification that workout just started
-        self._feedback = Feedback(text="Workout started!")
-        self._feedback.show()
+        self._feedback = TextFeedback(text="Workout started!")
+        self._feedback.show(AnimationType.VERTICAL, AnimationDirection.UP, 3000)
 
     def startTracker(self):
         self.tracker.start()
