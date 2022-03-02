@@ -1,13 +1,10 @@
-from ant.easy.node import Node
-from ant.easy.channel import Channel
-from ant.base.message import Message
-
-import logging
-import struct
-import threading
-import sys
-import os
-
+# if openant dependency is missing
+try
+    from ant.easy.node import Node
+    from ant.easy.channel import Channel
+    from ant.base.message import Message
+except BaseException:
+    pass
 
 class HrSensor():
     """

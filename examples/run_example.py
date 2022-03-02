@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtGui, uic, QtWidgets
+from PyQt5 import QtWidgets
 from ast_monitor.model import AST
 import sys
 
