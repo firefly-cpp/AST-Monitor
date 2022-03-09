@@ -121,7 +121,14 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Calculating and displaying distance.
         """
         dist = self.calculate_distance()
-        self.total_distance.setText(str(dist))
+        
+        # If there is no distance made yet, 0 is displayed.
+        if not dist:
+            self.total_distance.setText('0.00 km')
+        else:
+            rounded_dist = round(dist, 2)
+            dist_str = '{:.2f}'.format(rounded_dist)
+            self.total_distance.setText(dist_str + ' km')
 
     def update_ascent(self) -> None:
         """
