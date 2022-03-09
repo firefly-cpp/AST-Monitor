@@ -1,48 +1,55 @@
-# if openant dependency is missing
+# If openant dependency is missing.
 try:
     from ant.easy.node import Node
     from ant.easy.channel import Channel
-    from ant.base.message import Message
 except BaseException:
     pass
 
+
 class HrSensor():
     """
-    Class for working with HR sensor.
-
+    Class for working with HR sensor.\n
     Args:
-        hr_path: path to file for storing hr data
+        hr_path (str):
+            path to file for storing HR data
     """
 
-    def __init__(self, hr_path="sensor_data/hr.txt"):
+    def __init__(self, hr_path='sensor_data/hr.txt') -> None:
         """
-        Initialisation method for HrSensor class.
-
+        Initialisation method for HrSensor class.\n
         Args:
-            hr_path: path to file for storing hr data
+            hr_path (str):
+                path to file for storing HR data
         """
         self.hr_path = hr_path
 
-    def write_hr_data_to_file(self, hr):
+    def write_hr_data_to_file(self, hr: int) -> None:
         """
-        Method for writing hr data to text file
+        Method for writing hr data to text file.\n
+        Args:
+            hr (int):
+                heart rate
         """
         with open(self.hr_path, 'a') as f:
             f.write(hr + "\n")
 
-    def on_data(self, data):
+    def on_data(self, data) -> None:
+        """
+        Extracting and writing heart rate data to file.\n
+        Args:
+            data ():
+                list that contains heart rate
+        """
         heartrate = data[7]
         print(heartrate)
         self.write_hr_data_to_file(str(heartrate))
 
-    def get_hr_data(self):
+    def get_hr_data(self) -> None:
         """
-        Method for listening the channel for obtaining hr data from sensor.
-
+        Method for listening the channel for obtaining HR data from sensor.\n
         Note: Example is based on source code from
-        https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
+              https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
         """
-
         NETWORK_KEY = [0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45]
 
         node = Node()

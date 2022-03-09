@@ -1,5 +1,5 @@
 class SensorData():
-    def __init__(self, hr, lon, lat, alt, curr_time):
+    def __init__(self, hr, lon, lat, alt, curr_time) -> None:
         self.hr = hr
         self.lon = lon
         self.lat = lat
@@ -8,6 +8,6 @@ class SensorData():
 
 
 class Interval():
-    def __init__(self, avhr, td):
+    def __init__(self, avhr, td) -> None:
         self.avhr = avhr
         self.td = td
