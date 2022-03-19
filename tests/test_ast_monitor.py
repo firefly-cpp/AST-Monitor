@@ -1,5 +1,3 @@
-from ast_monitor import __version__
+from ast_monitor.tests.conftest import pytest_configure
 
-
-def test_version():
-    assert __version__ == '0.1.2'
+__all__ = ["pytest_configure"]
