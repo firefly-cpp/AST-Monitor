@@ -10,8 +10,8 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
 
-This repository is devoted to the AST-monitor, i.e. a low-cost and efficient embedded device for monitoring the realization of sport training sessions that is dedicated to monitor cycling training sessions.
-AST-Monitor is a part of Artificial Sport Trainer (AST) system. First bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
+This repository is devoted to the AST-monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sports training sessions that are dedicated to monitoring cycling training sessions.
+AST-Monitor is a part of the Artificial Sport Trainer (AST) system. The first bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
 ## Outline of this repository
 
@@ -19,7 +19,7 @@ This repository presents basic code regarded to GUI. It was ported from the init
 
 ## Hardware outline
 
-The complete hardware part is shown in Fig from which it can be seen that the AST-computer is split into the following pieces:
+The complete hardware part is shown in the figure from which it can be seen that the AST-computer is split into the following pieces:
 
 * a platform with fixing straps that attach to a bicycle,
 * the Raspberry Pi 4 Model B micro-controller with Raspbian OS installed,
@@ -32,7 +32,7 @@ The complete hardware part is shown in Fig from which it can be seen that the AS
 </p>
 
 
-A Serial Peripheral Interface (SPI) protocol was dedicated for communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT+ stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power-bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST.
+A Serial Peripheral Interface (SPI) protocol was dedicated to communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT+ stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST.
 
 ## Software outline
 
@@ -50,13 +50,13 @@ List of dependencies:
 | tcxreader       | ^0.3.8     | All      |
 | sport-activities-features       | ^0.2.9     | All      |
 
-Note: openant package should be installed manually. Please follow to the [official instructions](https://github.com/Tigge/openant). If you use Fedora OS, you can install openant package using dnf package manager:
+Note: openant package should be installed manually. Please follow the [official instructions](https://github.com/Tigge/openant). If you use Fedora OS, you can install openant package using the dnf package manager:
 
 ```sh
 $ dnf install python-openant
 ```
 
-Additional note: adafruit-circuitpython-gps package must be installed in order to work with GPS sensor:
+Additional note: adafruit-circuitpython-gps package must be installed in order to work with the GPS sensor:
 
 ```sh
 $ pip install adafruit-circuitpython-gps
@@ -80,11 +80,11 @@ $ python setup.py install
 
 ## Deployment
 
-Our project was deployed on Raspberry Pi device using Raspbian OS.
+Our project was deployed on a Raspberry Pi device using Raspbian OS.
 
 ### Run AST-Monitor on startup
 
-Add following lines in /etc/profile which ensures to run scripts on startup:
+Add the following lines in /etc/profile which ensures to run scripts on startup:
 
 ```sh
 sudo python3 /home/user/run_example.py
