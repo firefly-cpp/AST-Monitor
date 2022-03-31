@@ -64,7 +64,7 @@ $ pip install adafruit-circuitpython-gps
 
 ## Installation
 
-Install AST-monitor with pip:
+Install AST-Monitor with pip:
 
 ```sh
 $ pip install ast-monitor
@@ -76,6 +76,12 @@ $ git clone https://github.com/firefly-cpp/AST-Monitor.git
 $ cd AST-Monitor
 $ poetry build
 $ python setup.py install
+```
+
+To install AST-Monitor on Fedora Linux, please use:
+
+```sh
+$ dnf install python3-ast-monitor
 ```
 
 ## Deployment
