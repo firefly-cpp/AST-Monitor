@@ -10,6 +10,9 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
 
+[![DOI](https://img.shields.io/badge/DOI-10.1109/ISCMI53840.2021.9654817-blue)](https://doi.org/10.1109/ISCMI53840.2021.9654817)
+[![Fedora package](https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-ast-monitor)
+
 This repository is devoted to the AST-monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sports training sessions that are dedicated to monitoring cycling training sessions.
 AST-Monitor is a part of the Artificial Sport Trainer (AST) system. The first bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
