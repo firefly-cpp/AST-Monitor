@@ -54,7 +54,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         # self.build_time_series()
 
         # Shutdown the computer.
-        self.shutdown.clicked.connect(self.shutdown_now)
+        self.btn_shutdown.clicked.connect(self.shutdown_now)
 
         # On clicked buttons.
         self.tracker = QTimer()
@@ -63,20 +63,20 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.do_reset()
 
         # Menu buttons.
-        self.actionAbout_program.triggered.connect(self.about)
-        self.actionLicense.triggered.connect(self.license)
-        self.actionDisclaimer.triggered.connect(self.disclaimer)
+        self.action_about_program.triggered.connect(self.about)
+        self.action_license.triggered.connect(self.license)
+        self.action_disclaimer.triggered.connect(self.disclaimer)
 
+        # Tracking buttons.
         self.tracking_flag = False
-        self.start_tracking.clicked.connect(self.startTracking)
+        self.btn_start_tracking.clicked.connect(self.start_tracker)
+        self.btn_stop_tracking.clicked.connect(self.end_tracker)
 
-        self.stop_tracking.clicked.connect(self.endTracker)
-
-    def startTracking(self) -> None:
+    def start_tracker(self) -> None:
         """
-        Start tracker for tracking the workout.
+        Start of the workout tracking.
         """
-        self.startTracker()
+        self.tracker.start()
         self.tracking_flag = True
 
         # Show simple notification that workout just started.
@@ -87,18 +87,20 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             time=3000
         )
 
-    def startTracker(self) -> None:
+    def end_tracker(self) -> None:
         """
-        Starting tracker.
-        """
-        self.tracker.start()
-
-    def endTracker(self) -> None:
-        """
-        Ending tracker.
+        End of the workout tracking.
         """
         self.tracker.stop()
         self.tracking_flag = False
+
+        # Show simple notification that workout just enden.
+        self._feedback = TextFeedback(text='Workout ended!')
+        self._feedback.show(
+            AnimationType.VERTICAL,
+            AnimationDirection.DOWN,
+            time=3000
+        )
 
     def tick(self) -> None:
         """
@@ -109,12 +111,21 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def display_stopwatch(self) -> None:
         """
-        Displaying the stopwatch.
+        Displaying the stopwatch in GUI.
         """
-        self.watch.display(
-            '%d:%05.2f'
-            % (self.track_time // 60, self.track_time % 60)
+        seconds = int(self.track_time)
+        minutes = int(seconds / 60)
+        hours = int(minutes / 60)
+
+        time = (
+            str(hours) +
+            ':' +
+            (str(minutes) if minutes > 9 else '0' + str(minutes)) +
+            ':' +
+            (str(seconds) if seconds > 9 else '0' + str(seconds))
         )
+
+        self.lbl_watch.setText(time)
 
     def update_distance(self) -> None:
         """
@@ -122,13 +133,13 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         dist = self.calculate_distance()
         
-        # If there is no distance made yet, 0 is displayed.
+        # If there is no distance made yet, 0.00 km is displayed.
         if not dist:
-            self.total_distance.setText('0.00 km')
+            self.lbl_distance.setText('0.00 km')
         else:
             rounded_dist = round(dist, 2)
             dist_str = '{:.2f}'.format(rounded_dist)
-            self.total_distance.setText(dist_str + ' km')
+            self.lbl_distance.setText(dist_str + ' km')
 
     def update_ascent(self) -> None:
         """
@@ -157,31 +168,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.track_time = 0
         self.display_stopwatch()
 
-    def showtrackingTime(self) -> None:
-        """
-        Displaying tracking time.
-        """
-        time = QDateTime.currentDateTime()
-        timeDisplay = time.toString('yyyy-MM-dd hh:mm:ss dddd')
-        self.label.setText(timeDisplay)
-
     def shutdown_now(self) -> None:
         """
         Shutdown of the system.
         """
         os.system('shutdown now -h')
-
-    def startTimer(self) -> None:
-        """
-        Starting timer.
-        """
-        self.timer.start(1000)
-
-    def endTimer(self) -> None:
-        """
-        Ending timer.
-        """
-        self.timer.stop()
 
     def get_current_time(self) -> datetime:
         """
@@ -195,20 +186,14 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def build_time_series(self) -> None:
         """
-        Build time series from the collected
+        Building time series from the collected
         GPS data, HR data and current time.
         """
         HR = self.return_curr_hr()
         GPS_LON, GPS_LAT, GPS_ALT = self.return_curr_gps()
         TIME = self.get_current_time
         self.time_series.append(
-            SensorData(
-                HR,
-                GPS_LON,
-                GPS_LAT,
-                GPS_ALT,
-                TIME
-            )
+            SensorData(HR, GPS_LON, GPS_LAT, GPS_ALT, TIME)
         )
 
     @pyqtSlot()
@@ -219,7 +204,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             int: current heart rate
         """
         hr_val = self.return_curr_hr()
-        self.current_hr.setText(str(hr_val))
+        self.lbl_heart_rate.setText(str(hr_val))
 
         # Build_time_series in case tracker is enabled.
         if self.tracking_flag:
@@ -309,7 +294,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        msg.setText('Developed by I. Fister Jr., 2021')
+        msg.setText('Developed by I. Fister Jr., L. Lukač, 2022')
         msg.setWindowTitle('About this application')
         msg.exec_()
 
