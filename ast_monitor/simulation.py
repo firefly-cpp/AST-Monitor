@@ -72,7 +72,7 @@ class Simulation():
         GPS simulation.
         """
         tcx_reader = TCXReader()
-        file_location = '../dev/datasets/15.tcx'
+        file_location = '../development/datasets/15.tcx'
         """
             TCX file test2.tcx was taken from the following dataset:
             S. Rauter, I. Jr. Fister, I. Fister.
