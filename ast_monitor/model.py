@@ -79,6 +79,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tracker.start()
         self.tracking_flag = True
 
+        self.widget_start_stop.setCurrentIndex(1)
+
         # Show simple notification that workout just started.
         self._feedback = TextFeedback(text='Workout started!')
         self._feedback.show(
@@ -93,6 +95,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         self.tracker.stop()
         self.tracking_flag = False
+
+        self.widget_start_stop.setCurrentIndex(0)
 
         # Show simple notification that workout just enden.
         self._feedback = TextFeedback(text='Workout ended!')
