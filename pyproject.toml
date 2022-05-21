@@ -5,6 +5,12 @@ description = "AST-Monitor is a wearable Raspberry Pi computer for cyclists"
 authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>"]
 readme = "README.md"
 
+include = [
+    { path="LICENSE", format="sdist" },
+    { path="CHANGELOG.md", format="sdist" },
+    { path="CITATION.cff", format="sdist" }
+]
+
 [tool.poetry.dependencies]
 python = "^3.6"
 PyQt5 = "*"
