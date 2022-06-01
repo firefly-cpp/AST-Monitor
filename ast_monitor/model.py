@@ -7,7 +7,7 @@ from pyqt_feedback_flow.feedback import (
     TextFeedback
 )
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import pyqtSlot, QDateTime, QTimer
+from PyQt5.QtCore import pyqtSlot, Qt, QTimer
 from PyQt5.QtWidgets import QMessageBox
 
 from ast_monitor.classes import SensorData
@@ -36,7 +36,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             gps_path (str):
                 path to file for storing GPS data
         """
-        QtWidgets.QMainWindow.__init__(self)
+        QtWidgets.QMainWindow.__init__(self, flags=Qt.FramelessWindowHint)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
 
@@ -71,6 +71,10 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tracking_flag = False
         self.btn_start_tracking.clicked.connect(self.start_tracker)
         self.btn_stop_tracking.clicked.connect(self.end_tracker)
+
+        # Left and right menu buttons.
+        self.btn_move_left.clicked.connect(self.menu_left_move)
+        self.btn_move_right.clicked.connect(self.menu_right_move)
 
     def start_tracker(self) -> None:
         """
@@ -117,7 +121,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Displaying the stopwatch in GUI.
         """
-        seconds = int(self.track_time)
+        seconds = int(self.track_time % 60)
         minutes = int(seconds / 60)
         hours = int(minutes / 60)
 
@@ -136,14 +140,21 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Calculating and displaying distance.
         """
         dist = self.calculate_distance()
-        
+
         # If there is no distance made yet, 0.00 km is displayed.
         if not dist:
             self.lbl_distance.setText('0.00 km')
         else:
             rounded_dist = round(dist, 2)
-            dist_str = '{:.2f}'.format(rounded_dist)
+            dist_str = '{:.2f}'.format(rounded_dist / 1000)
             self.lbl_distance.setText(dist_str + ' km')
+
+    def update_speed(self) -> None:
+        """
+        Calculating and updating speed.
+        """
+        speed = self.calculate_speed()
+        self.lbl_speed.setText(f'{speed} km/h')
 
     def update_ascent(self) -> None:
         """
@@ -178,13 +189,16 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         os.system('shutdown now -h')
 
-    def get_current_time(self) -> datetime:
+    def get_current_time(self, timestamp=False) -> datetime:
         """
         Getting current time.\n
         Returns:
             datetime: current time
         """
         now = datetime.now()
+        if timestamp:
+            return now
+
         current_time = now.strftime('%H:%M:%S')
         return current_time
 
@@ -195,9 +209,10 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         HR = self.return_curr_hr()
         GPS_LON, GPS_LAT, GPS_ALT = self.return_curr_gps()
-        TIME = self.get_current_time
+        TIME = self.get_current_time(timestamp=True)
+        DIST = self.calculate_distance()
         self.time_series.append(
-            SensorData(HR, GPS_LON, GPS_LAT, GPS_ALT, TIME)
+            SensorData(HR, GPS_LON, GPS_LAT, GPS_ALT, TIME, DIST)
         )
 
     @pyqtSlot()
@@ -214,6 +229,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.tracking_flag:
             self.build_time_series()
             self.update_distance()
+            self.update_speed()
             # self.update_average_hr()
 
         return int(hr_val)
@@ -279,18 +295,43 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Returns:
             float: total distance
         """
-        total_distance = 0.0
-        if (len(self.time_series) < 5):
-            pass
-        else:
-            for i in range(len(self.time_series) - 1):
-                coords_1 = (self.time_series[i + 1].lon,
-                            self.time_series[i + 1].lat)
-                coords_2 = (self.time_series[i].lon, self.time_series[i].lat)
-                total_distance = total_distance + \
-                    abs(geopy.distance.geodesic(coords_1, coords_2).m)
+        if (len(self.time_series) < 2):
+            return 0.0
 
-            return round((total_distance / 1000), 3)
+        total_distance = 0.0
+        for i in range(len(self.time_series) - 1):
+            coords_1 = (
+                self.time_series[i + 1].lon,
+                self.time_series[i + 1].lat
+            )
+            coords_2 = (
+                self.time_series[i].lon,
+                self.time_series[i].lat
+            )
+            total_distance = (
+                total_distance +
+                abs(geopy.distance.geodesic(coords_1, coords_2).m)
+            )
+
+        return round(total_distance, 3)
+
+    def calculate_speed(self) -> float:
+        """
+        Speed calculation in km/h.\n
+        Returns:
+            float: current speed in km/h
+        """
+        if len(self.time_series) < 2:
+            return 0.0
+
+        prev_stamp = self.time_series[-2]
+        cur_stamp = self.time_series[-1]
+        speed = (
+            3.6 *
+            (cur_stamp.dist - prev_stamp.dist) /
+            (cur_stamp.curr_time - prev_stamp.curr_time).total_seconds()
+        )
+        return round(speed, 1)
 
     def about(self) -> None:
         """
@@ -312,7 +353,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         msg.setWindowTitle('License info!')
         msg.exec_()
 
-    def disclaimer(self):
+    def disclaimer(self) -> None:
         """
         Show disclaimer info.
         """
@@ -324,3 +365,17 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             'that it fits your purposes or that it is bug-free. Use it at '
             'your own risk!')
         msg.exec_()
+
+    def menu_left_move(self) -> None:
+        """
+        Moving left in the menu.
+        """
+        self.lbl_page.setText('Basic data')
+        self.stackedWidget.setCurrentIndex(0)
+
+    def menu_right_move(self) -> None:
+        """
+        Moving right in the menu.
+        """
+        self.lbl_page.setText('Map')
+        self.stackedWidget.setCurrentIndex(1)
