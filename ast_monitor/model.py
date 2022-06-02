@@ -1,5 +1,4 @@
 from datetime import datetime
-import functools
 import geopy.distance
 import os
 from pyqt_feedback_flow.feedback import (
@@ -11,7 +10,6 @@ from PyQt5 import (
     QtCore,
     QtWidgets,
     QtWebChannel,
-    QtWebEngine,
     QtWebEngineWidgets
 )
 from PyQt5.QtCore import pyqtSlot, Qt, QTimer
