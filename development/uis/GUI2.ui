@@ -43,6 +43,9 @@
 background-color: rgb(255, 255, 255);</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_6">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -90,9 +93,7 @@ background-color: rgb(255, 255, 255);</string>
          <item>
           <widget class="QLabel" name="lbl_page">
            <property name="styleSheet">
-            <string notr="true">font-weight: bold;
-font-size: 20px;
-border:none;</string>
+            <string notr="true">font: 23px &quot;Bahnschrift SemiBold&quot;; border: none;</string>
            </property>
            <property name="text">
             <string>Basic data</string>
@@ -113,7 +114,7 @@ border:none;</string>
        <number>9</number>
       </property>
       <property name="topMargin">
-       <number>9</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>9</number>
@@ -123,6 +124,9 @@ border:none;</string>
       </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QPushButton" name="btn_move_left">
           <property name="autoFillBackground">
@@ -763,7 +767,65 @@ border-radius: 5px;</string>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="page_4"/>
+          <widget class="QWidget" name="page_map">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="topMargin">
+             <number>1</number>
+            </property>
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
+            <property name="bottomMargin">
+             <number>1</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="widget_3" native="true">
+              <property name="styleSheet">
+               <string notr="true">border: 1px solid black;</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QVBoxLayout" name="vl_map">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>1</number>
+                 </property>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
         <item>

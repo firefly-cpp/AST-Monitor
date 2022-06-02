@@ -1,4 +1,5 @@
 from datetime import datetime
+import functools
 import geopy.distance
 import os
 from pyqt_feedback_flow.feedback import (
@@ -6,7 +7,13 @@ from pyqt_feedback_flow.feedback import (
     AnimationType,
     TextFeedback
 )
-from PyQt5 import QtWidgets
+from PyQt5 import (
+    QtCore,
+    QtWidgets,
+    QtWebChannel,
+    QtWebEngine,
+    QtWebEngineWidgets
+)
 from PyQt5.QtCore import pyqtSlot, Qt, QTimer
 from PyQt5.QtWidgets import QMessageBox
 
@@ -39,6 +46,18 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self, flags=Qt.FramelessWindowHint)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+
+        # Map setting.
+        self.view = QtWebEngineWidgets.QWebEngineView()
+        self.channel = QtWebChannel.QWebChannel()
+        self.channel.registerObject("MainWindow", self)
+        self.view.page().setWebChannel(self.channel)
+        file = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            '../ast_monitor/map/map.html',
+        )
+        self.view.setUrl(QtCore.QUrl.fromLocalFile(file))
+        self.vl_map.addWidget(self.view)
 
         self.hr_data_path = hr_data_path
         self.gps_data_path = gps_data_path
