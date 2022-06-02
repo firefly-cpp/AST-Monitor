@@ -15,6 +15,8 @@
 
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/171444997-0517fa6e-5949-4269-9cc8-4e86541233e5.png" alt="AST-GUI">
+  <img width="600" src="https://user-images.githubusercontent.com/73126820/171680289-d178f889-f713-4ff3-82e8-9c1a7e0dbb47.png" alt="AST-Map">
+
 </p>
 
 This repository is devoted to the AST-monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sports training sessions that are dedicated to monitoring cycling training sessions.
