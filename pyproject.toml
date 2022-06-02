@@ -19,6 +19,7 @@ geopy = "*"
 pyqt-feedback-flow = "*"
 tcxreader = "*"
 sport-activities-features = "*"
+PyQtWebEngine = "^5.15.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
