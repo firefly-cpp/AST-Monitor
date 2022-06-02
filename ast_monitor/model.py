@@ -55,7 +55,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             '../ast_monitor/map/map.html',
         )
         self.view.setUrl(QtCore.QUrl.fromLocalFile(file))
-        self.vl_map.addWidget(self.view)
+        self.vb_map.addWidget(self.view)
 
         self.hr_data_path = hr_data_path
         self.gps_data_path = gps_data_path

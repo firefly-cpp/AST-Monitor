@@ -14,7 +14,8 @@
 [![Fedora package](https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-ast-monitor)
 
 <p align="center">
-  <img width="600" src="https://user-images.githubusercontent.com/73126820/171444997-0517fa6e-5949-4269-9cc8-4e86541233e5.png" alt="AST-GUI">
+  <img width="600" src="https://user-images.githubusercontent.com/73126820/171687041-313ee6be-4bde-4c8f-883f-1271a9ba4d85.png" alt="AST-GUI">
+  <img width="600" src="https://user-images.githubusercontent.com/73126820/171687065-04c80ed4-8062-4410-9856-d4c959ab0ab6.png" alt="AST-Map">
 </p>
 
 This repository is devoted to the AST-monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sports training sessions that are dedicated to monitoring cycling training sessions.
