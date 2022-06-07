@@ -16,4 +16,4 @@ __all__ = [
 ]
 
 __project__ = "ast_monitor"
-__version__ = '0.1.3'
+__version__ = '0.1.4'

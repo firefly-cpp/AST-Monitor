@@ -19,10 +19,10 @@
 
 project = 'ast_monitor'
 copyright = '2022, Iztok Fister Jr. et al.'
-author = 'Iztok Fister Jr. et al.'
+author = 'Iztok Fister Jr., Luka Lukač'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.3'
+release = '0.1.4'
 
 
 # -- General configuration ---------------------------------------------------
