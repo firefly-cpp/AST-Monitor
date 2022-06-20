@@ -6,14 +6,14 @@ from ast_monitor.simulation import Simulation
 from ast_monitor.mainwindow import Ui_MainWindow
 
 __all__ = [
-    "AST",
-    "SensorData",
-    "Interval",
-    "GpsSensor",
-    "HrSensor",
-    "Simulation",
-    "Ui_MainWindow"
+    'AST',
+    'SensorData',
+    'Interval',
+    'GpsSensor',
+    'HrSensor',
+    'Simulation',
+    'Ui_MainWindow'
 ]
 
-__project__ = "ast_monitor"
+__project__ = 'ast_monitor'
 __version__ = '0.1.4'
