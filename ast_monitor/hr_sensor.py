@@ -13,7 +13,6 @@ class HrSensor():
         hr_path (str):
             path to file for storing HR data
     """
-
     def __init__(self, hr_path='sensor_data/hr.txt') -> None:
         """
         Initialisation method for HrSensor class.\n

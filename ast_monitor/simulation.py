@@ -94,7 +94,7 @@ class Simulation():
 
         indexed = 0
         while True:
-            time.sleep(5)
+            time.sleep(1)
             self.write_gps_to_file(
                 lon[indexed],
                 lat[indexed],

@@ -8,7 +8,7 @@ except BaseException:
     pass
 
 
-class GpsSensor():
+class GpsSensor:
     """
     Class for working with GPS sensor.\n
     Args:
@@ -70,7 +70,9 @@ class GpsSensor():
                 LONGITUDE = gps.longitude
                 ALTITUDE = gps.altitude_m
 
-                if ((LATITUDE is not None) and
-                        (LONGITUDE is not None) and
-                        (ALTITUDE is not None)):
+                if (
+                    (LATITUDE is not None) and
+                    (LONGITUDE is not None) and
+                    (ALTITUDE is not None)
+                ):
                     self.write_gps_data_to_file(LONGITUDE, LATITUDE, ALTITUDE)
