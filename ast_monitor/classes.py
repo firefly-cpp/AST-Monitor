@@ -54,24 +54,24 @@ class Interval:
     Args:
         average_heart_rate (float):
             an average heart rate during an interval
-        total distance (float):
-            the total distance in meters
+        total duration (float):
+            the total duration in seconds
     """
     def __init__(
         self,
         average_heart_rate: float,
-        total_distance: float
+        total_duration: float
     ) -> None:
         """
         Initialization method for Interval class.\n
         Args:
             average_heart_rate (float):
                 an average heart rate during an interval
-            total distance (float):
-                the total distance in meters
+            total duration (float):
+                the total duration in seconds
         """
         self.average_heart_rate = average_heart_rate
-        self.total_distance = total_distance
+        self.total_duration = total_duration
 
     def render(self, index: int) -> None:
         """
@@ -79,15 +79,19 @@ class Interval:
         """
         self.lbl_index = QLabel(str(index))
         self.lbl_index.setFont(QFont('Bahnschrift Semilight', 20))
-        # self.lbl_index.setStyleSheet('border: 1px solid black')
 
-        self.lbl_average_heart_rate = QLabel(str(self.average_heart_rate))
+        self.lbl_average_heart_rate = QLabel(
+            str(self.average_heart_rate) + ' bpm'
+        )
         self.lbl_average_heart_rate.setFont(QFont('Bahnschrift Semilight', 20))
-        # self.lbl_average_heart_rate.setStyleSheet('border: 1px solid black')
+
+        self.lbl_total_duration = QLabel(str(self.total_duration) + ' s')
+        self.lbl_total_duration.setFont(QFont('Bahnschrift Semilight', 20))
 
         self.lyt_interval = QHBoxLayout()
         self.lyt_interval.addWidget(self.lbl_index)
         self.lyt_interval.addWidget(self.lbl_average_heart_rate)
+        self.lyt_interval.addWidget(self.lbl_total_duration)
 
     @staticmethod
     def render_intervals(intervals: list) -> QVBoxLayout:
@@ -104,19 +108,23 @@ class Interval:
 
         # Adding title.
         lbl_index = QLabel('Index')
-        lbl_index.setFont(QFont('Bahnschrift Semibold', 20))
-        # lbl_index.setStyleSheet('border: 1px solid black')
-        lbl_average_heart_rate = QLabel('Average heart rate')
-        lbl_average_heart_rate.setFont(QFont('Bahnschrift Semibold', 20))
-        # lbl_average_heart_rate.setStyleSheet('border: 1px solid black')
+        lbl_index.setFont(QFont('Bahnschrift Semibold', 16))
+        lbl_average_heart_rate = QLabel('Avg. heart rate')
+        lbl_average_heart_rate.setFont(QFont('Bahnschrift Semibold', 16))
+        lbl_duration = QLabel('Duration')
+        lbl_duration.setFont(QFont('Bahnschrift Semibold', 16))
         lyt_title = QHBoxLayout()
         lyt_title.addWidget(lbl_index)
         lyt_title.addWidget(lbl_average_heart_rate)
+        lyt_title.addWidget(lbl_duration)
         lyt_training_intervals.addLayout(lyt_title)
 
         index = 1
         for interval in intervals:
-            i = Interval(interval['average_heart_rate'][0]['average_hr'], 0.0)
+            i = Interval(
+                interval['average_heart_rate'][0]['average_hr'],
+                interval['total_duration'][0]['duration']
+            )
             i.render(index)
             lyt_training_intervals.addLayout(i.lyt_interval)
             index += 1
