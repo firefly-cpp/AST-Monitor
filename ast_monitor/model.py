@@ -14,7 +14,7 @@ from PyQt5 import (
     QtWebEngineWidgets
 )
 from PyQt5.QtCore import pyqtSlot, Qt, QTimer
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QLabel, QMessageBox
 
 from ast_monitor.classes import Interval, SensorData
 from ast_monitor.mainwindow import Ui_MainWindow
@@ -52,6 +52,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         # Structures for storing data and intervals.
         self.time_series = []
         self.intervals = []
+        self.interval = []
 
     def initialize_GUI(self) -> None:
         """
@@ -73,10 +74,15 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.view.setUrl(QtCore.QUrl.fromLocalFile(file))
         self.vb_map.addWidget(self.view)
 
-        # Show HR in real time.
+        # Show data in real time.
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_data)
         self.timer.start(1000)
+
+        # Show interval data in real time.
+        self.interval_timer = QTimer()
+        self.interval_timer.timeout.connect(self.update_interval_data)
+        self.interval_timer.start(1000)
 
         # Shutdown the computer.
         self.btn_shutdown.clicked.connect(self.shutdown_now)
@@ -86,6 +92,12 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tracker.setInterval(TICK_TIME)
         self.tracker.timeout.connect(self.tick)
         self.do_reset()
+
+        # Interval tick.
+        self.interval_tracker = QTimer()
+        self.interval_tracker.setInterval(TICK_TIME)
+        self.interval_tracker.timeout.connect(self.interval_tick)
+        self.do_interval_reset()
 
         # Menu buttons.
         self.action_about_program.triggered.connect(self.about)
@@ -102,6 +114,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_move_right.clicked.connect(self.menu_right_move)
 
         # Interval buttons.
+        self.interval_flag = False
         self.btn_start_interval.clicked.connect(self.start_interval)
         self.btn_end_interval.clicked.connect(self.end_interval)
 
@@ -152,13 +165,27 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Rendering all the necessary data.
         """
-        self.update_hr()
-        self.update_speed()
+        self.update_current_heart_rate(label=self.lbl_heart_rate)
+        self.update_speed(label=self.lbl_speed)
 
         # Build_time_series in case tracker is enabled.
         if self.tracking_flag:
-            self.build_time_series()
-            self.update_distance()
+            self.build_time_series(series=self.time_series)
+            self.update_distance(label=self.lbl_distance)
+
+    @pyqtSlot()
+    def update_interval_data(self) -> None:
+        """
+        Rendering all the necessary interval data.
+        """
+        # Build_time_series in case tracker is enabled.
+        if self.interval_flag:
+            self.update_current_heart_rate(label=self.lbl_interval_heart_rate)
+            self.update_average_heart_rate(
+                series=self.interval,
+                label=self.lbl_interval_average_heart_rate
+            )
+            self.build_time_series(series=self.interval)
 
     @pyqtSlot()
     def send_data(self) -> None:
@@ -175,6 +202,13 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.track_time = 0
         self.display_stopwatch()
 
+    @pyqtSlot()
+    def do_interval_reset(self) -> None:
+        """
+        Reset of the interval.
+        """
+        self.interval_time = 0
+
     def tick(self) -> None:
         """
         Incrementing time and displaying it on the stopwatch on each tick.
@@ -182,12 +216,25 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.track_time += TICK_TIME / 1000
         self.display_stopwatch()
 
-    def display_stopwatch(self) -> None:
+    def interval_tick(self) -> None:
         """
-        Displaying the stopwatch in GUI.
+        Incrementing time and displaying it on
+        the interval stopwatch on each tick.
         """
-        seconds = int(self.track_time % 60)
-        minutes = int(self.track_time / 60)
+        self.interval_time += TICK_TIME / 1000
+        self.display_interval_stopwatch()
+
+    def convert_time_to_hours_minutes_seconds(self, time: int) -> str:
+        """
+        Converting time in seconds to HH:MM:SS format.\n
+        Args:
+            time (int):
+                time in seconds
+        Returns:
+            str: time in HH:MM:SS format
+        """
+        seconds = int(time % 60)
+        minutes = int(time / 60)
         hours = int(minutes / 60)
 
         time = (
@@ -198,41 +245,77 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             (str(seconds) if seconds > 9 else '0' + str(seconds))
         )
 
+        return time
+
+    def display_stopwatch(self) -> None:
+        """
+        Displaying the stopwatch in the GUI.
+        """
+        time = self.convert_time_to_hours_minutes_seconds(self.track_time)
         self.lbl_watch.setText(time)
 
-    def update_distance(self) -> None:
+    def display_interval_stopwatch(self) -> None:
         """
-        Calculating and displaying distance.
+        Displaying the stopwatch in the GUI.
         """
-        dist = self.calculate_distance()
+        time = self.convert_time_to_hours_minutes_seconds(self.interval_time)
+        self.lbl_interval_watch.setText(time)
+
+    def update_current_heart_rate(self, label: QLabel) -> None:
+        """
+        Calculating and displaying current heart rate.\n
+        Args:
+            label (QLabel):
+                label to be updated
+        """
+        hr = self.return_current_hr()
+        label.setText(str(hr))
+
+    def update_average_heart_rate(self, series: list, label: QLabel) -> None:
+        """
+        Calculating and displaying average heart rate.\n
+        Args:
+            series (list[SensorData]):
+                list of series
+            label (QLabel):
+                label to be updated
+        """
+        if not series:
+            return
+
+        heart_rate_sum = 0
+        for element in series:
+            heart_rate_sum += element.heart_rate
+
+        average_heart_rate = heart_rate_sum // len(series)
+        label.setText(str(average_heart_rate))
+
+    def update_speed(self, label: QLabel) -> None:
+        """
+        Calculating and displaying current speed.\n
+        Args:
+            label (QLabel):
+                label to be updated
+        """
+        speed = self.calculate_speed()
+        label.setText(f'{speed} km/h')
+
+    def update_distance(self, label: QLabel) -> None:
+        """
+        Calculating and displaying distance.\n
+        Args:
+            label (QLabel):
+                label to be updated
+        """
+        dist = self.calculate_distance(self.time_series)
 
         # If there is no distance made yet, 0.00 km is displayed.
         if not dist:
-            self.lbl_distance.setText('0.00 km')
+            label.setText('0.00 km')
         else:
             rounded_dist = round(dist, 2)
             dist_str = '{:.2f}'.format(rounded_dist / 1000)
-            self.lbl_distance.setText(dist_str + ' km')
-
-    def update_speed(self) -> None:
-        """
-        Calculating and updating speed.
-        """
-        speed = self.calculate_speed()
-        self.lbl_speed.setText(f'{speed} km/h')
-
-    def update_ascent(self) -> None:
-        """
-        Calculating and updating ascent.
-        """
-        pass
-
-    def update_hr(self) -> None:
-        """
-        Calculating and displaying average heart rate.
-        """
-        hr = self.return_current_hr()
-        self.lbl_heart_rate.setText(str(hr))
+            label.setText(dist_str + ' km')
 
     def update_interval_hr(self) -> None:
         """
@@ -265,16 +348,19 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         now = datetime.now()
         return now
 
-    def build_time_series(self) -> None:
+    def build_time_series(self, series: list) -> None:
         """
         Building time series from the collected
-        GPS data, HR data and current time.
+        GPS data, HR data and current time.\n
+        Args:
+            series (list[SensorData]):
+                list of series
         """
         HR = self.return_current_hr()
         GPS_LON, GPS_LAT, GPS_ALT = self.return_current_gps()
-        TIME = self.get_current_time()
-        DIST = self.calculate_distance()
-        self.time_series.append(
+        TIME = self.get_current_timestamp()
+        DIST = self.calculate_distance(series)
+        series.append(
             SensorData(HR, GPS_LON, GPS_LAT, GPS_ALT, TIME, DIST)
         )
 
@@ -333,24 +419,26 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         av_hr = sum(hr_data) / len(hr_data)
         return av_hr
 
-    def calculate_distance(self) -> float:
+    def calculate_distance(self, series: list) -> float:
         """
-        Calculate distance of workout.\n
+        Calculate distance of the workout.\n
+        Args:
+            series (list[SensorData])
         Returns:
             float: total distance
         """
-        if (len(self.time_series) < 2):
+        if (len(series) < 2):
             return 0.0
 
         total_distance = 0.0
-        for i in range(len(self.time_series) - 1):
+        for i in range(len(series) - 1):
             coords_1 = (
-                self.time_series[i + 1].longitude,
-                self.time_series[i + 1].latitude
+                series[i + 1].longitude,
+                series[i + 1].latitude
             )
             coords_2 = (
-                self.time_series[i].longitude,
-                self.time_series[i].latitude
+                series[i].longitude,
+                series[i].latitude
             )
             total_distance = (
                 total_distance +
@@ -436,6 +524,9 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Manual interval start.
         """
+        self.interval_tracker.start()
+        self.interval_flag = True
+
         self.widget_interval_button.setCurrentIndex(1)
 
         # Show simple notification that an interval just started.
@@ -451,6 +542,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Manual interval end.
         """
         self.widget_interval_button.setCurrentIndex(0)
+        self.interval_flag = False
+        self.intervals.append(self.interval)
+        self.interval.clear()
+        self.interval_tracker.stop()
+        self.interval_time = 0
 
         # Show simple notification that an interval just ended.
         self._feedback = TextFeedback(text='Interval ended!')
