@@ -15,13 +15,15 @@ from PyQt5 import (
 )
 from PyQt5.QtCore import pyqtSlot, Qt, QTimer
 from PyQt5.QtWidgets import QLabel, QMessageBox
+from threading import Thread
 
 from ast_monitor.classes import Interval, SensorData
+from ast_monitor.digital_twin import DigitalTwin
 from ast_monitor.mainwindow import Ui_MainWindow
 from ast_monitor.send_data import SendData
 
 
-TICK_TIME = 2**6
+TICK_TIME = 1000
 
 
 class AST(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -33,7 +35,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         gps_path (str):
             path to file for storing GPS data
     """
-
     def __init__(self, hr_data_path: str, gps_data_path: str) -> None:
         """
         Initialisation method for AST class.\n
@@ -51,8 +52,17 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Structures for storing data and intervals.
         self.time_series = []
+        self.planned_intervals = []
         self.intervals = []
-        self.interval = []
+
+        # Current interval data.
+        self.current_interval = 0
+        self.is_speed_phase = False
+        self.interval_average_heart_rate = 0
+        self.interval_checkpoints = 0
+
+        #
+        self.training_timer = QTimer()
 
     def initialize_GUI(self) -> None:
         """
@@ -115,11 +125,10 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Interval buttons.
         self.interval_flag = False
-        self.btn_start_interval.clicked.connect(self.start_interval)
-        self.btn_end_interval.clicked.connect(self.end_interval)
 
         # Training button.
         self.btn_load_training.clicked.connect(self.load_training)
+        self.btn_start_training.clicked.connect(self.start_training)
 
     def start_tracker(self) -> None:
         """
@@ -129,11 +138,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.tracking_flag = True
 
         self.widget_start_stop.setCurrentIndex(1)
-
-        # Sending data in real time.
-        self.timer_data = QTimer()
-        self.timer_data.timeout.connect(self.send_data)
-        self.timer_data.start(10000)
 
         # Show simple notification that workout just started.
         self._feedback = TextFeedback(text='Workout started!')
@@ -182,10 +186,10 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.interval_flag:
             self.update_current_heart_rate(label=self.lbl_interval_heart_rate)
             self.update_average_heart_rate(
-                series=self.interval,
+                self.interval_average_heart_rate,
+                self.return_current_hr(),
                 label=self.lbl_interval_average_heart_rate
             )
-            self.build_time_series(series=self.interval)
 
     @pyqtSlot()
     def send_data(self) -> None:
@@ -223,6 +227,16 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         self.interval_time += TICK_TIME / 1000
         self.display_interval_stopwatch()
+
+        try:
+            if self.digital_twin:
+                self.digital_twin.current_heart_rate = self.return_current_hr()
+                self.digital_twin.current_duration = self.interval_time
+                self.lbl_interval_proposed_heart_rate.setText(
+                    str(self.digital_twin.predicted_heart_rate)
+                )
+        except Exception:
+            pass
 
     def convert_time_to_hours_minutes_seconds(self, time: int) -> str:
         """
@@ -271,24 +285,36 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         hr = self.return_current_hr()
         label.setText(str(hr))
 
-    def update_average_heart_rate(self, series: list, label: QLabel) -> None:
+    def update_average_heart_rate(
+        self,
+        previous_heart_rate: int,
+        current_heart_rate: int,
+        label: QLabel
+    ) -> None:
         """
-        Calculating and displaying average heart rate.\n
+        Calculating and displaying average heart rate
+        with a help of a recursive function.\n
         Args:
-            series (list[SensorData]):
-                list of series
+            previous_heart_rate (int):
+                previous average heart rate
+            current_heart_rate (int):
+                current heart rate
             label (QLabel):
                 label to be updated
         """
-        if not series:
+        if previous_heart_rate == -1:
             return
+        elif previous_heart_rate == 0:
+            average_heart_rate = current_heart_rate
+        else:
+            n = self.interval_checkpoints
+            avg_hr = previous_heart_rate
+            hr = current_heart_rate
+            average_heart_rate = int((1 / n) * ((n - 1) * avg_hr + hr))
 
-        heart_rate_sum = 0
-        for element in series:
-            heart_rate_sum += element.heart_rate
-
-        average_heart_rate = heart_rate_sum // len(series)
         label.setText(str(average_heart_rate))
+        self.interval_average_heart_rate = average_heart_rate
+        self.interval_checkpoints += 1
 
     def update_speed(self, label: QLabel) -> None:
         """
@@ -316,12 +342,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             rounded_dist = round(dist, 2)
             dist_str = '{:.2f}'.format(rounded_dist / 1000)
             label.setText(dist_str + ' km')
-
-    def update_interval_hr(self) -> None:
-        """
-        Calculating and displaying interval heart rate.
-        """
-        pass
 
     def shutdown_now(self) -> None:
         """
@@ -381,7 +401,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
                 array.append(int(line.rstrip()))
 
             # Use data for calculation of average HR.
-            self.calculate_average_heart_rate(array)
             final = str(array[-1])
 
         return int(final)
@@ -406,18 +425,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             final = final1.split(";")
 
         return float(final[0]), float(final[1]), float(final[2])
-
-    def calculate_average_heart_rate(self, hr_data: list) -> float:
-        """
-        Calculate average HR of the workout.\n
-        Args:
-            hr_data (list):
-                a list of all HR values of the workout
-        Returns:
-            float: average heart rate of the workout
-        """
-        av_hr = sum(hr_data) / len(hr_data)
-        return av_hr
 
     def calculate_distance(self, series: list) -> float:
         """
@@ -520,14 +527,47 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(index + 1)
         self.widget_title.setCurrentIndex(index + 1)
 
-    def start_interval(self) -> None:
+    def start_training(self) -> None:
         """
-        Manual interval start.
+        Manual training start.
+        """
+        i = self.current_interval
+        if i >= len(self.planned_intervals):
+            return
+
+        self.start_interval_speed()
+
+        self.training_timer = QTimer()
+        self.training_timer.timeout.connect(self.end_interval_speed)
+        self.training_timer.start(
+            1000 * self.planned_intervals[i].speed_duration
+        )
+
+        self.current_interval += 1
+
+    def start_interval_speed(self):
+        """
+        Starting a speed part of an interval.
         """
         self.interval_tracker.start()
         self.interval_flag = True
+        self.interval_average_heart_rate = 0
+        self.interval_duration = 0
+        self.interval_time = 0.0
+        self.is_speed_phase = True
+        self.lbl_interval_proposed_heart_rate.setText('-')
 
-        self.widget_interval_button.setCurrentIndex(1)
+        # Launching the digital twin.
+        interval = self.planned_intervals[self.current_interval]
+        self.digital_twin = DigitalTwin(
+            interval.speed_heart_rate,
+            interval.speed_duration,
+            TICK_TIME
+        )
+        self.digital_twin_thread = Thread(
+            target=self.digital_twin.predict_heart_rate
+        )
+        self.digital_twin_thread.start()
 
         # Show simple notification that an interval just started.
         self._feedback = TextFeedback(text='Interval started!')
@@ -537,24 +577,61 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             time=3000
         )
 
-    def end_interval(self) -> None:
+    def end_interval_speed(self):
         """
-        Manual interval end.
+        Ending a speed part of an interval.
         """
-        self.widget_interval_button.setCurrentIndex(0)
-        self.interval_flag = False
-        self.intervals.append(self.interval)
-        self.interval.clear()
-        self.interval_tracker.stop()
-        self.interval_time = 0
+        self.interval_time = 0.0
+        self.interval_average_heart_rate = -1
+        self.interval_checkpoints = 0
+        self.lbl_interval_average_heart_rate.setText('-')
+        self.lbl_interval_proposed_heart_rate.setText('-')
+        self.is_speed_phase = False
 
-        # Show simple notification that an interval just ended.
-        self._feedback = TextFeedback(text='Interval ended!')
+        self.start_interval_rest()
+
+    def start_interval_rest(self):
+        """
+        Starting a rest part of an interval.
+        """
+        self.lbl_interval_watch.setText('0:00:00')
+        self.lbl_interval_proposed_heart_rate.setText('-')
+
+        # Show simple notification that an interval just started.
+        self._feedback = TextFeedback(text='Rest started!')
         self._feedback.show(
             AnimationType.HORIZONTAL,
-            AnimationDirection.LEFT,
+            AnimationDirection.RIGHT,
             time=3000
         )
+
+        interval = self.planned_intervals[self.current_interval]
+        self.training_timer = QTimer()
+        self.training_timer.timeout.connect(self.end_interval_rest)
+        self.training_timer.start(
+            1000 * interval.recovery_duration
+        )
+
+        # Launching the digital twin.
+        del self.digital_twin
+        self.digital_twin = DigitalTwin(
+            interval.recovery_heart_rate,
+            interval.recovery_duration,
+            TICK_TIME
+        )
+        self.digital_twin_thread = Thread(
+            target=self.digital_twin.predict_heart_rate
+        )
+        self.digital_twin_thread.start()
+
+    def end_interval_rest(self):
+        """
+        Ending a rest part of an interval.
+        """
+        self.lbl_interval_proposed_heart_rate.setText('-')
+        self.training_timer.stop()
+
+        self.start_training()
 
     def render_intervals_GUI(self) -> None:
         """
@@ -570,7 +647,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         # Inserting the read intervals.
         self.lyt_training.insertLayout(
             0,
-            Interval.render_intervals(self.intervals)
+            Interval.render_intervals(self.planned_intervals)
         )
 
     def load_training(self) -> None:
@@ -598,5 +675,16 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         )
 
         # Adding and rendering the intervals from the training.
-        self.intervals = list(map(lambda i: i, training['interval']))
+        self.planned_intervals = []
+        for interval_group in training['interval']:
+            for i in range(interval_group['repetitions']):
+                interval = Interval(
+                    interval_group['speed_duration'],
+                    interval_group['recovery_duration'],
+                    interval_group['speed_heart_rate'],
+                    interval_group['recovery_heart_rate']
+                )
+                self.planned_intervals.append(interval)
+
+        # self.intervals = list(map(lambda i: i, training['interval']))
         self.render_intervals_GUI()
