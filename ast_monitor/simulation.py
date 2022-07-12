@@ -63,7 +63,7 @@ class Simulation():
         Randomly generate heart rate between 150 and 160 beats per minute.
         """
         while True:
-            time.sleep(1)
+            time.sleep(2)
             new_rand = random.randint(150, 160)
             self.write_hr_to_file(new_rand)
 

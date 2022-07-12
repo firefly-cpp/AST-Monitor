@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QHBoxLayout, QLabel, QVBoxLayout
+from sport_activities_features.training_loads import BanisterTRIMP
 
 
 class SensorData:
@@ -52,46 +53,72 @@ class Interval:
     """
     Class for storing intervals.\n
     Args:
-        average_heart_rate (float):
-            an average heart rate during an interval
-        total duration (float):
-            the total duration in seconds
+        speed_duration (int):
+            duration of a speed segment of the interval in minutes
+        recovery_duration (int):
+            duration of a recovery segment of the interval in minutes
+        speed_heart_rate (int):
+            planned average heart rate during
+            a speed segment of the interval
+        recovery_heart_rate (int):
+            planned average heart rate during
+            a recovery segment of the interval
     """
     def __init__(
         self,
-        average_heart_rate: float,
-        total_duration: float
+        speed_duration: int,
+        recovery_duration: int,
+        speed_heart_rate: int,
+        recovery_heart_rate: int
     ) -> None:
         """
         Initialization method for Interval class.\n
         Args:
-            average_heart_rate (float):
-                an average heart rate during an interval
-            total duration (float):
-                the total duration in seconds
+            speed_duration (int):
+                duration of a speed segment of the interval in minutes
+            recovery_duration (int):
+                duration of a recovery segment of the interval in minutes
+            speed_heart_rate (int):
+                planned average heart rate during
+                a speed segment of the interval
+            recovery_heart_rate (int):
+                planned average heart rate during
+                a recovery segment of the interval
         """
-        self.average_heart_rate = average_heart_rate
-        self.total_duration = total_duration
+        self.speed_duration = speed_duration
+        self.recovery_duration = recovery_duration
+        self.speed_heart_rate = speed_heart_rate
+        self.recovery_heart_rate = recovery_heart_rate
+        banister = BanisterTRIMP(speed_duration, speed_heart_rate)
+        self.planned_TRIMP = banister.calculate_TRIMP()
 
     def render(self, index: int) -> None:
         """
         Rendering an interval.
         """
         self.lbl_index = QLabel(str(index))
-        self.lbl_index.setFont(QFont('Bahnschrift Semilight', 20))
+        self.lbl_index.setFont(QFont('Bahnschrift Semilight', 15))
 
-        self.lbl_average_heart_rate = QLabel(
-            str(self.average_heart_rate) + ' bpm'
+        self.lbl_speed_heart_rate = QLabel(str(self.speed_heart_rate))
+        self.lbl_speed_heart_rate.setFont(QFont('Bahnschrift Semilight', 15))
+        self.lbl_speed_duration = QLabel(str(self.speed_duration) + ' min')
+        self.lbl_speed_duration.setFont(QFont('Bahnschrift Semilight', 15))
+
+        self.lbl_recovery_heart_rate = QLabel(str(self.recovery_heart_rate))
+        self.lbl_recovery_heart_rate.setFont(
+            QFont('Bahnschrift Semilight', 15)
         )
-        self.lbl_average_heart_rate.setFont(QFont('Bahnschrift Semilight', 20))
-
-        self.lbl_total_duration = QLabel(str(self.total_duration) + ' s')
-        self.lbl_total_duration.setFont(QFont('Bahnschrift Semilight', 20))
+        self.lbl_recovery_duration = QLabel(
+            str(self.recovery_duration) + ' min'
+        )
+        self.lbl_recovery_duration.setFont(QFont('Bahnschrift Semilight', 15))
 
         self.lyt_interval = QHBoxLayout()
         self.lyt_interval.addWidget(self.lbl_index)
-        self.lyt_interval.addWidget(self.lbl_average_heart_rate)
-        self.lyt_interval.addWidget(self.lbl_total_duration)
+        self.lyt_interval.addWidget(self.lbl_speed_heart_rate)
+        self.lyt_interval.addWidget(self.lbl_speed_duration)
+        self.lyt_interval.addWidget(self.lbl_recovery_heart_rate)
+        self.lyt_interval.addWidget(self.lbl_recovery_duration)
 
     @staticmethod
     def render_intervals(intervals: list) -> QVBoxLayout:
@@ -106,27 +133,29 @@ class Interval:
         lyt_training_intervals = QVBoxLayout()
         lyt_training_intervals.setContentsMargins(40, 0, 40, 0)
 
-        # Adding title.
+        # Adding title bar.
         lbl_index = QLabel('Index')
-        lbl_index.setFont(QFont('Bahnschrift Semibold', 16))
-        lbl_average_heart_rate = QLabel('Avg. heart rate')
-        lbl_average_heart_rate.setFont(QFont('Bahnschrift Semibold', 16))
-        lbl_duration = QLabel('Duration')
-        lbl_duration.setFont(QFont('Bahnschrift Semibold', 16))
+        lbl_index.setFont(QFont('Bahnschrift Semibold', 15))
+        lbl_speed_heart_rate = QLabel('Speed HR')
+        lbl_speed_heart_rate.setFont(QFont('Bahnschrift Semibold', 15))
+        lbl_speed_duration = QLabel('Speed time')
+        lbl_speed_duration.setFont(QFont('Bahnschrift Semibold', 15))
+        lbl_recovery_heart_rate = QLabel('Rest HR')
+        lbl_recovery_heart_rate.setFont(QFont('Bahnschrift Semibold', 15))
+        lbl_recovery_duration = QLabel('Rest time')
+        lbl_recovery_duration.setFont(QFont('Bahnschrift Semibold', 15))
         lyt_title = QHBoxLayout()
         lyt_title.addWidget(lbl_index)
-        lyt_title.addWidget(lbl_average_heart_rate)
-        lyt_title.addWidget(lbl_duration)
+        lyt_title.addWidget(lbl_speed_heart_rate)
+        lyt_title.addWidget(lbl_speed_duration)
+        lyt_title.addWidget(lbl_recovery_heart_rate)
+        lyt_title.addWidget(lbl_recovery_duration)
         lyt_training_intervals.addLayout(lyt_title)
 
         index = 1
         for interval in intervals:
-            i = Interval(
-                interval['average_heart_rate'][0]['average_hr'],
-                interval['total_duration'][0]['duration']
-            )
-            i.render(index)
-            lyt_training_intervals.addLayout(i.lyt_interval)
+            interval.render(index)
+            lyt_training_intervals.addLayout(interval.lyt_interval)
             index += 1
 
         return lyt_training_intervals

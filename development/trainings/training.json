@@ -1,1 +1,32 @@
-{"name":"Monday","session":[{"name":[],"sport":[{"type":"swim"}],"info":[{"message":"Very easy training"}],"average_heart_rate":[{"average_hr":130}],"total_duration":[{"duration":"30"}]},{"name":[],"sport":[{"type":"bike"}],"info":[{"message":"Endurance ride with intervals"}],"average_heart_rate":[{"average_hr":140}],"total_duration":[{"duration":"250"}]}],"interval":[{"name":[],"sport":[{"type":"swim"}],"info":[{"message":"Moderate"}],"average_heart_rate":[{"average_hr":160}],"total_duration":[{"duration":"5"}],"average_heart_rate_rest":[{"average_heart_rate_rest":90}],"total_duration_rest":[{"total_duration_rest":"2"}]},{"name":[],"sport":[{"type":"bike"}],"info":[{"message":"Hard"}],"average_heart_rate":[{"average_hr":190}],"total_duration":[{"duration":"20"}],"average_heart_rate_rest":[{"average_heart_rate_rest":100}],"total_duration_rest":[{"total_duration_rest":"20"}]}]}
+{
+  "name": "My first training",
+  "session": [
+    {
+      "name": "Short swimming session",
+      "sport": "swim",
+      "average_heart_rate": 130,
+      "total_duration": 30,
+      "info": "Very easy training"
+    },
+    {
+      "name": "Bike ride",
+      "sport": "cycling",
+      "average_heart_rate": 110,
+      "total_duration": 120,
+      "info": "Endurance ride with intervals"
+    }
+  ],
+  "interval": [
+    {
+      "name": "Sample interval",
+      "sport": "cycling",
+      "info": "Moderate",
+      "speed_duration": 10,
+      "recovery_duration": 10,
+      "speed_heart_rate": 158,
+      "recovery_heart_rate": 90,
+      "repetitions": 10,
+      "type": "fixed"
+    }
+  ]
+}
