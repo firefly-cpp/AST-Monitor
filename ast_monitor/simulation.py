@@ -63,9 +63,25 @@ class Simulation():
         Randomly generate heart rate between 150 and 160 beats per minute.
         """
         while True:
-            time.sleep(2)
-            new_rand = random.randint(150, 160)
-            self.write_hr_to_file(new_rand)
+            for i in range(25):
+                time.sleep(1)
+                new_rand = int(float(150 + (i / 25) * 15))
+                self.write_hr_to_file(new_rand)
+
+            for i in range(25):
+                time.sleep(1)
+                new_rand = int(float(150 + ((25 - i) / 25) * 15))
+                self.write_hr_to_file(new_rand)
+
+            for i in range(25):
+                time.sleep(1)
+                new_rand = int(float(80 + ((25 - i) / 25) * 70))
+                self.write_hr_to_file(new_rand)
+
+            for i in range(25):
+                time.sleep(1)
+                new_rand = int(float(80 + (i / 25) * 20))
+                self.write_hr_to_file(new_rand)
 
     def simulate_gps(self) -> None:
         """

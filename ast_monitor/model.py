@@ -58,7 +58,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         # Current interval data.
         self.current_interval = 0
         self.is_speed_phase = False
-        self.interval_average_heart_rate = 0
+        self.interval_average_heart_rate = self.return_current_hr()
         self.interval_checkpoints = 0
 
         #
@@ -232,9 +232,35 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             if self.digital_twin:
                 self.digital_twin.current_heart_rate = self.return_current_hr()
                 self.digital_twin.current_duration = self.interval_time
-                self.lbl_interval_proposed_heart_rate.setText(
-                    str(self.digital_twin.predicted_heart_rate)
-                )
+                
+                if self.is_speed_phase:
+                    diff = str(
+                        '%+d' %
+                        (self.return_current_hr() -
+                         self.digital_twin.predicted_heart_rate)
+                    )
+                else:
+                    diff = str(
+                        '%+d' %
+                        (self.digital_twin.predicted_heart_rate -
+                         self.return_current_hr())
+                    )
+
+                if (
+                    self.digital_twin.predicted_heart_rate >
+                    self.digital_twin.current_heart_rate
+                ):
+                    self.swgt_interval_performance.setCurrentIndex(1)
+                    self.lbl_interval_proposed_heart_rate.setText(
+                        str(self.digital_twin.predicted_heart_rate)
+                    )
+                    self.lbl_interval_performance_up.setText(diff)
+                else:
+                    self.swgt_interval_performance.setCurrentIndex(2)
+                    self.lbl_interval_proposed_heart_rate.setText(
+                        str(self.digital_twin.predicted_heart_rate)
+                    )
+                    self.lbl_interval_performance_down.setText(diff)
         except Exception:
             pass
 
@@ -310,9 +336,9 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             n = self.interval_checkpoints
             avg_hr = previous_heart_rate
             hr = current_heart_rate
-            average_heart_rate = int((1 / n) * ((n - 1) * avg_hr + hr))
+            average_heart_rate = avg_hr + ((1 / n) * (hr - avg_hr))
 
-        label.setText(str(average_heart_rate))
+        label.setText(str(int(average_heart_rate)))
         self.interval_average_heart_rate = average_heart_rate
         self.interval_checkpoints += 1
 
@@ -582,11 +608,12 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Ending a speed part of an interval.
         """
         self.interval_time = 0.0
-        self.interval_average_heart_rate = -1
+        self.interval_average_heart_rate = 0
         self.interval_checkpoints = 0
         self.lbl_interval_average_heart_rate.setText('-')
         self.lbl_interval_proposed_heart_rate.setText('-')
         self.is_speed_phase = False
+        self.swgt_interval_performance.setCurrentIndex(0)
 
         self.start_interval_rest()
 
@@ -596,6 +623,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         self.lbl_interval_watch.setText('0:00:00')
         self.lbl_interval_proposed_heart_rate.setText('-')
+        self.interval_checkpoints = 1
+        self.interval_average_heart_rate = self.return_current_hr()
 
         # Show simple notification that an interval just started.
         self._feedback = TextFeedback(text='Rest started!')
@@ -628,7 +657,12 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Ending a rest part of an interval.
         """
+        self.interval_time = 0.0
+        self.interval_average_heart_rate = 0
+        self.interval_checkpoints = 0
+        self.lbl_interval_average_heart_rate.setText('-')
         self.lbl_interval_proposed_heart_rate.setText('-')
+        self.swgt_interval_performance.setCurrentIndex(0)
         self.training_timer.stop()
 
         self.start_training()
