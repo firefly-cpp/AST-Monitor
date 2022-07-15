@@ -130,9 +130,12 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btn_load_training.clicked.connect(self.load_training)
         self.btn_start_training.clicked.connect(self.start_training)
 
-    def start_tracker(self) -> None:
+    def start_tracker(self, show_feedback: bool = True) -> None:
         """
-        Start of the workout tracking.
+        Start of the workout tracking.\n
+        Args:
+            show_feedback (bool):
+                showing notification for workout start if True
         """
         self.tracker.start()
         self.tracking_flag = True
@@ -140,12 +143,13 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.widget_start_stop.setCurrentIndex(1)
 
         # Show simple notification that workout just started.
-        self._feedback = TextFeedback(text='Workout started!')
-        self._feedback.show(
-            AnimationType.VERTICAL,
-            AnimationDirection.UP,
-            time=3000
-        )
+        if show_feedback:
+            self._feedback = TextFeedback(text='Workout started!')
+            self._feedback.show(
+                AnimationType.VERTICAL,
+                AnimationDirection.UP,
+                time=3000
+            )
 
     def end_tracker(self) -> None:
         """
@@ -558,7 +562,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Manual training start.
         """
         i = self.current_interval
-        if i >= len(self.planned_intervals):
+
+        if i == 0:
+            self.start_tracker(show_feedback=False)
+        elif i >= len(self.planned_intervals):
+            self.end_tracker()
             return
 
         self.start_interval_speed()
@@ -566,7 +574,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.training_timer = QTimer()
         self.training_timer.timeout.connect(self.end_interval_speed)
         self.training_timer.start(
-            1000 * self.planned_intervals[i].speed_duration
+            60 * 1000 * self.planned_intervals[i].speed_duration
         )
 
         self.current_interval += 1
@@ -638,7 +646,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.training_timer = QTimer()
         self.training_timer.timeout.connect(self.end_interval_rest)
         self.training_timer.start(
-            1000 * interval.recovery_duration
+            60 * 1000 * interval.recovery_duration
         )
 
         # Launching the digital twin.
