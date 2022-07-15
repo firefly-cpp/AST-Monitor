@@ -28,10 +28,10 @@ class DigitalTwin:
                 a tick time in seconds
         """
         self.proposed_heart_rate = proposed_heart_rate
-        self.predicted_duration = duration
+        self.predicted_duration = 60 * duration
         self.current_heart_rate = 0
         self.current_duration = 0
-        self.expected_trackpoints = (1000 * duration) // tick_time
+        self.expected_trackpoints = (60 * 1000 * duration) // tick_time
 
     def read_control_data(self) -> tuple:
         """

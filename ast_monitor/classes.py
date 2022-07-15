@@ -101,7 +101,7 @@ class Interval:
 
         self.lbl_speed_heart_rate = QLabel(str(self.speed_heart_rate))
         self.lbl_speed_heart_rate.setFont(QFont('Bahnschrift Semilight', 15))
-        self.lbl_speed_duration = QLabel(str(self.speed_duration) + ' s')
+        self.lbl_speed_duration = QLabel(str(self.speed_duration) + ' min')
         self.lbl_speed_duration.setFont(QFont('Bahnschrift Semilight', 15))
 
         self.lbl_recovery_heart_rate = QLabel(str(self.recovery_heart_rate))
@@ -109,7 +109,7 @@ class Interval:
             QFont('Bahnschrift Semilight', 15)
         )
         self.lbl_recovery_duration = QLabel(
-            str(self.recovery_duration) + ' s'
+            str(self.recovery_duration) + ' min'
         )
         self.lbl_recovery_duration.setFont(QFont('Bahnschrift Semilight', 15))
 

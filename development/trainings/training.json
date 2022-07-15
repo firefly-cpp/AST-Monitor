@@ -21,11 +21,11 @@
       "name": "Sample interval",
       "sport": "cycling",
       "info": "Moderate",
-      "speed_duration": 50,
-      "recovery_duration": 50,
+      "speed_duration": 1,
+      "recovery_duration": 1,
       "speed_heart_rate": 158,
       "recovery_heart_rate": 90,
-      "repetitions": 10,
+      "repetitions": 8,
       "type": "fixed"
     }
   ]
