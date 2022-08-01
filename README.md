@@ -24,10 +24,6 @@
 This repository is devoted to the AST-monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sports training sessions that are dedicated to monitoring cycling training sessions.
 AST-Monitor is a part of the Artificial Sport Trainer (AST) system. The first bits of AST-monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
-## Outline of this repository
-
-This repository presents basic code regarded to GUI. It was ported from the initial prototype to poetry.
-
 ## Hardware outline
 
 The complete hardware part is shown in the figure from which it can be seen that the AST-computer is split into the following pieces:
