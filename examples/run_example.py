@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 import sys
+sys.path.append('../')
 
 from ast_monitor.model import AST
 

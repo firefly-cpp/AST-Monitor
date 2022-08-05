@@ -1,3 +1,4 @@
+import json
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QHBoxLayout, QLabel, QVBoxLayout
 from sport_activities_features.training_loads import BanisterTRIMP
@@ -159,3 +160,49 @@ class Interval:
             index += 1
 
         return lyt_training_intervals
+
+
+class IntervalData:
+    """
+    Class for logging interval training.\n
+    Args:
+        planned_heart_rate (int):
+            a planned heart rate in beats per minute
+        predicted_heart_rate (int):
+            a predicted heart rate in beats per minute
+        current_heart_rate (int):
+            current heart rate in beats per minute
+        time (int):
+            time since the start of the current phase of the interval
+    """
+    def __init__(
+        self,
+        planned_heart_rate: int,
+        predicted_heart_rate: int,
+        current_heart_rate: int,
+        time: int
+    ) -> None:
+        """
+        Initialization method for IntervalData class.\n
+        Args:
+            planned_heart_rate (int):
+                a planned heart rate in beats per minute
+            predicted_heart_rate (int):
+                a predicted heart rate in beats per minute
+            current_heart_rate (int):
+                current heart rate in beats per minute
+            time (int):
+                time since the start of the current phase of the interval
+        """
+        self.planned_heart_rate = planned_heart_rate
+        self.predicted_heart_rate = predicted_heart_rate
+        self.current_heart_rate = current_heart_rate
+        self.time = time
+
+    def to_json(self) -> str:
+        """
+        Converting the object to JSON.
+        Returns:
+            str: the JSON string
+        """
+        return json.dumps(self.__dict__)

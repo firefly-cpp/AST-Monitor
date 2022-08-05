@@ -7,17 +7,22 @@ from pyqt_feedback_flow.feedback import (
     AnimationType,
     TextFeedback
 )
-from PyQt5 import (
-    QtCore,
-    QtWidgets,
-    QtWebChannel,
-    QtWebEngineWidgets
-)
+from PyQt5 import QtWidgets
+
+try:
+    from PyQt5 import (
+        QtCore,
+        QtWebChannel,
+        QtWebEngineWidgets
+    )
+except Exception:
+    pass
+
 from PyQt5.QtCore import pyqtSlot, Qt, QTimer
 from PyQt5.QtWidgets import QLabel, QMessageBox
 from threading import Thread
 
-from ast_monitor.classes import Interval, SensorData
+from ast_monitor.classes import Interval, IntervalData, SensorData
 from ast_monitor.digital_twin import DigitalTwin
 from ast_monitor.mainwindow import Ui_MainWindow
 from ast_monitor.send_data import SendData
@@ -46,6 +51,7 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         self.initialize_GUI()  # GUI initialization.
 
+        self.loaded = False
         # Paths to heart rate and GPS data files.
         self.hr_data_path = hr_data_path
         self.gps_data_path = gps_data_path
@@ -56,7 +62,8 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.intervals = []
 
         # Current interval data.
-        self.current_interval = 0
+        self.current_training = -1
+        self.current_interval = -1
         self.is_speed_phase = False
         self.interval_average_heart_rate = self.return_current_hr()
         self.interval_checkpoints = 0
@@ -73,16 +80,19 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         # Map setting.
-        self.view = QtWebEngineWidgets.QWebEngineView()
-        self.channel = QtWebChannel.QWebChannel()
-        self.channel.registerObject("MainWindow", self)
-        self.view.page().setWebChannel(self.channel)
-        file = os.path.join(
-            os.path.dirname(os.path.realpath(__file__)),
-            '../ast_monitor/map/map.html',
-        )
-        self.view.setUrl(QtCore.QUrl.fromLocalFile(file))
-        self.vb_map.addWidget(self.view)
+        try:
+            self.view = QtWebEngineWidgets.QWebEngineView()
+            self.channel = QtWebChannel.QWebChannel()
+            self.channel.registerObject("MainWindow", self)
+            self.view.page().setWebChannel(self.channel)
+            file = os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                '../ast_monitor/map/map.html',
+            )
+            self.view.setUrl(QtCore.QUrl.fromLocalFile(file))
+            self.vb_map.addWidget(self.view)
+        except Exception:
+            pass
 
         # Show data in real time.
         self.timer = QTimer()
@@ -229,14 +239,29 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Incrementing time and displaying it on
         the interval stopwatch on each tick.
         """
-        self.interval_time += TICK_TIME / 1000
-        self.display_interval_stopwatch()
+        if self.interval_flag:
+            self.interval_time += TICK_TIME / 1000
+            self.display_interval_stopwatch()
 
         try:
             if self.digital_twin:
                 self.digital_twin.current_heart_rate = self.return_current_hr()
                 self.digital_twin.current_duration = self.interval_time
                 
+                # Writing log file.
+                interval_data = IntervalData(
+                    self.digital_twin.predicted_heart_rate,
+                    self.digital_twin.proposed_heart_rate,
+                    self.return_current_hr(),
+                    self.interval_time
+                )
+                self.file.write(
+                    f'{interval_data.planned_heart_rate};\
+                    {interval_data.predicted_heart_rate};\
+                    {interval_data.current_heart_rate};\
+                    {interval_data.time}\n'
+                )
+
                 if self.is_speed_phase:
                     diff = str(
                         '%+d' %
@@ -468,19 +493,19 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
             return 0.0
 
         total_distance = 0.0
-        for i in range(len(series) - 1):
-            coords_1 = (
-                series[i + 1].longitude,
-                series[i + 1].latitude
-            )
-            coords_2 = (
-                series[i].longitude,
-                series[i].latitude
-            )
-            total_distance = (
-                total_distance +
-                abs(geopy.distance.geodesic(coords_1, coords_2).m)
-            )
+        # for i in range(len(series) - 1):
+        #     coords_1 = (
+        #         series[i + 1].longitude,
+        #         series[i + 1].latitude
+        #     )
+        #     coords_2 = (
+        #         series[i].longitude,
+        #         series[i].latitude
+        #     )
+        #     total_distance = (
+        #         total_distance +
+        #         abs(geopy.distance.geodesic(coords_1, coords_2).m)
+        #     )
 
         return round(total_distance, 3)
 
@@ -561,11 +586,18 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         Manual training start.
         """
+        self.current_interval += 1
         i = self.current_interval
 
         if i == 0:
+            self.file = open(
+                f'../sensor_data/training{self.current_training}.log',
+                'a'
+            )
             self.start_tracker(show_feedback=False)
         elif i >= len(self.planned_intervals):
+            self.file.write('\n')
+            self.file.close()
             self.end_tracker()
             return
 
@@ -576,8 +608,6 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.training_timer.start(
             60 * 1000 * self.planned_intervals[i].speed_duration
         )
-
-        self.current_interval += 1
 
     def start_interval_speed(self):
         """
@@ -604,7 +634,11 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.digital_twin_thread.start()
 
         # Show simple notification that an interval just started.
-        self._feedback = TextFeedback(text='Interval started!')
+        text = (
+            f'{self.current_interval + 1}/{len(self.planned_intervals)}: ' +
+            'Speed phase started!'
+        )
+        self._feedback = TextFeedback(text=text)
         self._feedback.show(
             AnimationType.HORIZONTAL,
             AnimationDirection.RIGHT,
@@ -635,13 +669,19 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         self.interval_average_heart_rate = self.return_current_hr()
 
         # Show simple notification that an interval just started.
-        self._feedback = TextFeedback(text='Rest started!')
+        text = (
+            f'{self.current_interval + 1}/{len(self.planned_intervals)}: ' +
+            'Rest phase started!'
+        )
+        self._feedback = TextFeedback(text=text)
         self._feedback.show(
             AnimationType.HORIZONTAL,
             AnimationDirection.RIGHT,
             time=3000
         )
 
+        if self.current_interval >= len(self.planned_intervals):
+            self.start_training()
         interval = self.planned_intervals[self.current_interval]
         self.training_timer = QTimer()
         self.training_timer.timeout.connect(self.end_interval_rest)
@@ -680,17 +720,16 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
         Rendering the read intervals in the GUI.
         """
         # Removing old intervals or text.
-        if self.lbl_no_training:
-            self.lbl_no_training.deleteLater()
-            self.lbl_no_training = None
-        old_intervals = self.lyt_training.takeAt(0)
-        self.lyt_training.removeItem(old_intervals)
-
-        # Inserting the read intervals.
         self.lyt_training.insertLayout(
             0,
             Interval.render_intervals(self.planned_intervals)
         )
+
+        # Inserting the read intervals.
+        # self.lyt_training.insertLayout(
+        #     0,
+        #     Interval.render_intervals(self.planned_intervals)
+        # )
 
     def load_training(self) -> None:
         """
@@ -700,7 +739,20 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
                 path to the file
         """
         # Currently hard-coded path to the file.
-        file = '../development/trainings/training.json'
+        self.current_training += 1
+        file = (
+            '../development/trainings/training' +
+            str(self.current_training) +
+            '.json'
+        )
+
+        if not os.path.exists(file):
+            self.current_training = 0
+            file = (
+                '../development/trainings/training' +
+                str(self.current_training) +
+                '.json'
+            )
 
         # Opening and reading the training data.
         training = {}
@@ -730,3 +782,4 @@ class AST(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # self.intervals = list(map(lambda i: i, training['interval']))
         self.render_intervals_GUI()
+        self.loaded = True
