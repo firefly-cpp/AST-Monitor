@@ -1,10 +1,14 @@
 from PyQt5 import QtWidgets
 import sys
 
-from ast_monitor.model import AST
+try:
+    from ast_monitor.model import AST
+except ModuleNotFoundError:
+    sys.path.append('../')
+    from ast_monitor.model import AST
 
 
-# We need to provide two paths for storing sensor.
+# Paths to the files with heart rates and GPS data.
 hr_data = '../sensor_data/hr.txt'
 gps_data = '../sensor_data/gps.txt'
 

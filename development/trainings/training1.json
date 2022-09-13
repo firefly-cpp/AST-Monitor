@@ -1,0 +1,16 @@
+{
+  "name": "My first training",
+  "interval": [
+    {
+      "name": "Sample interval",
+      "sport": "cycling",
+      "info": "Easy",
+      "speed_duration": 1,
+      "recovery_duration": 1,
+      "speed_heart_rate": 155,
+      "recovery_heart_rate": 90,
+      "repetitions": 3,
+      "type": "fixed"
+    }
+  ]
+}
