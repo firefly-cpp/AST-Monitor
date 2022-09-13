@@ -54,8 +54,8 @@ List of dependencies:
 | geopy        | ^2.2.0     | All      |
 | openant        | v0.4     | All      |
 | pyqt-feedback-flow       | ^0.1.0     | All      |
-| tcxreader       | ^0.3.8     | All      |
-| sport-activities-features       | ^0.2.9     | All      |
+| tcxreader       | ^0.4.1     | All      |
+| sport-activities-features       | ^0.3.6     | All      |
 
 Note: openant package should be installed manually. Please follow the [official instructions](https://github.com/Tigge/openant). If you use Fedora OS, you can install openant package using the dnf package manager:
 
