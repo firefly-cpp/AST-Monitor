@@ -178,7 +178,10 @@ class AST(QMainWindow, Ui_MainWindow):
                 training = json.loads(training_json)
                 training['file'] = trainings[i].split('\\')[-1]
                 try:
-                    interval_training = IntervalTraining(training)
+                    interval_training = IntervalTraining(
+                        training,
+                        self.basic_data
+                    )
                     if (
                         not hasattr(self, 'interval_training') or
                         not self.interval_training == interval_training
@@ -193,6 +196,7 @@ class AST(QMainWindow, Ui_MainWindow):
                 training_json = f.read()
                 training = json.loads(training_json)
                 training['file'] = trainings[0].split('\\')[-1].split('.')[0]
+                name = trainings[i].split('\\')[-1].split('.')[0]
                 self.interval_training = IntervalTraining(
                     training,
                     self.basic_data

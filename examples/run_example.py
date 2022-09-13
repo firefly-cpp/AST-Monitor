@@ -1,7 +1,11 @@
 from PyQt5 import QtWidgets
 import sys
 
-from ast_monitor.model import AST
+try:
+    from ast_monitor.model import AST
+except ModuleNotFoundError:
+    sys.path.append('../')
+    from ast_monitor.model import AST
 
 
 # Paths to the files with heart rates and GPS data.
