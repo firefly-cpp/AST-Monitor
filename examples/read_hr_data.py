@@ -1,10 +1,12 @@
-import sys
-sys.path.append('../')
+try:
+    from ast_monitor.hr_sensor import HrSensor
+except Exception:
+    import sys
+    sys.path.append('../')
+    from ast_monitor.hr_sensor import HrSensor
 
-from ast_monitor.hr_sensor import HrSensor
 
-
-# Where to store data.
+# Path to the file where heart rate data will be saved to.
 path = '../sensor_data/hr.txt'
 
 hr = HrSensor(hr_path=path)

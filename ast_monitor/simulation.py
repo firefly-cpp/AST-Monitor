@@ -1,5 +1,4 @@
-import random
-from tcxreader.tcxreader import TCXExercise, TCXReader
+from tcxreader.tcxreader import TCXReader
 import time
 
 
@@ -55,7 +54,10 @@ class Simulation():
                 current altitude
         """
         with open(self.gps_path, 'a') as f:
-            f.write(str(lon) + ';' + lat + ';' + str(alt) + ';' + '\n')
+            f.write(
+                str(lon) + ';' + lat + ';' + str(alt) + ';' +
+                str(time.time()) + '\n'
+            )
             print('Lon: ' + str(lon) + ' Lat: ' + str(lat))
 
     def simulate_hr(self) -> None:
@@ -99,21 +101,12 @@ class Simulation():
             Technical report 0201, University of Ljubljana
             and University of Maribor, 2015.
         """
-        data: TCXExercise = tcx_reader.read(file_location)
-
-        lon = []
-        lat = []
+        data = tcx_reader.read(file_location)
 
         for i in range(len(data.trackpoints)):
-            lat.append(str(data.trackpoints[i].latitude))
-            lon.append(str(data.trackpoints[i].longitude))
-
-        indexed = 0
-        while True:
             time.sleep(1)
             self.write_gps_to_file(
-                lon[indexed],
-                lat[indexed],
-                random.randint(1, 3)
+                str(data.trackpoints[i].longitude),
+                str(data.trackpoints[i].latitude),
+                str(data.trackpoints[i].elevation)
             )
-            indexed = indexed + 1

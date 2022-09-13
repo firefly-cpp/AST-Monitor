@@ -1,10 +1,12 @@
-import sys
-sys.path.append('../')
+try:
+    from ast_monitor.gps_sensor import GpsSensor
+except Exception:
+    import sys
+    sys.path.append('../')
+    from ast_monitor.gps_sensor import GpsSensor
 
-from ast_monitor.gps_sensor import GpsSensor
 
-
-# Where to store data.
+# Path to the file where GPS data will be saved to.
 path = '../sensor_data/gps.txt'
 
 gps = GpsSensor(gps_path=path)

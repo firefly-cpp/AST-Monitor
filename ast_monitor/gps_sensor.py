@@ -40,7 +40,10 @@ class GpsSensor:
             altitude (float):
                 current altitude
         """
-        output = str(longitude) + ';' + str(latitude) + ';' + str(altitude)
+        output = (
+            str(longitude) + ';' + str(latitude) + ';' +
+            str(altitude) + ';' + time.time()
+        )
         with open(self.gps_path, 'a') as f:
             f.write(output + '\n')
 
