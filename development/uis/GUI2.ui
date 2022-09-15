@@ -1370,14 +1370,14 @@ border-radius: 5px;</string>
                               </property>
                               <property name="maximumSize">
                                <size>
-                                <width>180</width>
+                                <width>200</width>
                                 <height>120</height>
                                </size>
                               </property>
                               <property name="font">
                                <font>
                                 <family>Bahnschrift SemiLight</family>
-                                <pointsize>18</pointsize>
+                                <pointsize>17</pointsize>
                                 <italic>false</italic>
                                 <bold>false</bold>
                                </font>
@@ -1887,7 +1887,7 @@ border-radius: 5px;</string>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>120</width>
+                          <width>150</width>
                           <height>30</height>
                          </size>
                         </property>

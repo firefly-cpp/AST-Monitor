@@ -122,7 +122,6 @@ $ yay -Syyu python-ast-monitor
 ## Deployment
 Our project was deployed on a Raspberry Pi device using Raspberry Pi OS.
 
-### Run AST-Monitor on startup
 The hardware configuration of AST-Monitor using Raspberry Pi OS is described in <a href="https://github.com/firefly-cpp/AST-Monitor/blob/main/HARDWARE_CONFIGURATION.md">HARDWARE_CONFIGURATION.md</a>.
 
 ## Examples
