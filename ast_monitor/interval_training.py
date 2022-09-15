@@ -40,7 +40,8 @@ class IntervalTraining:
         self.phase_start = None
         self.abort_training = False
         self.basic_data = basic_data
-        self.log = f'../logs/{self.file}.log'
+        name = self.file.split('.')[0]
+        self.log = f'../logs/{name}.log'
 
     def __eq__(self, __o: object) -> bool:
         """

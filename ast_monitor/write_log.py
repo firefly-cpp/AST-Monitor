@@ -14,9 +14,8 @@ class WriteLog:
             file: str
                 path to the log file
         """
-        path = f'../logs/{file}'
         time_s = datetime.utcnow().isoformat()
-        with open(path, 'a') as log:
+        with open(file, 'a') as log:
             log.write(f'\n[{time_s}] {file}\n')
             log.write('Log parameters: HR_prop, HR_avg, HR_pred, t\n')
 
@@ -30,7 +29,6 @@ class WriteLog:
             digital_twin: DigitalTwin
                 the Digital Twin
         """
-        path = f'../logs/{file}'
         time_s = datetime.utcnow().isoformat()
         predicted_hr = '-'
         proposed_hr = str(int(digital_twin.proposed_heart_rate))
@@ -42,7 +40,7 @@ class WriteLog:
         if digital_twin.average_heart_rate:
             average_hr = str(int(digital_twin.average_heart_rate))
 
-        with open(path, 'a') as log:
+        with open(file, 'a') as log:
             log.write(
                 f'[{time_s}]' + ' ' +
                 proposed_hr + ' ' +
