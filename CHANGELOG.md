@@ -1,11 +1,40 @@
 # Changelog
 
-## [Unreleased](https://github.com/firefly-cpp/AST-Monitor/tree/HEAD)
+## [0.3.1](https://github.com/firefly-cpp/AST-Monitor/tree/0.3.1) (2022-09-15)
 
-[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.2.0...HEAD)
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.0...0.3.1)
+
+**Closed issues:**
+
+- Path error [\#29](https://github.com/firefly-cpp/AST-Monitor/issues/29)
+- Add a short outline/description of each figure in README [\#25](https://github.com/firefly-cpp/AST-Monitor/issues/25)
 
 **Merged pull requests:**
 
+- Small bugifx [\#30](https://github.com/firefly-cpp/AST-Monitor/pull/30) ([luckyLukac](https://github.com/luckyLukac))
+
+## [0.3.0](https://github.com/firefly-cpp/AST-Monitor/tree/0.3.0) (2022-09-13)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.2.1...0.3.0)
+
+**Closed issues:**
+
+- Show various TRIMP values on the dashboard [\#21](https://github.com/firefly-cpp/AST-Monitor/issues/21)
+- Add reference/minor documentation for ast-tdl [\#17](https://github.com/firefly-cpp/AST-Monitor/issues/17)
+
+**Merged pull requests:**
+
+- Complete revamp of the AST-Monitor application [\#28](https://github.com/firefly-cpp/AST-Monitor/pull/28) ([luckyLukac](https://github.com/luckyLukac))
+- Update lock file [\#27](https://github.com/firefly-cpp/AST-Monitor/pull/27) ([firefly-cpp](https://github.com/firefly-cpp))
+- Add instructions for install from AUR [\#26](https://github.com/firefly-cpp/AST-Monitor/pull/26) ([carlosal1015](https://github.com/carlosal1015))
+
+## [0.2.1](https://github.com/firefly-cpp/AST-Monitor/tree/0.2.1) (2022-07-22)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.2.0...0.2.1)
+
+**Merged pull requests:**
+
+- Slight digital twin algorithm and GUI improvements [\#24](https://github.com/firefly-cpp/AST-Monitor/pull/24) ([luckyLukac](https://github.com/luckyLukac))
 - Digital twin improvements [\#23](https://github.com/firefly-cpp/AST-Monitor/pull/23) ([luckyLukac](https://github.com/luckyLukac))
 
 ## [0.2.0](https://github.com/firefly-cpp/AST-Monitor/tree/0.2.0) (2022-07-12)
