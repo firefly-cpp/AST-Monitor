@@ -116,6 +116,12 @@ To install AST-Monitor on Fedora Linux, please use:
 $ dnf install python3-ast-monitor
 ```
 
+To install AST-Monitor on Alpine Linux, please use:
+
+```sh
+$ apk add py3-ast-monitor
+```
+
 To install AST-Monitor on Arch Linux, please use an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers):
 
 ```sh
