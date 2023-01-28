@@ -24,6 +24,7 @@ pyqt-feedback-flow = "^0.1.6"
 tcxreader = "^0.4.2"
 sport-activities-features = "^0.3.7.1"
 PyQtWebEngine = "^5.15.5"
+openant = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
