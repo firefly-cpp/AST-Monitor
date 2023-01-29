@@ -80,16 +80,10 @@ List of dependencies:
 | PyQt5        | ^5.15.6    | All      |
 | matplotlib   | ^3.5.1     | All      |
 | geopy        | ^2.2.0     | All      |
-| openant        | v0.4     | All      |
+| openant      | ^1.2.0     | All      |
 | pyqt-feedback-flow       | ^0.1.0     | All      |
 | tcxreader       | ^0.4.1     | All      |
 | sport-activities-features       | ^0.3.6     | All      |
-
-Note: openant package should be installed manually. Please follow the [official instructions](https://github.com/Tigge/openant). If you use Fedora OS, you can install openant package using the dnf package manager:
-
-```sh
-$ dnf install python-openant
-```
 
 Additional note: adafruit-circuitpython-gps package must be installed in order to work with the GPS sensor:
 
