@@ -85,7 +85,7 @@ $ pip install pyusb
 $ pip install adafruit-circuitpython-gps
 ```
 
-[openant](https://github.com/Tigge/openant) package has to be downloaded and installed manually using these commands:
+OBSOLETE: [openant](https://github.com/Tigge/openant) package has to be downloaded and installed manually using these commands:
 ```sh
 $ git clone https://github.com/Tigge/openant
 $ cd ./openant/
