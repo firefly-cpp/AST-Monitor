@@ -26,14 +26,14 @@ Development dependencies
 List of AST-Monitor dependencies:
 
 | Package      | Version    | Platform |
-| ------------ |:----------:|:--------:|
++==============+============+==========+
 | PyQt5        | ^5.15.6    | All      |
 | matplotlib   | ^3.5.1     | All      |
 | geopy        | ^2.2.0     | All      |
 | openant        | v0.4     | All      |
 | pyqt-feedback-flow       | ^0.1.0     | All      |
 | tcxreader       | ^0.3.8     | All      |
-| sport-activities-features       | ^0.2.9     | All      |
+| sport-activities-features    | ^0.2.9     | All      |
 
 List of development dependencies:
 
