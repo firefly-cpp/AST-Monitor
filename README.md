@@ -14,6 +14,9 @@
 [![Fedora package](https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-ast-monitor)
 [![AUR package](https://img.shields.io/aur/version/python-ast-monitor?color=blue&label=Arch%20Linux&logo=arch-linux)](https://aur.archlinux.org/packages/python-ast-monitor)
 
+* **Documentation:** [https://sport-activities-features.readthedocs.io/en/latest](https://ast-monitor.readthedocs.io/en/latest)
+* **Tested OS:** Windows, Ubuntu, Fedora, Alpine, Arch, macOS. **However, that does not mean it does not work on others**
+  
 ## Short description
 This repository is devoted to AST-Monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sport training sessions that are dedicated to monitoring cycling training sessions.
 AST-Monitor is a part of the Artificial Sport Trainer (AST) system. The first bits of AST-Monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
