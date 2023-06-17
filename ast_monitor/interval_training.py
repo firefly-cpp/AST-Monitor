@@ -8,20 +8,32 @@ from ast_monitor.write_log import WriteLog
 class IntervalTraining:
     """
     Initialization method of the IntervalTraining class.\n
+
     Args:
-        training: dict
-            an interval training
-        tick_time: int
-            tick time in milliseconds
+    ----
+    training: dict
+        an interval training
+    tick_time: int
+        tick time in milliseconds
+
+    Returns:
+    -------
+    None
     """
     def __init__(self, training: dict, basic_data) -> None:
         """
         Initialization method of the IntervalTraining class.\n
+
         Args:
-            training: dict
-                an interval training
-            tick_time: int
-                tick time in milliseconds
+        ----
+        training: dict
+            an interval training
+        tick_time: int
+            tick time in milliseconds
+
+        Returns:
+        -------
+        None
         """
         self.file = training['file']
         self.name = training['interval'][0]['name']
@@ -46,9 +58,15 @@ class IntervalTraining:
     def __eq__(self, __o: object) -> bool:
         """
         Method for comparing two IntervalTraining objects.\n
+
         Args:
-            __o: IntervalTraining
-                an interval training to be compared to
+        ----
+        __o: IntervalTraining
+            an interval training to be compared to
+
+        Returns:
+        -------
+        bool
         """
         return (
             self.name == __o.name and
@@ -65,9 +83,15 @@ class IntervalTraining:
     def start(self, write_log: bool = False) -> None:
         """
         Starting an interval training.\n
+
         Args:
-            write_log: bool
-                writing log if True
+        ----
+        write_log: bool
+            writing log if True
+
+        Returns:
+        -------
+        None
         """
         # Writing the header of the training.
         if write_log:
@@ -82,14 +106,20 @@ class IntervalTraining:
                 break
         self.abort_training = True
 
-    def start_speed_phase(self, interval: int, write_log: bool) -> None:
+    def start_speed_phase(self, interval: int) -> None:
         """
         Starting a speed phase of an interval.\n
+
         Args:
-            interval: int
-                index of the interval
-            write_log: bool
-                writing log if True
+        ----
+        interval: int
+            index of the interval
+        write_log: bool
+            writing log if True
+
+        Returns:
+        -------
+        None
         """
         self.current_interval = interval, 'speed'
         self.speed_notification = True
@@ -122,11 +152,17 @@ class IntervalTraining:
     def start_recovery_phase(self, interval: int, write_log: bool) -> None:
         """
         Starting a recovery phase of an interval.\n
+
         Args:
-            interval: int
-                index of the interval
-            write_log: bool
-                writing log if True
+        ----
+        interval: int
+            index of the interval
+        write_log: bool
+            writing log if True
+
+        Returns:
+        -------
+        None
         """
         self.current_interval = interval, 'recovery'
         self.recovery_notification = True
