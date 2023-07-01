@@ -17,17 +17,18 @@ include = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-PyQt5 = "*"
 matplotlib = "*"
 geopy = "*"
-pyqt-feedback-flow = "^0.1.6"
+pyqt-feedback-flow = "^0.3.0"
 tcxreader = "^0.4.2"
 sport-activities-features = "^0.3.12"
-PyQtWebEngine = "^5.15.5"
 openant = "^1.2.0"
+PyQt6 = "6.4.2"
+PyQt6-WebEngine = "^6.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

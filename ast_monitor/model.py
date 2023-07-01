@@ -1,12 +1,13 @@
 import glob
 import json
 import os
-import PyQt5
-from PyQt5.QtCore import pyqtSlot, Qt, QTimer
-from PyQt5.QtWidgets import QMainWindow
+import PyQt6
+from PyQt6.QtCore import pyqtSlot, Qt, QTimer, QUrl
+from PyQt6.QtWebEngineCore import QWebEngineSettings
+from PyQt6.QtWidgets import QMainWindow
 try:
-    from PyQt5.QtWebChannel import QWebChannel
-    from PyQt5.QtWebEngineWidgets import QWebEngineView
+    from PyQt6.QtWebChannel import QWebChannel
+    from PyQt6.QtWebEngineWidgets import QWebEngineView
 except Exception:
     pass
 from pyqt_feedback_flow.feedback import (
@@ -48,7 +49,7 @@ class AST(QMainWindow, Ui_MainWindow):
         """
         Initialization method for the GUI of the app.
         """
-        QMainWindow.__init__(self, flags=Qt.FramelessWindowHint)
+        QMainWindow.__init__(self, flags=Qt.WindowType.FramelessWindowHint)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
 
@@ -56,14 +57,17 @@ class AST(QMainWindow, Ui_MainWindow):
         # OS due to missing dependencies).
         try:
             self.view = QWebEngineView()
+            self.view.settings().setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessRemoteUrls, True)
+            self.view.settings().setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls, True)
             self.channel = QWebChannel()
             self.channel.registerObject("MainWindow", self)
             self.view.page().setWebChannel(self.channel)
-            file = os.path.join(
+            file = str(os.path.join(
                 os.path.dirname(os.path.realpath(__file__)),
                 '../ast_monitor/map/map.html',
-            )
-            self.view.setUrl(PyQt5.QtCore.QUrl.fromLocalFile(file))
+            ))
+
+            self.view.setUrl(PyQt6.QtCore.QUrl.fromLocalFile(file))
             self.vb_map.addWidget(self.view)
         except NameError:
             print('No QtWebEngine module found.')
