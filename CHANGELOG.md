@@ -1,5 +1,50 @@
 # Changelog
 
+## [0.4.0](https://github.com/firefly-cpp/AST-Monitor/tree/0.4.0) (2023-07-02)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.3...0.4.0)
+
+**Merged pull requests:**
+
+- docs: add alenrajsp as a contributor for code [\#50](https://github.com/firefly-cpp/AST-Monitor/pull/50) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Updated to PyQt6 version + [\#49](https://github.com/firefly-cpp/AST-Monitor/pull/49) ([alenrajsp](https://github.com/alenrajsp))
+
+## [0.3.3](https://github.com/firefly-cpp/AST-Monitor/tree/0.3.3) (2023-06-21)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.2...0.3.3)
+
+**Closed issues:**
+
+- Fix docs [\#44](https://github.com/firefly-cpp/AST-Monitor/issues/44)
+- Openant dependency [\#42](https://github.com/firefly-cpp/AST-Monitor/issues/42)
+
+**Merged pull requests:**
+
+- docs: add KukovecRok as a contributor for doc, and bug [\#48](https://github.com/firefly-cpp/AST-Monitor/pull/48) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Sphinx docs fix \#44 [\#45](https://github.com/firefly-cpp/AST-Monitor/pull/45) ([KukovecRok](https://github.com/KukovecRok))
+- Bump requests from 2.30.0 to 2.31.0 [\#43](https://github.com/firefly-cpp/AST-Monitor/pull/43) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [0.3.2](https://github.com/firefly-cpp/AST-Monitor/tree/0.3.2) (2023-01-28)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.1...0.3.2)
+
+**Closed issues:**
+
+-  @all-contributors add [\#32](https://github.com/firefly-cpp/AST-Monitor/issues/32)
+
+**Merged pull requests:**
+
+- Include openant in dependency list \(finally available on pypi\) [\#41](https://github.com/firefly-cpp/AST-Monitor/pull/41) ([firefly-cpp](https://github.com/firefly-cpp))
+- Bump certifi from 2022.9.24 to 2022.12.7 [\#40](https://github.com/firefly-cpp/AST-Monitor/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
+- docs: add alenrajsp as a contributor for content [\#39](https://github.com/firefly-cpp/AST-Monitor/pull/39) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add firefly-cpp as a contributor for platform [\#38](https://github.com/firefly-cpp/AST-Monitor/pull/38) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add carlosal1015 as a contributor for platform [\#37](https://github.com/firefly-cpp/AST-Monitor/pull/37) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add luckyLukac as a contributor for design [\#36](https://github.com/firefly-cpp/AST-Monitor/pull/36) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add firefly-cpp as a contributor for doc, code, and 2 more [\#35](https://github.com/firefly-cpp/AST-Monitor/pull/35) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add luckyLukac as a contributor for bug, doc, and code [\#34](https://github.com/firefly-cpp/AST-Monitor/pull/34) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add firefly-cpp as a contributor for bug [\#33](https://github.com/firefly-cpp/AST-Monitor/pull/33) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Bump pillow from 9.2.0 to 9.3.0 [\#31](https://github.com/firefly-cpp/AST-Monitor/pull/31) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.3.1](https://github.com/firefly-cpp/AST-Monitor/tree/0.3.1) (2022-09-15)
 
 [Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.0...0.3.1)
