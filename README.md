@@ -55,7 +55,7 @@ Get ready to push your limits with the third page of the AST-Monitor application
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/189926103-e0895132-9bbc-41bf-8868-51e3e6c23f8a.png" alt="AST-Trainings">
 </p>
-Ladies and gentlemen, we present to you the fourth and final page of the AST-Monitor application—a gateway to unparalleled training excellence. Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language [AST-TDL](https://github.com/firefly-cpp/ast-tdl), are ready to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. Get ready to elevate your performance with the AST-Monitor interval training plan! 🚀📋💥
+Ladies and gentlemen, we present to you the fourth and final page of the AST-Monitor application—a gateway to unparalleled training excellence. Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a>, are ready to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. Get ready to elevate your performance with the AST-Monitor interval training plan! 🚀📋💥
 
 ## Hardware outline: Where Innovation Meets Performance ⚙️🔩💡
 Prepare to be dazzled by the complete hardware setup featured in the AST-Monitor. Feast your eyes on the future of sports technology!
