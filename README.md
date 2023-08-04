@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="300" src=".github/img/logo.png" alt="logo.png">
+</p>
+
 # AST-Monitor --- A wearable Raspberry Pi computer for cyclists
 [![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
