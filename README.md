@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="600" src=".github/img/logo.png" alt="logo.png">
+  <img width="300" src=".github/img/logo.png" alt="logo.png">
 </p>
 
 # AST-Monitor --- A wearable Raspberry Pi computer for cyclists
