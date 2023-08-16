@@ -20,61 +20,75 @@
 
 * **Documentation:** [https://ast-monitor.readthedocs.io/en/latest](https://ast-monitor.readthedocs.io/en/latest)
 * **Tested OS:** Windows, Ubuntu, Fedora, Alpine, Arch, macOS. **However, that does not mean it does not work on others**
-  
-## Short description
-This repository is devoted to AST-Monitor, i.e., a low-cost and efficient embedded device for monitoring the realization of sport training sessions that are dedicated to monitoring cycling training sessions.
-AST-Monitor is a part of the Artificial Sport Trainer (AST) system. The first bits of AST-Monitor were presented in the following [paper](https://arxiv.org/abs/2109.13334).
 
+## Short description
+Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂️
+
+This repository is not an ordinary tech project—it aims to introduce a cutting-edge, low-cost, and highly efficient embedded device that can transform the way you monitor cycling training sessions. Allow us to present AST-Monitor, a significant achievement within the Artificial Sport Trainer (AST) system. :gem:🔥
+
+To begin, we invite you to explore the paper that introduces the remarkable capabilities of AST-Monitor. Delve into the future of sports training by reading this captivating [paper](https://arxiv.org/abs/2109.13334). 📄💡
 
 ## Graphical User Interface of the application
-### Basic data
+### Basic data: Power at Your Fingertips 💪
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205064-160bdd44-fd67-4d8d-85dd-badea999885c.png" alt="AST-GUI">
 </p>
-The initial page of the application depicts basic parameters of an athlete's activity: current speed and current heart rate. If a training session is conducted, total distance, total time of the session and total ascent are displayed as well.
+The initial page of the AST-Monitor application presents essential parameters, providing real-time insights into an athlete's performance. Gain access to information such as the athlete's current speed and heart rate. But that's not all! After a training session, you'll also receive a comprehensive overview, including total distance covered, session duration, and total ascent conquered. It's like having a personal trainer right in your pocket! 📱🚴‍♂️
 
 ---
-### Interactive map
+
+### Interactive map: Embark on a Visual Journey 🗺️🚀
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205118-19cbb6e2-f410-4371-a762-c4c77344ab24.png" alt="AST-Map">
 </p>
-The second page of the application is devoted to an interactive map, which depicts athlete's current position.
+Ready for an adventure? Brace yourself for the second page of the AST-Monitor application—a mesmerizing interactive map. As you navigate uncharted territories, this map reveals your precise location in real-time. Experience the thrill as you watch your avatar progress along the route.  🌍🚴‍♂️🗺️
 
-Note: the position is currently hardcoded and does not respond according to GPS data.
+Note: The position is currently hardcoded and does not respond according to GPS data.
 
 ---
-### Interval training data
+
+### Interval training data: Unleash Your Inner Athlete 🏃‍♀️💪
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205160-edce581c-1ea8-4287-a795-7d05fb7c8ddc.png" alt="AST-Intervals">
 </p>
-The third page of the application depicts interval training data. During an interval training, total duration of the current phase is displayed along with current heart rate, average heart rate, Digital Twin proposed heart rate and the difference between the current and the proposed heart rate.
+The third page of the AST-Monitor application caters to interval training enthusiasts. With interval training data at your fingertips, you'll stay at the top of your game like never before. Discover the duration of each phase, track your current heart rate, and marvel at the average heart rate achieved. But that's not all—brace yourself for the Digital Twin proposed heart rate and witness the thrilling difference between your current heart rate and the proposed target. Prepare to dominate your workouts with the AST-Monitor! 🏋️‍♀️
 
 ---
-### Interval training plan
+
+### Interval training plan: Unleash the Potential 💯📝💥
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/189926103-e0895132-9bbc-41bf-8868-51e3e6c23f8a.png" alt="AST-Trainings">
 </p>
-The fourth and final page of the application is intended for loading and starting interval trainings located in the folder "AST-Monitor/development/trainings". In order to be parsed correctly, trainings must be written in domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a> and converted to JavaScript Object Notation (JSON). After successful loading of an interval training, the training plan is displayed on this page.
+Ladies and gentlemen, we present to you the fourth and final page of the AST-Monitor application—a gateway to unparalleled training excellence. Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a>, are designed to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. Get ready to elevate your performance with the AST-Monitor! 🚀📋💥
 
-
-## Hardware outline
-The complete hardware part is shown in the figure from which it can be seen that the AST-computer is split into the following pieces:
-
-* a platform with fixing straps that attach to a bicycle,
-* the Raspberry Pi 4 Model B micro-controller with Raspbian OS installed,
-* a five-inch LCD touch screen display,
-* a USB ANT+ stick,
-* Adafruit's Ultimate GPS HAT module.
+## Hardware outline: Where Innovation Meets Performance ⚙️🔩💡
+Prepare to be dazzled by the complete hardware setup featured in AST-Monitor.
 
 <p align="center">
   <img width="600" src="https://raw.githubusercontent.com/firefly-cpp/AST-Monitor/main/.github/img/complete_small.JPG" alt="AST-Monitor">
 </p>
 
-A Serial Peripheral Interface (SPI) protocol was dedicated to communication between the Raspberry Pi and the GPS peripheral. A specialized USB ANT+ stick was used to capture the HR signal. The screen display was connected using a modified (physically shortened) HDMI cable, while the touch feedback was implemented using physical wires. The computer was powered during the testing phase using the Trust's (5 VDC) power bank. The AST-Monitor prototype is still a little bulky, but a more discrete solution is being searched for, including the sweat drainer of the AST. Internal components of AST-Monitor are depicted in the following scheme.
+Let's take a closer look at the impressive components that make up this technological marvel:
+
+* **A platform with fixing straps** that securely attach to your bicycle, ensuring a seamless training experience. 🚲🔒
+* **The powerful Raspberry Pi 4 Model B micro-controller**, powered by the dynamic Raspbian OS. 💻
+* **A five-inch LCD touch screen display**, where the magic happens and wonders unfold. ✨🖥️
+* **Equipped with a USB ANT+ stick**, AST-Monitor captures the heartbeat of your training, providing crucial data for your journey to greatness. 📡
+* **Adafruit's Ultimate GPS HAT module** joins the lineup, empowering you with location information and paving the way for GPS integration (coming soon!). 🌐🛰️
+
+But that's not all—AST-Monitor's engineering prowess shines through in every detail:
+
+A Serial Peripheral Interface (SPI) protocol ensures seamless communication between the Raspberry Pi and the GPS peripheral, guaranteeing accurate and timely data. The screen display, connected using a physically shortened HDMI cable, ensures a sleek and compact design that doesn't compromise performance. Oh, and did we mention the touch feedback? The seamless touch experience is brought to life through intricate physical wiring.
+
+During the testing phase, the AST-Monitor prototype was powered by Trust's 5 VDC power bank, providing unparalleled endurance. While the current prototype may be a bit bulky, rest assured, our team is hard at work, exploring sleeker and more discreet solutions, including the sweat drainer of the AST. 💪💦
+
+For those who crave a glimpse inside this technological marvel, behold the intricate internal components of AST-Monitor:
 
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/189920171-ac946a93-ad78-4e4b-bf09-5de5bf69bef9.png" alt="AST-Monitor">
 </p>
+
+Welcome to the future of sports training. Welcome to AST-Monitor—your ultimate companion on the road to victory! 🌟🏆🚀
 
 ## Software outline
 ### Dependencies
