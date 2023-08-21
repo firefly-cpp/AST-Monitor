@@ -6,13 +6,11 @@
 [![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/ast-monitor.svg)
-[![Downloads](https://pepy.tech/badge/ast-monitor)](https://pepy.tech/project/ast-monitor)
 ![GitHub repo size](https://img.shields.io/github/repo-size/firefly-cpp/ast-monitor?style=flat-square)
 [![GitHub license](https://img.shields.io/github/license/firefly-cpp/ast-monitor.svg)](https://github.com/firefly-cpp/AST-Monitor/blob/master/LICENSE)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
 [![DOI](https://img.shields.io/badge/DOI-10.1109/ISCMI53840.2021.9654817-blue)](https://doi.org/10.1109/ISCMI53840.2021.9654817)
 [![DOI](https://img.shields.io/badge/DOI-10.3390/app122412741-blue)](https://doi.org/10.3390/app122412741)
 [![Fedora package](https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-ast-monitor)
@@ -24,16 +22,16 @@
 ## Short description
 Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂️
 
-This repository is not an ordinary tech project—it aims to introduce a cutting-edge, low-cost, and highly efficient embedded device that can transform the way you monitor cycling training sessions. Allow us to present AST-Monitor, a significant achievement within the Artificial Sport Trainer (AST) system. :gem:🔥
+This repository aims to introduce a low-cost, and efficient embedded device that can transform the way you monitor cycling training sessions. Allow us to present AST-Monitor.
 
-To begin, we invite you to explore the paper that introduces the remarkable capabilities of AST-Monitor. Delve into the future of sports training by reading this captivating [paper](https://arxiv.org/abs/2109.13334). 📄💡
+To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this captivating [paper](https://arxiv.org/abs/2109.13334). 📄💡
 
 ## Graphical User Interface of the application
 ### Basic data: Power at Your Fingertips 💪
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205064-160bdd44-fd67-4d8d-85dd-badea999885c.png" alt="AST-GUI">
 </p>
-The initial page of the AST-Monitor application presents essential parameters, providing real-time insights into an athlete's performance. Gain access to information such as the athlete's current speed and heart rate. But that's not all! After a training session, you'll also receive a comprehensive overview, including total distance covered, session duration, and total ascent conquered. It's like having a personal trainer right in your pocket! 📱🚴‍♂️
+The initial page of the AST-Monitor application presents essential parameters, providing real-time insights into an athlete's performance. Gain access to information such as the athlete's current speed and heart rate. After a training session, you'll also receive a comprehensive overview, including total distance covered, session duration, and total ascent conquered. 📱🚴‍♂️
 
 ---
 
@@ -41,7 +39,7 @@ The initial page of the AST-Monitor application presents essential parameters, p
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205118-19cbb6e2-f410-4371-a762-c4c77344ab24.png" alt="AST-Map">
 </p>
-Ready for an adventure? Brace yourself for the second page of the AST-Monitor application—a mesmerizing interactive map. As you navigate uncharted territories, this map reveals your precise location in real-time. Experience the thrill as you watch your avatar progress along the route.  🌍🚴‍♂️🗺️
+As you navigate uncharted territories, this map reveals your precise location in real-time.   🌍🚴‍♂️🗺️
 
 Note: The position is currently hardcoded and does not respond according to GPS data.
 
@@ -51,7 +49,7 @@ Note: The position is currently hardcoded and does not respond according to GPS 
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/179205160-edce581c-1ea8-4287-a795-7d05fb7c8ddc.png" alt="AST-Intervals">
 </p>
-The third page of the AST-Monitor application caters to interval training enthusiasts. With interval training data at your fingertips, you'll stay at the top of your game like never before. Discover the duration of each phase, track your current heart rate, and marvel at the average heart rate achieved. But that's not all—brace yourself for the Digital Twin proposed heart rate and witness the thrilling difference between your current heart rate and the proposed target. Prepare to dominate your workouts with the AST-Monitor! 🏋️‍♀️
+  Discover the duration of each phase, track your current heart rate, and marvel at the average heart rate achieved. But that's not all—brace yourself for the Digital Twin proposed heart rate and witness the thrilling difference between your current heart rate and the proposed target. Prepare to dominate your workouts with the AST-Monitor! 🏋️‍♀️
 
 ---
 
@@ -59,7 +57,7 @@ The third page of the AST-Monitor application caters to interval training enthus
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/189926103-e0895132-9bbc-41bf-8868-51e3e6c23f8a.png" alt="AST-Trainings">
 </p>
-Ladies and gentlemen, we present to you the fourth and final page of the AST-Monitor application—a gateway to unparalleled training excellence. Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a>, are designed to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. Get ready to elevate your performance with the AST-Monitor! 🚀📋💥
+ Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a>, are designed to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. 🚀📋💥
 
 ## Hardware outline: Where Innovation Meets Performance ⚙️🔩💡
 Prepare to be dazzled by the complete hardware setup featured in AST-Monitor.
@@ -68,41 +66,41 @@ Prepare to be dazzled by the complete hardware setup featured in AST-Monitor.
   <img width="600" src="https://raw.githubusercontent.com/firefly-cpp/AST-Monitor/main/.github/img/complete_small.JPG" alt="AST-Monitor">
 </p>
 
-Let's take a closer look at the impressive components that make up this technological marvel:
+Let's take a closer look at the components:
 
 * **A platform with fixing straps** that securely attach to your bicycle, ensuring a seamless training experience. 🚲🔒
 * **The powerful Raspberry Pi 4 Model B micro-controller**, powered by the dynamic Raspbian OS. 💻
-* **A five-inch LCD touch screen display**, where the magic happens and wonders unfold. ✨🖥️
+* **A five-inch LCD touch screen display**, allowing the interaction with AST-Monitor during the training. ✨🖥️
 * **Equipped with a USB ANT+ stick**, AST-Monitor captures the heartbeat of your training, providing crucial data for your journey to greatness. 📡
 * **Adafruit's Ultimate GPS HAT module** joins the lineup, empowering you with location information and paving the way for GPS integration (coming soon!). 🌐🛰️
 
-But that's not all—AST-Monitor's engineering prowess shines through in every detail:
+But that's not all:
 
-A Serial Peripheral Interface (SPI) protocol ensures seamless communication between the Raspberry Pi and the GPS peripheral, guaranteeing accurate and timely data. The screen display, connected using a physically shortened HDMI cable, ensures a sleek and compact design that doesn't compromise performance. Oh, and did we mention the touch feedback? The seamless touch experience is brought to life through intricate physical wiring.
+A Serial Peripheral Interface (SPI) protocol ensures seamless communication between the Raspberry Pi and the GPS peripheral, guaranteeing accurate and timely data. The screen display, connected using a physically shortened HDMI cable, ensures a sleek and compact design that doesn't compromise performance. 
 
-During the testing phase, the AST-Monitor prototype was powered by Trust's 5 VDC power bank, providing unparalleled endurance. While the current prototype may be a bit bulky, rest assured, our team is hard at work, exploring sleeker and more discreet solutions, including the sweat drainer of the AST. 💪💦
+During the testing phase, the AST-Monitor prototype was powered by Trust's 5 VDC power bank, providing unparalleled endurance. While the current prototype may be a bit bulky, rest assured, our team is hard at work, exploring sleeker and more discreet solutions. 💪💦
 
-For those who crave a glimpse inside this technological marvel, behold the intricate internal components of AST-Monitor:
+For those who crave a glimpse inside AST-Monitor:
 
 <p align="center">
   <img width="600" src="https://user-images.githubusercontent.com/73126820/189920171-ac946a93-ad78-4e4b-bf09-5de5bf69bef9.png" alt="AST-Monitor">
 </p>
 
-Welcome to the future of sports training. Welcome to AST-Monitor—your ultimate companion on the road to victory! 🌟🏆🚀
+Welcome to the next stage of sports training. Welcome to AST-Monitor—your ultimate companion on the road to victory! 🌟🏆🚀
 
 ## Software outline
 ### Dependencies
 List of dependencies:
 
-| Package      | Version    | Platform |
-| ------------ |:----------:|:--------:|
-| PyQt5        | ^5.15.6    | All      |
-| matplotlib   | ^3.5.1     | All      |
-| geopy        | ^2.2.0     | All      |
-| openant      | ^1.2.0     | All      |
-| pyqt-feedback-flow       | ^0.1.0     | All      |
-| tcxreader       | ^0.4.1     | All      |
-| sport-activities-features       | ^0.3.6     | All      |
+| Package                   | Version | Platform |
+| ------------------------- | :-----: | :------: |
+| PyQt5                     | ^5.15.6 |   All    |
+| matplotlib                | ^3.5.1  |   All    |
+| geopy                     | ^2.2.0  |   All    |
+| openant                   | ^1.2.0  |   All    |
+| pyqt-feedback-flow        | ^0.1.0  |   All    |
+| tcxreader                 | ^0.4.1  |   All    |
+| sport-activities-features | ^0.3.6  |   All    |
 
 Additional note: adafruit-circuitpython-gps package must be installed in order to work with the GPS sensor:
 
