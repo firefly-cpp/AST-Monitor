@@ -24,7 +24,7 @@ Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂�
 
 This repository aims to introduce a low-cost, and efficient embedded device that can transform the way you monitor cycling training sessions. Allow us to present AST-Monitor.
 
-To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this captivating [paper](https://arxiv.org/abs/2109.13334). 📄💡
+To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this [paper](https://arxiv.org/abs/2109.13334). 📄💡
 
 ## Graphical User Interface of the application
 ### Basic data: Power at Your Fingertips 💪
