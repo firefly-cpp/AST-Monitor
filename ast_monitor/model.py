@@ -1,10 +1,17 @@
 import glob
 import json
 import os
-import PyQt6
+import socketserver
+
+from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtCore import pyqtSlot, Qt, QTimer, QUrl
 from PyQt6.QtWebEngineCore import QWebEngineSettings
 from PyQt6.QtWidgets import QMainWindow
+
+from ast_monitor.goals_processor import GoalsProcessor
+from ast_monitor.html_request_handler import CustomHandler
+from ast_monitor.route_reader import RouteReader
+
 try:
     from PyQt6.QtWebChannel import QWebChannel
     from PyQt6.QtWebEngineWidgets import QWebEngineView
@@ -33,7 +40,8 @@ class AST(QMainWindow, Ui_MainWindow):
         gps_data_path (str):
             path to the file that contains GPS data
     """
-    def __init__(self, hr_data_path: str, gps_data_path: str) -> None:
+
+    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None) -> None:
         """
         Initialization method for AST class.\n
         Args:
@@ -41,9 +49,30 @@ class AST(QMainWindow, Ui_MainWindow):
                 path to the file that contains HR data
             gps_data_path (str):
                 path to the file that contains GPS data
+            route_dict (dict):
+                dictionary with route data
         """
+        if route_data_path is None:
+            self.route = None
+        else:
+            rr = RouteReader(route_data_path)
+            self.route = rr.read()
+
         self.basic_data = BasicData(hr_data_path, gps_data_path)
         self.initialize_GUI()
+        self.map_initialized = False
+        self.goals_processor = None
+
+        self.server_thread = HttpServerThread()
+        self.server_thread.start()
+
+    def on_load_finished(self):
+        self.map_initialized = True
+        if self.route is not None:
+            self.goals_processor = GoalsProcessor(self.route)
+            self.update_map_component(
+                route_input=self.route
+            )
 
     def initialize_GUI(self) -> None:
         """
@@ -62,12 +91,10 @@ class AST(QMainWindow, Ui_MainWindow):
             self.channel = QWebChannel()
             self.channel.registerObject("MainWindow", self)
             self.view.page().setWebChannel(self.channel)
-            file = str(os.path.join(
-                os.path.dirname(os.path.realpath(__file__)),
-                '../ast_monitor/map/map.html',
-            ))
 
-            self.view.setUrl(PyQt6.QtCore.QUrl.fromLocalFile(file))
+            self.view.setUrl(QUrl("http://localhost:8000"))
+            self.view.loadFinished.connect(self.on_load_finished)
+
             self.vb_map.addWidget(self.view)
         except NameError:
             print('No QtWebEngine module found.')
@@ -91,6 +118,36 @@ class AST(QMainWindow, Ui_MainWindow):
         self.timer = QTimer()
         self.timer.timeout.connect(self.render_data)
         self.timer.start(250)
+
+    def update_map_component(self, progress: float = None, remaining_distance: float = None,
+                             remaining_ascent: float = None, speed: float = None,
+                             heartrate: int = None, duration=None, distance=None,
+                             lat_lng=None, ascent=None, route_input=None):
+
+        js_call = "setValues({"
+
+        if progress is not None:
+            js_call += f"progress: {progress},"
+        if remaining_distance is not None:
+            js_call += f"remainingDistance: {remaining_distance},"
+        if remaining_ascent is not None:
+            js_call += f"remainingAscent: {remaining_ascent},"
+        if speed is not None:
+            js_call += f"speed: {speed},"
+        if heartrate is not None:
+            js_call += f"heartrate: {heartrate},"
+        if duration is not None:
+            js_call += f"duration: '{duration}',"
+        if distance is not None:
+            js_call += f"distance: {distance},"
+        if lat_lng is not None:
+            js_call += f"lat_lng: [{lat_lng[0]}, {lat_lng[1]}],"
+        if ascent is not None:
+            js_call += f"ascent: {ascent},"
+        if route_input is not None:
+            js_call += f"routeInput: {route_input['route_render']},"
+        js_call += "});"
+        self.view.page().runJavaScript(js_call)
 
     @pyqtSlot()
     def shutdown(self) -> None:
@@ -187,8 +244,8 @@ class AST(QMainWindow, Ui_MainWindow):
                         self.basic_data
                     )
                     if (
-                        not hasattr(self, 'interval_training') or
-                        not self.interval_training == interval_training
+                            not hasattr(self, 'interval_training') or
+                            not self.interval_training == interval_training
                     ):
                         self.interval_training = interval_training
                         name = trainings[i].split('\\')[-1].split('.')[0]
@@ -259,15 +316,18 @@ class AST(QMainWindow, Ui_MainWindow):
         current_hr = self.basic_data.current_heart_rate
         if current_hr:
             self.lbl_heart_rate.setText(str(current_hr))
+            self.update_map_component(heartrate=current_hr)
         else:
             self.lbl_heart_rate.setText('-')
 
         # Speed rendering.
         self.basic_data.read_current_gps()
+
         self.basic_data.calculate_speed()
         current_speed = self.basic_data.current_speed
         if current_speed is not None:
             self.lbl_speed.setText(f'{round(current_speed, 1)} km/h')
+            self.update_map_component(speed=round(current_speed, 1))
         else:
             self.lbl_speed.setText('-')
 
@@ -279,22 +339,30 @@ class AST(QMainWindow, Ui_MainWindow):
                 int(self.session.time)
             )
             self.lbl_watch.setText(time_s)
-
             # Session distance rendering.
             self.session.add_distance(self.basic_data.distance)
             self.lbl_distance.setText(
                 '{:.2f} km'.format(round(self.session.distance / 1000, 2))
             )
+            self.update_map_component(distance=round(self.session.distance / 1000, 2), duration=time_s)
 
             # Total ascent rendering.
             if self.basic_data.current_gps:
                 self.session.add_ascent(self.basic_data.current_gps[2])
+                print(self.basic_data.current_gps[0:2])
+                self.update_map_component(lat_lng=self.basic_data.current_gps[0:2], ascent=int(self.session.ascent))
+                if self.route is not None and self.basic_data.current_gps is not None:
+                    self.goals_processor.add_position(self.basic_data.current_gps)
+                    gp: GoalsProcessor = self.goals_processor
+                    self.update_map_component(progress=round(gp.progress * 100, 0),
+                                              remaining_ascent=round(gp.ascent_to_go, 1),
+                                              remaining_distance=round(float(gp.distance_to_go / 1000), 1))
                 self.lbl_ascent.setText(f'{int(self.session.ascent)} m')
 
         # Interval training rendering.
         if (
-            hasattr(self, 'interval_training') and
-            not self.interval_training.abort_training
+                hasattr(self, 'interval_training') and
+                not self.interval_training.abort_training
         ):
             # Showing notifications.
             if self.interval_training.speed_notification:
@@ -387,11 +455,30 @@ class AST(QMainWindow, Ui_MainWindow):
         hours = int(minutes / 60)
 
         time = (
-            str(hours) +
-            ':' +
-            (str(minutes) if minutes > 9 else '0' + str(minutes)) +
-            ':' +
-            (str(seconds) if seconds > 9 else '0' + str(seconds))
+                str(hours) +
+                ':' +
+                (str(minutes) if minutes > 9 else '0' + str(minutes)) +
+                ':' +
+                (str(seconds) if seconds > 9 else '0' + str(seconds))
         )
 
         return time
+
+
+class HttpServerThread(QThread):
+    signal = pyqtSignal(str)
+
+    def __init__(self):
+        super().__init__()
+        self.running = True
+
+    def run(self):
+        PORT = 8000
+        Handler = CustomHandler
+        with socketserver.TCPServer(("", PORT), Handler) as httpd:
+            self.signal.emit(f"Serving at http://localhost:{PORT}")
+            while self.running:
+                httpd.handle_request()
+
+    def stop(self):
+        self.running = False

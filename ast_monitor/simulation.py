@@ -104,7 +104,7 @@ class Simulation():
         data = tcx_reader.read(file_location)
 
         for i in range(len(data.trackpoints)):
-            time.sleep(1)
+            time.sleep(3)
             self.write_gps_to_file(
                 str(data.trackpoints[i].longitude),
                 str(data.trackpoints[i].latitude),
