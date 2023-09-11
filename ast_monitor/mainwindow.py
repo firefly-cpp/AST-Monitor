@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setStyleSheet("font: \"Bahnschrift Light\";\n"
-"background-color: rgb(255, 255, 255);")
+                                         "background-color: rgb(255, 255, 255);")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_24 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
@@ -100,7 +100,8 @@ class Ui_MainWindow(object):
         self.btn_move_left.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.btn_move_left.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/arrow_left.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/arrow_left.svg"), QtGui.QIcon.Mode.Normal,
+                       QtGui.QIcon.State.Off)
         self.btn_move_left.setIcon(icon)
         self.btn_move_left.setIconSize(QtCore.QSize(30, 50))
         self.btn_move_left.setCheckable(False)
@@ -126,8 +127,8 @@ class Ui_MainWindow(object):
         self.widget_11 = QtWidgets.QWidget(parent=self.page_main)
         self.widget_11.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_11.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_11.setObjectName("widget_11")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.widget_11)
         self.verticalLayout_17.setObjectName("verticalLayout_17")
@@ -169,7 +170,8 @@ class Ui_MainWindow(object):
         self.lbl_distance.setObjectName("lbl_distance")
         self.verticalLayout_17.addWidget(self.lbl_distance)
         self.gridLayout_3.addWidget(self.widget_11, 0, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
+                                           QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout_3.addItem(spacerItem, 2, 0, 1, 1)
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
@@ -177,8 +179,8 @@ class Ui_MainWindow(object):
         self.widget_8.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_8.setMaximumSize(QtCore.QSize(177, 16777215))
         self.widget_8.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                    "border: 2px solid black;\n"
+                                    "border-radius: 5px;")
         self.widget_8.setObjectName("widget_8")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.widget_8)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
@@ -225,13 +227,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.lbl_speed)
         self.horizontalLayout_12.addWidget(self.widget_8)
         self.gridLayout_3.addLayout(self.horizontalLayout_12, 2, 1, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(500, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(500, 20, QtWidgets.QSizePolicy.Policy.Fixed,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout_3.addItem(spacerItem1, 0, 1, 1, 1)
         self.widget_12 = QtWidgets.QWidget(parent=self.page_main)
         self.widget_12.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_12.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_12.setObjectName("widget_12")
         self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.widget_12)
         self.verticalLayout_18.setObjectName("verticalLayout_18")
@@ -282,8 +285,8 @@ class Ui_MainWindow(object):
         self.widget_9 = QtWidgets.QWidget(parent=self.page_main)
         self.widget_9.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_9.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                    "border: 2px solid black;\n"
+                                    "border-radius: 5px;")
         self.widget_9.setObjectName("widget_9")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget_9)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -328,8 +331,8 @@ class Ui_MainWindow(object):
         self.widget_10 = QtWidgets.QWidget(parent=self.page_main)
         self.widget_10.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_10.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_10.setObjectName("widget_10")
         self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.widget_10)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
@@ -380,9 +383,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.lbl_watch)
         self.verticalLayout_16.addWidget(self.widget_2)
         self.gridLayout_3.addWidget(self.widget_10, 0, 2, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
+                                            QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout_3.addItem(spacerItem2, 1, 0, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
+                                            QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout_3.addItem(spacerItem3, 3, 0, 1, 1)
         self.verticalLayout_12.addLayout(self.gridLayout_3)
         self.stackedWidget.addWidget(self.page_main)
@@ -417,8 +422,8 @@ class Ui_MainWindow(object):
         self.widget_18.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_18.setMaximumSize(QtCore.QSize(177, 100))
         self.widget_18.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_18.setObjectName("widget_18")
         self.verticalLayout_27 = QtWidgets.QVBoxLayout(self.widget_18)
         self.verticalLayout_27.setObjectName("verticalLayout_27")
@@ -454,7 +459,8 @@ class Ui_MainWindow(object):
         self.img_heart_3.setObjectName("img_heart_3")
         self.label_2 = QtWidgets.QLabel(parent=self.widget_4)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 41, 31))
-        self.label_2.setStyleSheet("font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
+        self.label_2.setStyleSheet(
+            "font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_20.addWidget(self.widget_4)
@@ -486,8 +492,8 @@ class Ui_MainWindow(object):
         self.widget_19.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_19.setMaximumSize(QtCore.QSize(177, 100))
         self.widget_19.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_19.setObjectName("widget_19")
         self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.widget_19)
         self.verticalLayout_28.setObjectName("verticalLayout_28")
@@ -523,7 +529,8 @@ class Ui_MainWindow(object):
         self.img_heart_4.setObjectName("img_heart_4")
         self.label_3 = QtWidgets.QLabel(parent=self.widget_6)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 41, 31))
-        self.label_3.setStyleSheet("font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
+        self.label_3.setStyleSheet(
+            "font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
         self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.horizontalLayout_21.addWidget(self.widget_6)
@@ -557,8 +564,8 @@ class Ui_MainWindow(object):
         self.widget_20.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_20.setMaximumSize(QtCore.QSize(177, 100))
         self.widget_20.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_20.setObjectName("widget_20")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.widget_20)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -676,8 +683,8 @@ class Ui_MainWindow(object):
         self.widget_17.setMinimumSize(QtCore.QSize(170, 100))
         self.widget_17.setMaximumSize(QtCore.QSize(170, 100))
         self.widget_17.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_17.setObjectName("widget_17")
         self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.widget_17)
         self.verticalLayout_26.setObjectName("verticalLayout_26")
@@ -713,7 +720,8 @@ class Ui_MainWindow(object):
         self.img_heart_2.setObjectName("img_heart_2")
         self.label = QtWidgets.QLabel(parent=self.widget_3)
         self.label.setGeometry(QtCore.QRect(0, 0, 41, 31))
-        self.label.setStyleSheet("font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
+        self.label.setStyleSheet(
+            "font: 14px \"Bahnschrift\"; border: none; background-color: rgba(0,0,0,0); color: white;")
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
         self.horizontalLayout_19.addWidget(self.widget_3)
@@ -745,8 +753,8 @@ class Ui_MainWindow(object):
         self.widget_16.setMinimumSize(QtCore.QSize(177, 100))
         self.widget_16.setMaximumSize(QtCore.QSize(177, 100))
         self.widget_16.setStyleSheet("background-color: rgb(248, 248, 248);\n"
-"border: 2px solid black;\n"
-"border-radius: 5px;")
+                                     "border: 2px solid black;\n"
+                                     "border-radius: 5px;")
         self.widget_16.setObjectName("widget_16")
         self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.widget_16)
         self.verticalLayout_25.setObjectName("verticalLayout_25")
@@ -799,9 +807,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.gridLayout.addLayout(self.horizontalLayout_3, 1, 2, 1, 1)
-        spacerItem4 = QtWidgets.QSpacerItem(500, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(500, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout.addItem(spacerItem4, 0, 1, 1, 1)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
+                                            QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout.addItem(spacerItem5, 1, 0, 1, 1)
         self.horizontalLayout_22.addLayout(self.gridLayout)
         self.stackedWidget.addWidget(self.page_interval)
@@ -842,47 +852,56 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.lbl_training_type = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_type.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_type.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_type.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_type.setObjectName("lbl_training_type")
         self.gridLayout_2.addWidget(self.lbl_training_type, 0, 1, 1, 1)
         self.lbl_training_speed_hr = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_speed_hr.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_speed_hr.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_speed_hr.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_speed_hr.setObjectName("lbl_training_speed_hr")
         self.gridLayout_2.addWidget(self.lbl_training_speed_hr, 2, 1, 1, 1)
         self.lbl_training_speed_hr_title = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_speed_hr_title.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_speed_hr_title.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_speed_hr_title.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_speed_hr_title.setObjectName("lbl_training_speed_hr_title")
         self.gridLayout_2.addWidget(self.lbl_training_speed_hr_title, 2, 0, 1, 1)
         self.lbl_training_rest_duration_title = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_rest_duration_title.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_rest_duration_title.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_rest_duration_title.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_rest_duration_title.setObjectName("lbl_training_rest_duration_title")
         self.gridLayout_2.addWidget(self.lbl_training_rest_duration_title, 3, 0, 1, 1)
         self.lbl_training_rest_duration = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_rest_duration.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_rest_duration.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_rest_duration.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_rest_duration.setObjectName("lbl_training_rest_duration")
         self.gridLayout_2.addWidget(self.lbl_training_rest_duration, 3, 1, 1, 1)
         self.lbl_training_type_title = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_type_title.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_type_title.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_type_title.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_type_title.setObjectName("lbl_training_type_title")
         self.gridLayout_2.addWidget(self.lbl_training_type_title, 0, 0, 1, 1)
         self.lbl_training_speed_duration_title = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_speed_duration_title.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_speed_duration_title.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_speed_duration_title.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_speed_duration_title.setObjectName("lbl_training_speed_duration_title")
         self.gridLayout_2.addWidget(self.lbl_training_speed_duration_title, 1, 0, 1, 1)
         self.lbl_training_speed_duration = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_speed_duration.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_speed_duration.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_speed_duration.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_speed_duration.setObjectName("lbl_training_speed_duration")
         self.gridLayout_2.addWidget(self.lbl_training_speed_duration, 1, 1, 1, 1)
         self.lbl_training_rest_hr_title = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_rest_hr_title.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_rest_hr_title.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_rest_hr_title.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_rest_hr_title.setObjectName("lbl_training_rest_hr_title")
         self.gridLayout_2.addWidget(self.lbl_training_rest_hr_title, 4, 0, 1, 1)
         self.lbl_training_repetitions_title = QtWidgets.QLabel(parent=self.page_13)
@@ -891,12 +910,14 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.lbl_training_repetitions_title, 5, 0, 1, 1)
         self.lbl_training_rest_hr = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_rest_hr.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_rest_hr.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_rest_hr.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_rest_hr.setObjectName("lbl_training_rest_hr")
         self.gridLayout_2.addWidget(self.lbl_training_rest_hr, 4, 1, 1, 1)
         self.lbl_training_repetitions = QtWidgets.QLabel(parent=self.page_13)
         self.lbl_training_repetitions.setStyleSheet("font: 22px \"Bahnschrift Semilight\";")
-        self.lbl_training_repetitions.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lbl_training_repetitions.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.lbl_training_repetitions.setObjectName("lbl_training_repetitions")
         self.gridLayout_2.addWidget(self.lbl_training_repetitions, 5, 1, 1, 1)
         self.verticalLayout_31.addLayout(self.gridLayout_2)
@@ -908,15 +929,16 @@ class Ui_MainWindow(object):
         self.lyt_training.setObjectName("lyt_training")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem6)
         self.btn_load_training = QtWidgets.QPushButton(parent=self.page_training)
         self.btn_load_training.setMinimumSize(QtCore.QSize(70, 40))
         self.btn_load_training.setMaximumSize(QtCore.QSize(70, 40))
         self.btn_load_training.setStyleSheet("font: 20px \"Bahnschrift Semilight\";\n"
-"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid black;\n"
-"border-radius: 5px;")
+                                             "background-color: rgb(255, 255, 255);\n"
+                                             "border: 1px solid black;\n"
+                                             "border-radius: 5px;")
         self.btn_load_training.setIconSize(QtCore.QSize(16, 16))
         self.btn_load_training.setObjectName("btn_load_training")
         self.horizontalLayout_4.addWidget(self.btn_load_training)
@@ -931,9 +953,9 @@ class Ui_MainWindow(object):
         self.btn_start_training.setMinimumSize(QtCore.QSize(70, 40))
         self.btn_start_training.setMaximumSize(QtCore.QSize(70, 40))
         self.btn_start_training.setStyleSheet("font: 20px \"Bahnschrift Semilight\";\n"
-"background-color: rgb(255, 255, 255);\n"
-"border: 1px solid black;\n"
-"border-radius: 5px;")
+                                              "background-color: rgb(255, 255, 255);\n"
+                                              "border: 1px solid black;\n"
+                                              "border-radius: 5px;")
         self.btn_start_training.setObjectName("btn_start_training")
         self.verticalLayout_8.addWidget(self.btn_start_training)
         self.stackedWidget_2.addWidget(self.page_9)
@@ -941,7 +963,8 @@ class Ui_MainWindow(object):
         self.page_10.setObjectName("page_10")
         self.stackedWidget_2.addWidget(self.page_10)
         self.horizontalLayout_4.addWidget(self.stackedWidget_2)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem7)
         self.lyt_training.addLayout(self.horizontalLayout_4)
         self.verticalLayout_30.addLayout(self.lyt_training)
@@ -952,7 +975,8 @@ class Ui_MainWindow(object):
         self.btn_move_right.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.btn_move_right.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/arrow_right.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/arrow_right.svg"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
         self.btn_move_right.setIcon(icon1)
         self.btn_move_right.setIconSize(QtCore.QSize(30, 50))
         self.btn_move_right.setFlat(False)
@@ -979,17 +1003,19 @@ class Ui_MainWindow(object):
         self.btn_shutdown.setMaximumSize(QtCore.QSize(50, 50))
         self.btn_shutdown.setAutoFillBackground(False)
         self.btn_shutdown.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-"border: none;")
+                                        "border: none;")
         self.btn_shutdown.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/shutdown.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/shutdown.svg"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
         self.btn_shutdown.setIcon(icon2)
         self.btn_shutdown.setIconSize(QtCore.QSize(50, 50))
         self.btn_shutdown.setAutoRepeat(False)
         self.btn_shutdown.setFlat(False)
         self.btn_shutdown.setObjectName("btn_shutdown")
         self.horizontalLayout_7.addWidget(self.btn_shutdown)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem8)
         self.widget_start_stop = QtWidgets.QStackedWidget(parent=self.widget_15)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
@@ -1009,11 +1035,12 @@ class Ui_MainWindow(object):
         self.btn_start_tracking.setMinimumSize(QtCore.QSize(50, 50))
         self.btn_start_tracking.setMaximumSize(QtCore.QSize(50, 50))
         self.btn_start_tracking.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border: 1px solid black;\n"
-"border-radius: 5px;")
+                                              "border: 1px solid black;\n"
+                                              "border-radius: 5px;")
         self.btn_start_tracking.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/play.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/play.svg"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
         self.btn_start_tracking.setIcon(icon3)
         self.btn_start_tracking.setIconSize(QtCore.QSize(30, 30))
         self.btn_start_tracking.setFlat(False)
@@ -1028,18 +1055,20 @@ class Ui_MainWindow(object):
         self.btn_stop_tracking.setMinimumSize(QtCore.QSize(50, 50))
         self.btn_stop_tracking.setMaximumSize(QtCore.QSize(50, 50))
         self.btn_stop_tracking.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border: 1px solid black;\n"
-"border-radius: 5px;")
+                                             "border: 1px solid black;\n"
+                                             "border-radius: 5px;")
         self.btn_stop_tracking.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/stop.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("uis\\../../ast_monitor/icons/stop.svg"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
         self.btn_stop_tracking.setIcon(icon4)
         self.btn_stop_tracking.setIconSize(QtCore.QSize(25, 25))
         self.btn_stop_tracking.setObjectName("btn_stop_tracking")
         self.verticalLayout.addWidget(self.btn_stop_tracking)
         self.widget_start_stop.addWidget(self.page_2)
         self.horizontalLayout_7.addWidget(self.widget_start_stop)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding,
+                                            QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem9)
         self.verticalLayout_22.addLayout(self.horizontalLayout_7)
         self.verticalLayout_23.addWidget(self.widget_15)
@@ -1087,7 +1116,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TrainingFeedback"))
         self.lbl_page.setText(_translate("MainWindow", "Basic data"))
-        self.lbl_page_2.setText(_translate("MainWindow", "Mapss"))
+        self.lbl_page_2.setText(_translate("MainWindow", "Map"))
         self.lbl_page_3.setText(_translate("MainWindow", "Intervals"))
         self.lbl_page_4.setText(_translate("MainWindow", "Training"))
         self.lbl_distance.setText(_translate("MainWindow", "-"))

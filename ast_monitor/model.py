@@ -8,7 +8,7 @@ from PyQt6.QtCore import pyqtSlot, Qt, QTimer, QUrl
 from PyQt6.QtWebEngineCore import QWebEngineSettings
 from PyQt6.QtWidgets import QMainWindow
 
-from ast_monitor.GoalsProcessor import GoalsProcessor
+from ast_monitor.goals_processor import GoalsProcessor
 from ast_monitor.html_request_handler import CustomHandler
 from ast_monitor.route_reader import RouteReader
 
@@ -351,9 +351,12 @@ class AST(QMainWindow, Ui_MainWindow):
                 self.session.add_ascent(self.basic_data.current_gps[2])
                 print(self.basic_data.current_gps[0:2])
                 self.update_map_component(lat_lng=self.basic_data.current_gps[0:2], ascent=int(self.session.ascent))
-                if self.route is not None:
+                if self.route is not None and self.basic_data.current_gps is not None:
                     self.goals_processor.add_position(self.basic_data.current_gps)
-
+                    gp: GoalsProcessor = self.goals_processor
+                    self.update_map_component(progress=round(gp.progress * 100, 0),
+                                              remaining_ascent=round(gp.ascent_to_go, 1),
+                                              remaining_distance=round(float(gp.distance_to_go / 1000), 1))
                 self.lbl_ascent.setText(f'{int(self.session.ascent)} m')
 
         # Interval training rendering.
