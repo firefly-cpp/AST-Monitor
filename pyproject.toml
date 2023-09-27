@@ -12,7 +12,8 @@ readme = "README.md"
 include = [
     { path="LICENSE", format="sdist" },
     { path="CHANGELOG.md", format="sdist" },
-    { path="CITATION.cff", format="sdist" }
+    { path="CITATION.cff", format="sdist" },
+    { path="HARDWARE_CONFIGURATION.md", format="sdist"}
 ]
 
 [tool.poetry.dependencies]
