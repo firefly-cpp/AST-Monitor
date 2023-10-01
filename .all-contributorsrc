@@ -48,7 +48,9 @@
       "profile": "https://github.com/alenrajsp",
       "contributions": [
         "content",
-        "code"
+        "code",
+        "maintenance",
+        "bug"
       ]
     },
     {
@@ -59,6 +61,15 @@
       "contributions": [
         "doc",
         "bug"
+      ]
+    },
+    {
+      "login": "rhododendrom",
+      "name": "rhododendrom",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3198785?v=4",
+      "profile": "https://github.com/rhododendrom",
+      "contributions": [
+        "design"
       ]
     }
   ],

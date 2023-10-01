@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "ast_monitor"
-version = "0.4.0"
+version = "0.4.1"
 description = "AST-Monitor is a wearable Raspberry Pi computer for cyclists"
 license = "MIT"
-authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>", "Luka Lukač <luka.lukac@student.um.si>"]
+authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>", "Luka Lukač <luka.lukac@student.um.si>", "Alen Rajšp <alen.rajsp@um.si>"]
 keywords = ['artificial sport trainer', 'computational intelligence', 'data mining', 'datasets', 'digital twin', 'optimization', 'sport activities', 'tcx']
 homepage = "https://github.com/firefly-cpp/AST-Monitor"
 repository = "https://github.com/firefly-cpp/AST-Monitor"
@@ -12,7 +12,8 @@ readme = "README.md"
 include = [
     { path="LICENSE", format="sdist" },
     { path="CHANGELOG.md", format="sdist" },
-    { path="CITATION.cff", format="sdist" }
+    { path="CITATION.cff", format="sdist" },
+    { path="HARDWARE_CONFIGURATION.md", format="sdist"}
 ]
 
 [tool.poetry.dependencies]

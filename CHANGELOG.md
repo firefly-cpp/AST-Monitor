@@ -1,5 +1,37 @@
 # Changelog
 
+## [Unreleased](https://github.com/firefly-cpp/AST-Monitor/tree/HEAD)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.4.1...HEAD)
+
+**Closed issues:**
+
+- Switch to pyqt6 [\#46](https://github.com/firefly-cpp/AST-Monitor/issues/46)
+- Upload activity [\#20](https://github.com/firefly-cpp/AST-Monitor/issues/20)
+- Add real time visualization [\#15](https://github.com/firefly-cpp/AST-Monitor/issues/15)
+
+**Merged pull requests:**
+
+- docs: add alenrajsp as a contributor for maintenance, and bug [\#58](https://github.com/firefly-cpp/AST-Monitor/pull/58) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add rhododendrom as a contributor for design [\#57](https://github.com/firefly-cpp/AST-Monitor/pull/57) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+
+## [0.4.1](https://github.com/firefly-cpp/AST-Monitor/tree/0.4.1) (2023-09-11)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.4.0...0.4.1)
+
+**Closed issues:**
+
+- Add simple logo [\#47](https://github.com/firefly-cpp/AST-Monitor/issues/47)
+
+**Merged pull requests:**
+
+- Bump certifi from 2023.5.7 to 2023.7.22 [\#56](https://github.com/firefly-cpp/AST-Monitor/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Map visualizations update [\#55](https://github.com/firefly-cpp/AST-Monitor/pull/55) ([alenrajsp](https://github.com/alenrajsp))
+- Update README.md [\#54](https://github.com/firefly-cpp/AST-Monitor/pull/54) ([alenrajsp](https://github.com/alenrajsp))
+- add logo [\#53](https://github.com/firefly-cpp/AST-Monitor/pull/53) ([rhododendrom](https://github.com/rhododendrom))
+- Bump aiohttp from 3.8.4 to 3.8.5 [\#52](https://github.com/firefly-cpp/AST-Monitor/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
+- docs: update README [\#51](https://github.com/firefly-cpp/AST-Monitor/pull/51) ([zala-lahovnik](https://github.com/zala-lahovnik))
+
 ## [0.4.0](https://github.com/firefly-cpp/AST-Monitor/tree/0.4.0) (2023-07-02)
 
 [Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.3.3...0.4.0)

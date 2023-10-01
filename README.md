@@ -28,8 +28,7 @@ Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂�
 This repository aims to introduce a low-cost, and efficient embedded device that can transform the way you monitor
 cycling training sessions. Allow us to present AST-Monitor.
 
-To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of
-artificial sports trainers by reading this captivating [paper](https://arxiv.org/abs/2109.13334). 📄💡
+To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this [paper](https://arxiv.org/abs/2109.13334). 📄💡
 
 ## Graphical User Interface of the application
 
@@ -210,6 +209,9 @@ Lukač, L., Fister Jr., I., Fister,
 I. "[Digital Twin in Sport: From an Idea to Realization](https://www.mdpi.com/2076-3417/12/24/12741)." Applied Sciences
 12.24 (2022): 12741.
 
+## Further read
+[1] [Awesome Computational Intelligence in Sports](https://github.com/firefly-cpp/awesome-computational-intelligence-in-sports)
+
 ## References
 
 Fister Jr, I., Fister, I., Iglesias, A., Galvez, A., Deb, S., & Fister, D. (2021). On deploying the Artificial Sport
@@ -230,8 +232,9 @@ DOI: [10.3390/app112311452](https://doi.org/10.3390/app112311452)
       <td align="center" valign="top" width="14.28%"><a href="http://www.iztok-jr-fister.eu/"><img src="https://avatars.githubusercontent.com/u/1633361?v=4?s=100" width="100px;" alt="Iztok Fister Jr."/><br /><sub><b>Iztok Fister Jr.</b></sub></a><br /><a href="https://github.com/firefly-cpp/AST-Monitor/issues?q=author%3Afirefly-cpp" title="Bug reports">🐛</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=firefly-cpp" title="Documentation">📖</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=firefly-cpp" title="Code">💻</a> <a href="#maintenance-firefly-cpp" title="Maintenance">🚧</a> <a href="#mentoring-firefly-cpp" title="Mentoring">🧑‍🏫</a> <a href="#platform-firefly-cpp" title="Packaging/porting to new platform">📦</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/luckyLukac"><img src="https://avatars.githubusercontent.com/u/73126820?v=4?s=100" width="100px;" alt="luckyLukac"/><br /><sub><b>luckyLukac</b></sub></a><br /><a href="https://github.com/firefly-cpp/AST-Monitor/issues?q=author%3AluckyLukac" title="Bug reports">🐛</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=luckyLukac" title="Documentation">📖</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=luckyLukac" title="Code">💻</a> <a href="#design-luckyLukac" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://carlosal1015.github.io"><img src="https://avatars.githubusercontent.com/u/21283014?v=4?s=100" width="100px;" alt="Oromion"/><br /><sub><b>Oromion</b></sub></a><br /><a href="#platform-carlosal1015" title="Packaging/porting to new platform">📦</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alenrajsp"><img src="https://avatars.githubusercontent.com/u/27721714?v=4?s=100" width="100px;" alt="alenrajsp"/><br /><sub><b>alenrajsp</b></sub></a><br /><a href="#content-alenrajsp" title="Content">🖋</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=alenrajsp" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alenrajsp"><img src="https://avatars.githubusercontent.com/u/27721714?v=4?s=100" width="100px;" alt="alenrajsp"/><br /><sub><b>alenrajsp</b></sub></a><br /><a href="#content-alenrajsp" title="Content">🖋</a> <a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=alenrajsp" title="Code">💻</a> <a href="#maintenance-alenrajsp" title="Maintenance">🚧</a> <a href="https://github.com/firefly-cpp/AST-Monitor/issues?q=author%3Aalenrajsp" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KukovecRok"><img src="https://avatars.githubusercontent.com/u/33880044?v=4?s=100" width="100px;" alt="Tatookie"/><br /><sub><b>Tatookie</b></sub></a><br /><a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=KukovecRok" title="Documentation">📖</a> <a href="https://github.com/firefly-cpp/AST-Monitor/issues?q=author%3AKukovecRok" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rhododendrom"><img src="https://avatars.githubusercontent.com/u/3198785?v=4?s=100" width="100px;" alt="rhododendrom"/><br /><sub><b>rhododendrom</b></sub></a><br /><a href="#design-rhododendrom" title="Design">🎨</a></td>
     </tr>
   </tbody>
 </table>
