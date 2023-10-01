@@ -4,7 +4,7 @@ import RouteProgress from './components/RouteProgress.vue';
 import Map from './components/Map.vue';
 import DisplayCard from './components/DisplayCard.vue';
 import type { LatLngExpression } from 'leaflet';
-
+import TrainingMetrics from './components/TrainingMetrics.vue';
 // Define ref to hold each value, initialize with default values
 const progress = ref(0);
 const remainingDistance = ref(0);
@@ -68,11 +68,8 @@ export interface CustomWindow extends Window {
     </div>
   </div>
   <div class="row m-0 align-items-center p-0" style="height: 15vh;">
-    <DisplayCard type="Speed" :value="speed" unit="km/h" />
-    <DisplayCard type="Heartrate" :value="heartrate" unit="bpm" />
-    <DisplayCard type="Distance" :value="distance" unit="km" />
-    <DisplayCard type="Ascent" :value="ascent" unit="m" />
-    <DisplayCard type="Duration" :value="duration" unit="" />
+    <TrainingMetrics :speed="speed" :ascent="ascent" :heartrate="heartrate" :distance="distance" :duration="duration">
+    </TrainingMetrics>
   </div>
 </template>
 

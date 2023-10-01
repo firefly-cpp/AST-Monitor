@@ -41,7 +41,7 @@ class AST(QMainWindow, Ui_MainWindow):
             path to the file that contains GPS data
     """
 
-    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None) -> None:
+    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None, input=None) -> None:
         """
         Initialization method for AST class.\n
         Args:
@@ -65,6 +65,7 @@ class AST(QMainWindow, Ui_MainWindow):
 
         self.server_thread = HttpServerThread()
         self.server_thread.start()
+        self.input = input
 
     def on_load_finished(self):
         self.map_initialized = True
@@ -73,6 +74,16 @@ class AST(QMainWindow, Ui_MainWindow):
             self.update_map_component(
                 route_input=self.route
             )
+        if self.input is not None:
+            self.update_map_component(progress=self.input['progress'], ascent=self.input['ascent'],
+                                      distance=self.input['distance'],
+                                      remaining_distance=self.input['remaining_distance'],
+                                      remaining_ascent=self.input['remaining_ascent'],
+                                      lat_lng=self.input['lat_lng'], speed=self.input['speed'],
+                                      heartrate=self.input['heartrate'],
+                                      duration=self.input['duration']
+
+                                      )
 
     def initialize_GUI(self) -> None:
         """
@@ -451,8 +462,8 @@ class AST(QMainWindow, Ui_MainWindow):
             str: time in HH:MM:SS format
         """
         seconds = int(time % 60)
-        minutes = int(time / 60)
-        hours = int(minutes / 60)
+        minutes = int(time / 60) % 60
+        hours = int(time / 60 / 60)
 
         time = (
                 str(hours) +

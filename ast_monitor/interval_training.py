@@ -1,5 +1,5 @@
-from threading import Thread
 import time
+from threading import Thread
 
 from ast_monitor.digital_twin import DigitalTwin
 from ast_monitor.write_log import WriteLog
@@ -20,6 +20,7 @@ class IntervalTraining:
     -------
     None
     """
+
     def __init__(self, training: dict, basic_data) -> None:
         """
         Initialization method of the IntervalTraining class.\n
@@ -69,15 +70,15 @@ class IntervalTraining:
         bool
         """
         return (
-            self.name == __o.name and
-            self.sport == __o.sport and
-            self.info == __o.info and
-            self.speed_duration == __o.speed_duration and
-            self.recovery_duration == __o.recovery_duration and
-            self.speed_heart_rate == __o.speed_heart_rate and
-            self.recovery_heart_rate == __o.recovery_heart_rate and
-            self.repetitions == __o.repetitions and
-            self.type == __o.type
+                self.name == __o.name and
+                self.sport == __o.sport and
+                self.info == __o.info and
+                self.speed_duration == __o.speed_duration and
+                self.recovery_duration == __o.recovery_duration and
+                self.speed_heart_rate == __o.speed_heart_rate and
+                self.recovery_heart_rate == __o.recovery_heart_rate and
+                self.repetitions == __o.repetitions and
+                self.type == __o.type
         )
 
     def start(self, write_log: bool = False) -> None:
@@ -106,7 +107,7 @@ class IntervalTraining:
                 break
         self.abort_training = True
 
-    def start_speed_phase(self, interval: int) -> None:
+    def start_speed_phase(self, interval: int, write_log: bool) -> None:
         """
         Starting a speed phase of an interval.\n
 
@@ -139,14 +140,15 @@ class IntervalTraining:
 
         # Execution of a speed phase.
         while (
-            not self.abort_training and
-            self.time < 60 * self.speed_duration
+                not self.abort_training and
+                self.time < 60 * self.speed_duration
         ):
             self.time = time.time() - self.phase_start
-            WriteLog.write_interval_training_trackpoint(
-                self.log,
-                self.digital_twin
-            )
+            if write_log:
+                WriteLog.write_interval_training_trackpoint(
+                    self.log,
+                    self.digital_twin
+                )
             time.sleep(0.5)
 
     def start_recovery_phase(self, interval: int, write_log: bool) -> None:
@@ -182,8 +184,8 @@ class IntervalTraining:
 
         # Execution of a recovery phase.
         while (
-            not self.abort_training and
-            self.time < 60 * self.recovery_duration
+                not self.abort_training and
+                self.time < 60 * self.recovery_duration
         ):
             self.time = time.time() - self.phase_start
             if write_log:
