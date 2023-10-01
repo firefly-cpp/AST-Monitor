@@ -45,7 +45,7 @@ The initial page of the AST-Monitor application presents essential parameters, p
 ### Interactive map: Embark on a Visual Journey 🗺️🚀
 
 <p align="center">
-  <img width="600" src="https://user-images.githubusercontent.com/73126820/179205118-19cbb6e2-f410-4371-a762-c4c77344ab24.png" alt="AST-Map">
+  <img width="600" src="https://github.com/alenrajsp/AST-Monitor/blob/main/.github/img/route3.png?raw=true" alt="AST-Map">
 </p>
 As you navigate uncharted territories, this map reveals your precise location in real-time. And allows you to track your progress on the route in real time.   🌍🚴‍♂️🗺️
 
