@@ -41,7 +41,7 @@ class AST(QMainWindow, Ui_MainWindow):
             path to the file that contains GPS data
     """
 
-    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None, input=None) -> None:
+    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None) -> None:
         """
         Initialization method for AST class.\n
         Args:
@@ -65,7 +65,6 @@ class AST(QMainWindow, Ui_MainWindow):
 
         self.server_thread = HttpServerThread()
         self.server_thread.start()
-        self.input = input
 
     def on_load_finished(self):
         self.map_initialized = True
@@ -74,16 +73,6 @@ class AST(QMainWindow, Ui_MainWindow):
             self.update_map_component(
                 route_input=self.route
             )
-        if self.input is not None:
-            self.update_map_component(progress=self.input['progress'], ascent=self.input['ascent'],
-                                      distance=self.input['distance'],
-                                      remaining_distance=self.input['remaining_distance'],
-                                      remaining_ascent=self.input['remaining_ascent'],
-                                      lat_lng=self.input['lat_lng'], speed=self.input['speed'],
-                                      heartrate=self.input['heartrate'],
-                                      duration=self.input['duration']
-
-                                      )
 
     def initialize_GUI(self) -> None:
         """
@@ -134,7 +123,23 @@ class AST(QMainWindow, Ui_MainWindow):
                              remaining_ascent: float = None, speed: float = None,
                              heartrate: int = None, duration=None, distance=None,
                              lat_lng=None, ascent=None, route_input=None):
+        """
+        Updating method for the (Vue.js rendered) map component with the new data.
+        Args:
+            progress:
+            remaining_distance:
+            remaining_ascent:
+            speed:
+            heartrate:
+            duration:
+            distance:
+            lat_lng:
+            ascent:
+            route_input:
 
+        Returns:
+
+        """
         js_call = "setValues({"
 
         if progress is not None:
@@ -480,10 +485,19 @@ class HttpServerThread(QThread):
     signal = pyqtSignal(str)
 
     def __init__(self):
+        """
+        Initialization method for HttpServerThread class. The class is used for running a simple HTTP server that
+        renders the Vue.js map component.
+        """
         super().__init__()
         self.running = True
 
     def run(self):
+        """
+        Method that runs the HTTP server.
+        Returns:
+            None
+        """
         PORT = 8000
         Handler = CustomHandler
         with socketserver.TCPServer(("", PORT), Handler) as httpd:
@@ -492,4 +506,9 @@ class HttpServerThread(QThread):
                 httpd.handle_request()
 
     def stop(self):
+        """
+        Method that stops the HTTP server.
+        Returns:
+
+        """
         self.running = False
