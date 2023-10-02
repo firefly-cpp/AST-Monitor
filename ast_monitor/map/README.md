@@ -15,7 +15,7 @@ in [Vue 3](https://vuejs.org/). This plugin allows display of current location o
 - ✅ Route progress
 - ✅ Route display
 
-## Partially implemented features (only GUI works)
+## Partially implemented features
 
 - 🚧 Route import feature
 
