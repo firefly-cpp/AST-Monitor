@@ -2,7 +2,22 @@
 
 ## [Unreleased](https://github.com/firefly-cpp/AST-Monitor/tree/HEAD)
 
-[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.4.1...HEAD)
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.4.2...HEAD)
+
+**Closed issues:**
+
+- tcx2gpx problem [\#61](https://github.com/firefly-cpp/AST-Monitor/issues/61)
+
+**Merged pull requests:**
+
+- Bump urllib3 from 2.0.6 to 2.0.7 [\#66](https://github.com/firefly-cpp/AST-Monitor/pull/66) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump postcss from 8.4.28 to 8.4.31 in /ast\_monitor/map [\#65](https://github.com/firefly-cpp/AST-Monitor/pull/65) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump urllib3 from 2.0.5 to 2.0.6 [\#64](https://github.com/firefly-cpp/AST-Monitor/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update workflow [\#63](https://github.com/firefly-cpp/AST-Monitor/pull/63) ([KukovecRok](https://github.com/KukovecRok))
+
+## [0.4.2](https://github.com/firefly-cpp/AST-Monitor/tree/0.4.2) (2023-10-02)
+
+[Full Changelog](https://github.com/firefly-cpp/AST-Monitor/compare/0.4.1...0.4.2)
 
 **Closed issues:**
 
@@ -12,6 +27,8 @@
 
 **Merged pull requests:**
 
+- Fixed route reader, code docs update [\#62](https://github.com/firefly-cpp/AST-Monitor/pull/62) ([alenrajsp](https://github.com/alenrajsp))
+- AST Monitor update [\#60](https://github.com/firefly-cpp/AST-Monitor/pull/60) ([alenrajsp](https://github.com/alenrajsp))
 - docs: add alenrajsp as a contributor for maintenance, and bug [\#58](https://github.com/firefly-cpp/AST-Monitor/pull/58) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - docs: add rhododendrom as a contributor for design [\#57](https://github.com/firefly-cpp/AST-Monitor/pull/57) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 
