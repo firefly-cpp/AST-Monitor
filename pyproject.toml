@@ -7,6 +7,7 @@ authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>", "Luka Lukač <luka.luk
 keywords = ['artificial sport trainer', 'computational intelligence', 'data mining', 'datasets', 'digital twin', 'optimization', 'sport activities', 'tcx']
 homepage = "https://github.com/firefly-cpp/AST-Monitor"
 repository = "https://github.com/firefly-cpp/AST-Monitor"
+documentation = "https://ast-monitor.readthedocs.io/en/latest/"
 readme = "README.md"
 
 include = [
