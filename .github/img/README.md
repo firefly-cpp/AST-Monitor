@@ -1,3 +1,5 @@
+# License
+
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 Graphical material in this folder is licensed under a
