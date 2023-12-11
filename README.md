@@ -214,6 +214,10 @@ I. "[Digital Twin in Sport: From an Idea to Realization](https://www.mdpi.com/20
 ## Further read
 [1] [Awesome Computational Intelligence in Sports](https://github.com/firefly-cpp/awesome-computational-intelligence-in-sports)
 
+## Related packages/frameworks
+
+[1] [sport-activities-features: A minimalistic toolbox for extracting features from sports activity files written in Python](https://github.com/firefly-cpp/sport-activities-features)
+
 ## References
 
 Fister Jr, I., Fister, I., Iglesias, A., Galvez, A., Deb, S., & Fister, D. (2021). On deploying the Artificial Sport
