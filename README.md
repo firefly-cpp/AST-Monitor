@@ -4,6 +4,7 @@
 
 # AST-Monitor --- A wearable Raspberry Pi computer for cyclists
 
+![Check codestyle and test build](https://github.com/firefly-cpp/AST-Monitor/actions/workflows/python-app.yml/badge.svg)
 [![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/ast-monitor.svg)
