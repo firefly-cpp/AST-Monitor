@@ -243,6 +243,9 @@ DOI: [10.3390/app112311452](https://doi.org/10.3390/app112311452)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rhododendrom"><img src="https://avatars.githubusercontent.com/u/3198785?v=4?s=100" width="100px;" alt="rhododendrom"/><br /><sub><b>rhododendrom</b></sub></a><br /><a href="#design-rhododendrom" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sertonix"><img src="https://avatars.githubusercontent.com/u/83883937?v=4?s=100" width="100px;" alt="Sertonix"/><br /><sub><b>Sertonix</b></sub></a><br /><a href="https://github.com/firefly-cpp/AST-Monitor/issues?q=author%3Asertonix" title="Bug reports">🐛</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lahovniktadej"><img src="https://avatars.githubusercontent.com/u/57890734?v=4?s=100" width="100px;" alt="Tadej Lahovnik"/><br /><sub><b>Tadej Lahovnik</b></sub></a><br /><a href="https://github.com/firefly-cpp/AST-Monitor/commits?author=lahovniktadej" title="Documentation">📖</a></td>
+    </tr>
   </tbody>
 </table>
 
