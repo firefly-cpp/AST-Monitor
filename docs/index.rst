@@ -7,7 +7,7 @@ AST-Monitor is a wearable Raspberry Pi computer for cyclists.
 
 * **Free software:** MIT license
 * **Github repository:** https://github.com/firefly-cpp/AST-Monitor
-* **Python versions:** 3.6.x, 3.7.x, 3.8.x, 3.9.x, 3.10.x
+* **Python versions:** 3.6.x, 3.7.x, 3.8.x, 3.9.x, 3.10.x, 3.11.x, 3.12.x
 
 Objective
 ---------
