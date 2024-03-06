@@ -14,7 +14,6 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../ast_monitor/'))
 
 # -- Project information -----------------------------------------------------
@@ -65,3 +64,6 @@ bibtex_bibfiles = ['refs.bib']
 
 # Bibliography style
 bibtex_default_style = 'unsrt'
+
+# Mock PyQt6 modules
+autodoc_mock_imports = ['PyQt6']
