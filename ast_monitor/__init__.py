@@ -12,18 +12,18 @@ from ast_monitor.training_session import TrainingSession
 from ast_monitor.write_log import WriteLog
 
 __all__ = [
-    BasicData,
-    DigitalTwin,
-    GpsSensor,
-    HrSensor,
-    IntervalTraining,
-    Ui_MainWindow,
-    AST,
-    GoalsProcessor,
-    RouteReader,
-    Simulation,
-    TrainingSession,
-    WriteLog
+    'BasicData',
+    'DigitalTwin',
+    'GpsSensor',
+    'HrSensor',
+    'IntervalTraining',
+    'Ui_MainWindow',
+    'AST',
+    'GoalsProcessor',
+    'RouteReader',
+    'Simulation',
+    'TrainingSession',
+    'WriteLog'
 ]
 
 __project__ = 'ast_monitor'

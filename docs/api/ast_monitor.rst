@@ -1,11 +1,10 @@
- AST_Monitor package - API
-==========================
+AST_Monitor package - API
+=========================
 
 AST-Monitor --- A wearable Raspberry Pi computer for cyclists
 
---------------------------------------------
 Basic data module
---------------------------------------------
+-----------------
 
 .. automodule:: basic_data
     :noindex:
@@ -14,9 +13,8 @@ Basic data module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Digital Twin module
---------------------------------------------
+-------------------
 
 .. automodule:: digital_twin
     :noindex:
@@ -25,9 +23,8 @@ Digital Twin module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 GPS Sensor module
---------------------------------------------
+-----------------
 
 .. automodule:: gps_sensor
     :noindex:
@@ -36,9 +33,8 @@ GPS Sensor module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 HR Sensor module
---------------------------------------------
+----------------
 
 .. automodule:: hr_sensor
     :noindex:
@@ -47,9 +43,8 @@ HR Sensor module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Interval Training module
---------------------------------------------
+------------------------
 
 .. automodule:: interval_training
     :noindex:
@@ -58,9 +53,8 @@ Interval Training module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Main Window module
---------------------------------------------
+------------------
 
 .. automodule:: mainwindow
     :noindex:
@@ -69,9 +63,8 @@ Main Window module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Model module
---------------------------------------------
+------------
 
 .. automodule:: model
     :noindex:
@@ -80,9 +73,8 @@ Model module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Simulation module
---------------------------------------------
+-----------------
 
 .. automodule:: simulation
     :noindex:
@@ -91,9 +83,8 @@ Simulation module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Training Session module
---------------------------------------------
+-----------------------
 
 .. automodule:: training_session
     :noindex:
@@ -102,9 +93,8 @@ Training Session module
     :undoc-members:
     :show-inheritance:
 
---------------------------------------------
 Write log module
---------------------------------------------
+----------------
 
 .. automodule:: write_log
     :noindex:

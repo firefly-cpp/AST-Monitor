@@ -10,15 +10,13 @@ class IntervalTraining:
     Initialization method of the IntervalTraining class.\n
 
     Args:
-    ----
-    training: dict
-        an interval training
-    tick_time: int
-        tick time in milliseconds
+        training: dict
+            an interval training
+        tick_time: int
+            tick time in milliseconds
 
     Returns:
-    -------
-    None
+        None
     """
 
     def __init__(self, training: dict, basic_data) -> None:
@@ -26,15 +24,13 @@ class IntervalTraining:
         Initialization method of the IntervalTraining class.\n
 
         Args:
-        ----
-        training: dict
-            an interval training
-        tick_time: int
-            tick time in milliseconds
+            training: dict
+                an interval training
+            tick_time: int
+                tick time in milliseconds
 
         Returns:
-        -------
-        None
+            None
         """
         self.file = training['file']
         self.name = training['interval'][0]['name']
@@ -61,24 +57,22 @@ class IntervalTraining:
         Method for comparing two IntervalTraining objects.\n
 
         Args:
-        ----
-        __o: IntervalTraining
-            an interval training to be compared to
+            __o: IntervalTraining
+                an interval training to be compared to
 
         Returns:
-        -------
-        bool
+            bool
         """
         return (
-                self.name == __o.name and
-                self.sport == __o.sport and
-                self.info == __o.info and
-                self.speed_duration == __o.speed_duration and
-                self.recovery_duration == __o.recovery_duration and
-                self.speed_heart_rate == __o.speed_heart_rate and
-                self.recovery_heart_rate == __o.recovery_heart_rate and
-                self.repetitions == __o.repetitions and
-                self.type == __o.type
+            self.name == __o.name and
+            self.sport == __o.sport and
+            self.info == __o.info and
+            self.speed_duration == __o.speed_duration and
+            self.recovery_duration == __o.recovery_duration and
+            self.speed_heart_rate == __o.speed_heart_rate and
+            self.recovery_heart_rate == __o.recovery_heart_rate and
+            self.repetitions == __o.repetitions and
+            self.type == __o.type
         )
 
     def start(self, write_log: bool = False) -> None:
@@ -86,13 +80,11 @@ class IntervalTraining:
         Starting an interval training.\n
 
         Args:
-        ----
-        write_log: bool
-            writing log if True
+            write_log: bool
+                writing log if True
 
         Returns:
-        -------
-        None
+            None
         """
         # Writing the header of the training.
         if write_log:
@@ -112,15 +104,13 @@ class IntervalTraining:
         Starting a speed phase of an interval.\n
 
         Args:
-        ----
-        interval: int
-            index of the interval
-        write_log: bool
-            writing log if True
+            interval: int
+                index of the interval
+            write_log: bool
+                writing log if True
 
         Returns:
-        -------
-        None
+            None
         """
         self.current_interval = interval, 'speed'
         self.speed_notification = True
@@ -156,15 +146,13 @@ class IntervalTraining:
         Starting a recovery phase of an interval.\n
 
         Args:
-        ----
-        interval: int
-            index of the interval
-        write_log: bool
-            writing log if True
+            interval: int
+                index of the interval
+            write_log: bool
+                writing log if True
 
         Returns:
-        -------
-        None
+            None
         """
         self.current_interval = interval, 'recovery'
         self.recovery_notification = True

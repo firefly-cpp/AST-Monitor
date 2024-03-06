@@ -21,8 +21,7 @@
 * **Free software:** MIT license
 * **Python versions:** 3.8.x, 3.9.x, 3.10.x, 3.11.x, 3.12.x
 * **Documentation:** [https://ast-monitor.readthedocs.io/en/latest](https://ast-monitor.readthedocs.io/en/latest)
-* **Tested OS:** Windows, Ubuntu, Fedora, Alpine, Arch, macOS. **However, that does not mean it does not work on others
-  **
+* **Tested OS:** Windows, Ubuntu, Fedora, Alpine, Arch, macOS. **However, that does not mean it does not work on others**
 
 ## Short description
 
@@ -49,7 +48,7 @@ The initial page of the AST-Monitor application presents essential parameters, p
 <p align="center">
   <img width="600" src="https://github.com/alenrajsp/AST-Monitor/blob/main/.github/img/route3.png?raw=true" alt="AST-Map">
 </p>
-As you navigate uncharted territories, this map reveals your precise location in real-time. And allows you to track your progress on the route in real time.   🌍🚴‍♂️🗺️
+As you navigate uncharted territories, this map reveals your precise location in real-time. And allows you to track your progress on the route in real time. 🌍🚴‍♂️🗺️
 
 ---
 
@@ -82,10 +81,8 @@ Let's take a closer look at the components:
 * **A platform with fixing straps** that securely attach to your bicycle, ensuring a seamless training experience. 🚲🔒
 * **The powerful Raspberry Pi 4 Model B micro-controller**, powered by the dynamic Raspbian OS. 💻
 * **A five-inch LCD touch screen display**, allowing the interaction with AST-Monitor during the training. ✨🖥️
-* **Equipped with a USB ANT+ stick**, AST-Monitor captures the heartbeat of your training, providing crucial data for
-  your journey to greatness. 📡
-* **Adafruit's Ultimate GPS HAT module** joins the lineup, empowering you with location information and paving the way
-  for GPS integration (coming soon!). 🌐🛰️
+* **Equipped with a USB ANT+ stick**, AST-Monitor captures the heartbeat of your training, providing crucial data for your journey to greatness. 📡
+* **Adafruit's Ultimate GPS HAT module** joins the lineup, empowering you with location information and paving the way for GPS integration (coming soon!). 🌐🛰️
 
 But that's not all:
 
