@@ -208,7 +208,7 @@ at your own risk!
 
 Lukač, L., Fister Jr., I., Fister,
 I. "[Digital Twin in Sport: From an Idea to Realization](https://www.mdpi.com/2076-3417/12/24/12741)." Applied Sciences
-12.24 (2022): 12741.
+12.24 (2022): 12741, DOI: [10.3390/app122412741](http://dx.doi.org/10.3390/app122412741).
 
 ## Further read
 [1] [Awesome Computational Intelligence in Sports](https://github.com/firefly-cpp/awesome-computational-intelligence-in-sports)
