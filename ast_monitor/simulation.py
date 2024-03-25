@@ -1,5 +1,6 @@
 from tcxreader.tcxreader import TCXReader
 import time
+import os
 
 
 class Simulation():
@@ -15,10 +16,13 @@ class Simulation():
     License:
         MIT
     """
+
     def __init__(
         self,
-        hr_path='../sensor_data/hr.txt',
-        gps_path='../sensor_data/gps.txt'
+        hr_path=os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), '..', 'sensor_data', 'hr.txt'),
+        gps_path=os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), '..', 'sensor_data', 'gps.txt')
     ) -> None:
         """
         Initialisation method for Simulation class.\n
@@ -90,7 +94,8 @@ class Simulation():
         GPS simulation.
         """
         tcx_reader = TCXReader()
-        file_location = '../development/datasets/15.tcx'
+        file_location = os.path.join(os.path.dirname(os.path.abspath(
+            __file__)), '..', 'development', 'datasets', '15.tcx')
         """
             TCX file test2.tcx was taken from the following dataset:
             S. Rauter, I. Jr. Fister, I. Fister.
