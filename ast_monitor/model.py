@@ -86,8 +86,10 @@ class AST(QMainWindow, Ui_MainWindow):
         # OS due to missing dependencies).
         try:
             self.view = QWebEngineView()
-            self.view.settings().setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessRemoteUrls, True)
-            self.view.settings().setAttribute(QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls, True)
+            self.view.settings().setAttribute(
+                QWebEngineSettings.WebAttribute.LocalContentCanAccessRemoteUrls, True)
+            self.view.settings().setAttribute(
+                QWebEngineSettings.WebAttribute.LocalContentCanAccessFileUrls, True)
             self.channel = QWebChannel()
             self.channel.registerObject("MainWindow", self)
             self.view.page().setWebChannel(self.channel)
@@ -245,7 +247,8 @@ class AST(QMainWindow, Ui_MainWindow):
         Loading an interval training from a JSON file.
         """
         # Getting all available trainings.
-        trainings = glob.glob('../development/trainings/*.json')
+        trainings = glob.glob(os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), '..', 'development', 'trainings', '*.json'))
 
         # Opening and reading the training data.
         name = ''
@@ -360,18 +363,22 @@ class AST(QMainWindow, Ui_MainWindow):
             self.lbl_distance.setText(
                 '{:.2f} km'.format(round(self.session.distance / 1000, 2))
             )
-            self.update_map_component(distance=round(self.session.distance / 1000, 2), duration=time_s)
+            self.update_map_component(distance=round(
+                self.session.distance / 1000, 2), duration=time_s)
 
             # Total ascent rendering.
             if self.basic_data.current_gps:
                 self.session.add_ascent(self.basic_data.current_gps[2])
                 print(self.basic_data.current_gps[0:2])
-                self.update_map_component(lat_lng=self.basic_data.current_gps[0:2], ascent=int(self.session.ascent))
+                self.update_map_component(
+                    lat_lng=self.basic_data.current_gps[0:2], ascent=int(self.session.ascent))
                 if self.route is not None and self.basic_data.current_gps is not None:
-                    self.goals_processor.add_position(self.basic_data.current_gps)
+                    self.goals_processor.add_position(
+                        self.basic_data.current_gps)
                     gp: GoalsProcessor = self.goals_processor
                     self.update_map_component(progress=round(gp.progress * 100, 0),
-                                              remaining_ascent=round(gp.ascent_to_go, 1),
+                                              remaining_ascent=round(
+                                                  gp.ascent_to_go, 1),
                                               remaining_distance=round(float(gp.distance_to_go / 1000), 1))
                 self.lbl_ascent.setText(f'{int(self.session.ascent)} m')
 
@@ -471,11 +478,11 @@ class AST(QMainWindow, Ui_MainWindow):
         hours = int(time / 60 / 60)
 
         time = (
-                str(hours) +
-                ':' +
-                (str(minutes) if minutes > 9 else '0' + str(minutes)) +
-                ':' +
-                (str(seconds) if seconds > 9 else '0' + str(seconds))
+            str(hours) +
+            ':' +
+            (str(minutes) if minutes > 9 else '0' + str(minutes)) +
+            ':' +
+            (str(seconds) if seconds > 9 else '0' + str(seconds))
         )
 
         return time
