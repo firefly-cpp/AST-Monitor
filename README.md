@@ -112,7 +112,7 @@ List of dependencies:
 
 | Package                   | Version | Platform |
 |---------------------------|:-------:|:--------:|
-| PyQt5                     | ^5.15.6 |   All    |
+| PyQt6                     | ^5.15.6 |   All    |
 | matplotlib                | ^3.5.1  |   All    |
 | geopy                     | ^2.2.0  |   All    |
 | openant                   | ^1.2.0  |   All    |
