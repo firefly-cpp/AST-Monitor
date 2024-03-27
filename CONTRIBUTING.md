@@ -46,9 +46,12 @@ All of the project's dependencies should be installed and the project ready for 
 
 #### Development dependencies
 
-| Package | Version  | Platform |
-|---------|:--------:|:--------:|
-| pytest  | ^7.2.2   |   All    |
+| Package               | Version  | Platform |
+|-----------------------|:--------:|:--------:|
+| pytest                | ^7.2.2   |   All    |
+| Sphinx                | ^5.0     |   All    |
+| sphinx-rtd-theme      | ^1.0.0   |   All    |
+| sphinxcontrib-bibtex  | ^2.4.1   |   All    |
 
 ## Development Tasks
 
