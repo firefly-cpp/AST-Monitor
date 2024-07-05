@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath('../ast_monitor/'))
 # -- Project information -----------------------------------------------------
 
 project = 'ast_monitor'
-copyright = '2022-2023, Iztok Fister Jr. et al.'
+copyright = '2022-2024, Iztok Fister Jr. et al.'
 author = 'Iztok Fister Jr., Luka Lukač, Alen Rajšp'
 
 # The full version, including alpha/beta/rc tags
-release = '0.5.0'
+release = '0.5.1'
 
 
 # -- General configuration ---------------------------------------------------
