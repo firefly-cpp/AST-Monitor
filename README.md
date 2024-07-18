@@ -2,38 +2,59 @@
   <img width="300" src=".github/img/logo.png" alt="logo.png">
 </p>
 
-# AST-Monitor --- A wearable Raspberry Pi computer for cyclists
+<h1 align="center">
+AST-Monitor --- A wearable Raspberry Pi computer for cyclists
+</h1>
 
-![Check codestyle and test build](https://github.com/firefly-cpp/AST-Monitor/actions/workflows/python-app.yml/badge.svg)
-[![Documentation Status](https://readthedocs.org/projects/ast-monitor/badge/?version=latest)](http://ast-monitor.readthedocs.io/en/latest/?badge=latest)
-[![PyPI Version](https://img.shields.io/pypi/v/ast-monitor.svg)](https://pypi.python.org/pypi/ast-monitor)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ast-monitor.svg)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/ast-monitor.svg)
-![GitHub repo size](https://img.shields.io/github/repo-size/firefly-cpp/ast-monitor?style=flat-square)
-[![GitHub license](https://img.shields.io/github/license/firefly-cpp/ast-monitor.svg)](https://github.com/firefly-cpp/AST-Monitor/blob/master/LICENSE)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg)
-![GitHub contributors](https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg)
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-[![DOI](https://img.shields.io/badge/DOI-10.1109/ISCMI53840.2021.9654817-blue)](https://doi.org/10.1109/ISCMI53840.2021.9654817)
-[![DOI](https://img.shields.io/badge/DOI-10.3390/app122412741-blue)](https://doi.org/10.3390/app122412741)
-[![Fedora package](https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-ast-monitor)
-[![AUR package](https://img.shields.io/aur/version/python-ast-monitor?color=blue&label=Arch%20Linux&logo=arch-linux)](https://aur.archlinux.org/packages/python-ast-monitor)
+<p align="center">
+  <img alt="PyPI Version" src="https://img.shields.io/pypi/v/ast-monitor.svg" href="https://pypi.python.org/pypi/ast-monitor">
+  <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/ast-monitor.svg">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/ast-monitor.svg">
+  <img alt="Fedora package" src="https://img.shields.io/fedora/v/python3-ast-monitor?color=blue&label=Fedora%20Linux&logo=fedora" href="https://src.fedoraproject.org/rpms/python-ast-monitor">
+  <img alt="AUR package" src="https://img.shields.io/aur/version/python-ast-monitor?color=blue&label=Arch%20Linux&logo=arch-linux" href="https://aur.archlinux.org/packages/python-ast-monitor">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/firefly-cpp/ast-monitor.svg" href="https://github.com/firefly-cpp/AST-Monitor/blob/master/LICENSE">
+  <img alt="Check codestyle and test build" src="https://github.com/firefly-cpp/AST-Monitor/actions/workflows/python-app.yml/badge.svg">
+  <img alt="Documentation Status" src="https://readthedocs.org/projects/ast-monitor/badge/?version=latest" href="http://ast-monitor.readthedocs.io/en/latest/?badge=latest">
+</p>
+
+<p align="center">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/firefly-cpp/ast-monitor.svg">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/firefly-cpp/ast-monitor">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/firefly-cpp/ast-monitor.svg">
+  <img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-4-orange.svg" href="#-contributors">
+</p>
+
+<p align="center">
+  <img alt="DOI" src="https://img.shields.io/badge/DOI-10.1109/ISCMI53840.2021.9654817-blue" href="https://doi.org/10.3390/app122412741">
+  <img alt="DOI" src="https://img.shields.io/badge/DOI-10.3390/app122412741-blue" href="https://doi.org/10.3390/app122412741">  
+</p>
+
+<p align="center">
+  <a href="#-graphical-user-interface">💻 Graphical User Interface</a> •
+  <a href="#️-hardware">⚙️ Hardware</a> •
+  <a href="#️-software">🖥️ Software</a> •
+  <a href="#-installation">📦 Installation</a> •
+  <a href="#-deployment">📢 Deployment</a> •
+  <a href="#-examples">🚀 Examples</a> •
+  <a href="#-license">🔑 License</a> •
+  <a href="#-cite-us">📄 Cite us</a> •
+  <a href="#-further-read">📖 Further read</a> •
+  <a href="#-related-packagesframeworks">🔗 Related packages</a> •
+  <a href="#-references">📝 References</a> •
+  <a href="#-contributors">🫂 Contributors</a>
+</p>
+
+Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂️ This repository aims to introduce a low-cost, and efficient embedded device that can transform the way you monitor
+cycling training sessions. Allow us to present AST-Monitor.
+
+To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this [paper](https://arxiv.org/abs/2109.13334). 📄💡
 
 * **Free software:** MIT license
 * **Python versions:** 3.8.x, 3.9.x, 3.10.x, 3.11.x, 3.12.x
 * **Documentation:** [https://ast-monitor.readthedocs.io/en/latest](https://ast-monitor.readthedocs.io/en/latest)
 * **Tested OS:** Windows, Ubuntu, Fedora, Alpine, Arch, macOS. **However, that does not mean it does not work on others**
 
-## Short description
-
-Welcome to AST-Monitor: Revolutionizing Sport Training Sessions! 🏋️‍♂️
-
-This repository aims to introduce a low-cost, and efficient embedded device that can transform the way you monitor
-cycling training sessions. Allow us to present AST-Monitor.
-
-To begin, we invite you to explore the paper that introduces the capabilities of AST-Monitor. Dive into the future of artificial sports trainers by reading this [paper](https://arxiv.org/abs/2109.13334). 📄💡
-
-## Graphical User Interface of the application
+## 💻 Graphical User Interface
 
 ### Basic data: Power at Your Fingertips 💪
 
@@ -42,16 +63,12 @@ To begin, we invite you to explore the paper that introduces the capabilities of
 </p>
 The initial page of the AST-Monitor application presents essential parameters, providing real-time insights into an athlete's performance. Gain access to information such as the athlete's current speed and heart rate. After a training session, you'll also receive a comprehensive overview, including total distance covered, session duration, and total ascent conquered. 📱🚴‍♂️
 
----
-
 ### Interactive map: Embark on a Visual Journey 🗺️🚀
 
 <p align="center">
   <img width="600" src="https://github.com/alenrajsp/AST-Monitor/blob/main/.github/img/route3.png?raw=true" alt="AST-Map">
 </p>
 As you navigate uncharted territories, this map reveals your precise location in real-time. And allows you to track your progress on the route in real time. 🌍🚴‍♂️🗺️
-
----
 
 ### Interval training data: Unleash Your Inner Athlete 🏃‍♀️💪
 
@@ -60,8 +77,6 @@ As you navigate uncharted territories, this map reveals your precise location in
 </p>
   Discover the duration of each phase, track your current heart rate, and marvel at the average heart rate achieved. But that's not all—brace yourself for the Digital Twin proposed heart rate and witness the thrilling difference between your current heart rate and the proposed target. Prepare to dominate your workouts with the AST-Monitor! 🏋️‍♀️
 
----
-
 ### Interval training plan: Unleash the Potential 💯📝💥
 
 <p align="center">
@@ -69,7 +84,8 @@ As you navigate uncharted territories, this map reveals your precise location in
 </p>
  Load up and embark on thrilling interval trainings that await you in the "AST-Monitor/development/trainings" folder. These trainings, meticulously crafted in the domain-specific language <a href="https://github.com/firefly-cpp/ast-tdl">AST-TDL</a>, are designed to take you to the next level. Once successfully loaded, witness the training plan come to life before your eyes. 🚀📋💥
 
-## Hardware outline: Where Innovation Meets Performance ⚙️🔩💡
+## ⚙️ Hardware
+### Where Innovation Meets Performance ⚙️🔩💡
 
 Prepare to be dazzled by the complete hardware setup featured in AST-Monitor.
 
@@ -81,7 +97,7 @@ Let's take a closer look at the components:
 
 * **A platform with fixing straps** that securely attach to your bicycle, ensuring a seamless training experience. 🚲🔒
 * **The powerful Raspberry Pi 4 Model B micro-controller**, powered by the dynamic Raspbian OS. 💻
-* **A five-inch LCD touch screen display**, allowing the interaction with AST-Monitor during the training. ✨🖥️
+* **A five-inch LCD touchscreen display**, allowing the interaction with AST-Monitor during the training. ✨🖥️
 * **Equipped with a USB ANT+ stick**, AST-Monitor captures the heartbeat of your training, providing crucial data for your journey to greatness. 📡
 * **Adafruit's Ultimate GPS HAT module** joins the lineup, empowering you with location information and paving the way for GPS integration (coming soon!). 🌐🛰️
 
@@ -104,9 +120,9 @@ For those who crave a glimpse inside AST-Monitor:
 Welcome to the next stage of sports training. Welcome to AST-Monitor—your ultimate companion on the road to victory!
 🌟🏆🚀
 
-## Software outline
+## 🖥️ Software
 
-### Dependencies
+### Dependencies 📦🔗
 
 List of dependencies:
 
@@ -126,7 +142,7 @@ Additional note: adafruit-circuitpython-gps package must be installed in order t
 $ pip install adafruit-circuitpython-gps
 ```
 
-## Installation
+## 📦 Installation
 
 Install AST-Monitor with pip:
 
@@ -161,7 +177,7 @@ To install AST-Monitor on Arch Linux, please use an [AUR helper](https://wiki.ar
 $ yay -Syyu python-ast-monitor
 ```
 
-## Deployment
+## 📢 Deployment
 
 Our project was deployed on a Raspberry Pi device using Raspberry Pi OS.
 
@@ -169,7 +185,7 @@ The hardware configuration of AST-Monitor using Raspberry Pi OS is described
 in <a href="https://github.com/firefly-cpp/AST-Monitor/blob/main/HARDWARE_CONFIGURATION.md">
 HARDWARE_CONFIGURATION.md</a>.
 
-## Examples
+## 🚀 Examples
 
 ### Basic run
 
@@ -197,7 +213,7 @@ if __name__ == '__main__':
     sys.exit(app.exec())
 ```
 
-## License
+## 🔑 License
 
 This package is distributed under the MIT License. This license can be found online
 at <http://www.opensource.org/licenses/MIT>.
@@ -207,21 +223,22 @@ at <http://www.opensource.org/licenses/MIT>.
 This framework is provided as-is, and there are no guarantees that it fits your purposes or that it is bug-free. Use it
 at your own risk!
 
-## Cite us
+## 📄 Cite us
 
 Lukač, L., Fister Jr., I., Fister,
 I. "[Digital Twin in Sport: From an Idea to Realization](https://www.mdpi.com/2076-3417/12/24/12741)." Applied Sciences
 12.24 (2022): 12741, DOI: [10.3390/app122412741](http://dx.doi.org/10.3390/app122412741).
 
-## Further read
+## 📖 Further read
 [1] [Awesome Computational Intelligence in Sports](https://github.com/firefly-cpp/awesome-computational-intelligence-in-sports)
 
-## Related packages/frameworks
+## 🔗 Related packages/frameworks
 
 [1] [sport-activities-features: A minimalistic toolbox for extracting features from sports activity files written in Python](https://github.com/firefly-cpp/sport-activities-features)
 
 [2] [ast-tdl: Training Description Language for Artificial Sport Trainer](https://github.com/firefly-cpp/ast-tdl)
-## References
+
+## 📝 References
 
 Fister Jr, I., Fister, I., Iglesias, A., Galvez, A., Deb, S., & Fister, D. (2021). On deploying the Artificial Sport
 Trainer into practice. arXiv preprint [arXiv:2109.13334](https://arxiv.org/abs/2109.13334).
@@ -230,7 +247,7 @@ Fister Jr, I., Salcedo-Sanz, S., Iglesias, A., Fister, D., Gálvez, A., & Fister
 Development of the Artificial Sport Trainer. Applied Sciences, 11(23), 11452.
 DOI: [10.3390/app112311452](https://doi.org/10.3390/app112311452)
 
-## Contributors
+## 🫂 Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
