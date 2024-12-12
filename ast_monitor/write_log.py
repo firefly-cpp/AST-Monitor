@@ -11,7 +11,7 @@ class WriteLog:
         """
         Method for writing interval training header.\n
         Args:
-            file: str
+            file (str): 
                 path to the log file
         """
         time_s = datetime.utcnow().isoformat()
@@ -24,9 +24,9 @@ class WriteLog:
         """
         Method for writing interval training trackpoint.\n
         Args:
-            file: str
+            file (str):
                 path to the log file
-            digital_twin: DigitalTwin
+            digital_twin (DigitalTwin):
                 the Digital Twin
         """
         time_s = datetime.utcnow().isoformat()
