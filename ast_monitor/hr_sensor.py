@@ -8,23 +8,23 @@ except BaseException:
 
 class HrSensor():
     """
-    Class for working with HR sensor.\n
+    Class for working with heart rate sensor.\n
     Args:
         hr_path (str):
-            path to file for storing HR data
+            path to file for storing heart rate data
     """
     def __init__(self, hr_path='sensor_data/hr.txt') -> None:
         """
         Initialisation method for HrSensor class.\n
         Args:
             hr_path (str):
-                path to file for storing HR data
+                path to file for storing heart rate data
         """
         self.hr_path = hr_path
 
     def write_hr_data_to_file(self, hr: int) -> None:
         """
-        Method for writing hr data to text file.\n
+        Method for writing heart rate data to text file.\n
         Args:
             hr (int):
                 heart rate
@@ -36,7 +36,7 @@ class HrSensor():
         """
         Extracting and writing heart rate data to file.\n
         Args:
-            data ():
+            data (list):
                 list that contains heart rate
         """
         heartrate = data[7]
@@ -46,8 +46,9 @@ class HrSensor():
     def get_hr_data(self) -> None:
         """
         Method for listening the channel for obtaining HR data from sensor.\n
-        Note: Example is based on source code from
-              https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
+        Note:
+            Example is based on source code from
+            https://github.com/Tigge/openant/blob/master/examples/heart_rate_monitor.py
         """
         NETWORK_KEY = [0xB9, 0xA5, 0x21, 0xFB, 0xBD, 0x72, 0xC3, 0x45]
 

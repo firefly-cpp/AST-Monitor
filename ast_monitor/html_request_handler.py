@@ -12,9 +12,8 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         Method that allows the server to serve the html files from the dist folder instead of the root folder.
         Args:
             path: url path
-
         Returns:
-
+            translated_path (str): translated url path
         """
         parsed_path = urlparse(path).path
         current_file_directory = os.path.dirname(os.path.abspath(__file__))

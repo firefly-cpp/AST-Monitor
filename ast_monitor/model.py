@@ -36,7 +36,7 @@ class AST(QMainWindow, Ui_MainWindow):
     Main class for the manipulation with the GUI of the application.\n
     Args:
         hr_data_path (str):
-            path to the file that contains HR data
+            path to the file that contains heart rate data
         gps_data_path (str):
             path to the file that contains GPS data
     """
@@ -46,7 +46,7 @@ class AST(QMainWindow, Ui_MainWindow):
         Initialization method for AST class.\n
         Args:
             hr_data_path (str):
-                path to the file that contains HR data
+                path to the file that contains heart rate data
             gps_data_path (str):
                 path to the file that contains GPS data
             route_dict (dict):
@@ -128,11 +128,11 @@ class AST(QMainWindow, Ui_MainWindow):
         """
         Updating method for the (Vue.js rendered) map component with the new data.
         Args:
-            progress:
-            remaining_distance:
-            remaining_ascent:
-            speed:
-            heartrate:
+            progress (float):
+            remaining_distance (float):
+            remaining_ascent (float):
+            speed (float):
+            heartrate (int):
             duration:
             distance:
             lat_lng:
@@ -180,7 +180,7 @@ class AST(QMainWindow, Ui_MainWindow):
         Start of the training session.\n
         Args:
             show_feedback (bool):
-                showing notification for session start if True
+                if True, show notification for starting a training session
         """
         self.session = TrainingSession()
         self.widget_start_stop.setCurrentIndex(1)
@@ -200,7 +200,7 @@ class AST(QMainWindow, Ui_MainWindow):
         End of the training session.\n
         Args:
             show_feedback (bool):
-                showing notification for session end if True
+                if True, show notification for ending a training session
         """
         del self.session
         self.widget_start_stop.setCurrentIndex(0)
@@ -502,8 +502,6 @@ class HttpServerThread(QThread):
     def run(self):
         """
         Method that runs the HTTP server.
-        Returns:
-            None
         """
         PORT = 8000
         Handler = CustomHandler
@@ -513,9 +511,5 @@ class HttpServerThread(QThread):
                 httpd.handle_request()
 
     def stop(self):
-        """
-        Method that stops the HTTP server.
-        Returns:
-
-        """
+        """Method that stops the HTTP server."""
         self.running = False

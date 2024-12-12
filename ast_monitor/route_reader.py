@@ -28,7 +28,7 @@ class RouteReader:
         """
         Helper method that merges dictionaries.
         Args:
-            dict_list:
+            dict_list: list of dictionaries to be merged.
 
         Returns:
             merged_dict: merged dictionary

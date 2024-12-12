@@ -20,7 +20,7 @@ class GpsSensor:
         Initialisation method for GpsSensor class.\n
         Args:
             gps_path (str):
-                path to file for storing gps data
+                path to file for storing GPS data
         """
         self.gps_path = gps_path
 
@@ -50,8 +50,9 @@ class GpsSensor:
     def get_gps_data(self) -> None:
         """
         Method for listening the channel for obtaining GPS data from sensor.\n
-        Note: Example is based on source code from
-              https://github.com/adafruit/Adafruit_CircuitPython_GPS
+        Note:
+            Example is based on source code from
+            https://github.com/adafruit/Adafruit_CircuitPython_GPS
         """
         uart = serial.Serial('/dev/serial0', baudrate=9600, timeout=10)
         gps = adafruit_gps.GPS(uart, debug=False)

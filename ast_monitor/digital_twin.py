@@ -76,7 +76,7 @@ class DigitalTwin:
             expected_trackpoints (int):
                 the number of expected trackpoints
         Returns:
-            float: the proposed heart rate
+            float: the predicted heart rate
         """
         if trimp_delta < 0:
             self.minus += trimp_delta
