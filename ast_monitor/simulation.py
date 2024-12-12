@@ -88,8 +88,7 @@ class Simulation():
                 self.write_hr_to_file(new_rand)
 
     def simulate_gps(self) -> None:
-        f"""
-        GPS simulation.\n
+        """Simulate writing GPS coordinates to file.\n
         Note:
             TCX file 15.tcx was taken from the following dataset:
             S. Rauter, I. Jr. Fister, I. Fister.
