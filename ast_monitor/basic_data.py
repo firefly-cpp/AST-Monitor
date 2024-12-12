@@ -8,7 +8,7 @@ class BasicData:
     Class for storing and tracking the basic training data in real time.\n
     Args:
         hr_data_path (str):
-            path to the file that contains HR data
+            path to the file that contains heart rate data
         gps_data_path (str):
             path to the file that contains GPS data
     """
@@ -17,7 +17,7 @@ class BasicData:
         Initialization method for BasicData class.\n
         Args:
             hr_data_path (str):
-                path to the file that contains HR data
+                path to the file that contains heart rate data
             gps_data_path (str):
                 path to the file that contains GPS data
         """
@@ -36,7 +36,7 @@ class BasicData:
 
     def read_current_hr(self) -> None:
         """
-        Reading the current HR from the file.
+        Reading the current heart rate from the file.
         """
         if not os.path.exists(self.hr_data_path):
             self.current_heart_rate = None

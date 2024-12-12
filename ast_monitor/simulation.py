@@ -65,9 +65,7 @@ class Simulation():
             print('Lon: ' + str(lon) + ' Lat: ' + str(lat))
 
     def simulate_hr(self) -> None:
-        """
-        Randomly generate heart rate between 150 and 160 beats per minute.
-        """
+        """Randomly generate heart rate between 150 and 160 beats per minute."""
         while True:
             for i in range(25):
                 time.sleep(1)
@@ -90,14 +88,10 @@ class Simulation():
                 self.write_hr_to_file(new_rand)
 
     def simulate_gps(self) -> None:
-        """
-        GPS simulation.
-        """
-        tcx_reader = TCXReader()
-        file_location = os.path.join(os.path.dirname(os.path.abspath(
-            __file__)), '..', 'development', 'datasets', '15.tcx')
-        """
-            TCX file test2.tcx was taken from the following dataset:
+        f"""
+        GPS simulation.\n
+        Note:
+            TCX file 15.tcx was taken from the following dataset:
             S. Rauter, I. Jr. Fister, I. Fister.
 
             A collection of sport activity files
@@ -106,6 +100,9 @@ class Simulation():
             Technical report 0201, University of Ljubljana
             and University of Maribor, 2015.
         """
+        tcx_reader = TCXReader()
+        file_location = os.path.join(os.path.dirname(os.path.abspath(
+            __file__)), '..', 'development', 'datasets', '15.tcx')
         data = tcx_reader.read(file_location)
 
         for i in range(len(data.trackpoints)):

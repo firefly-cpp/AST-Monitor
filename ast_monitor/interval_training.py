@@ -10,13 +10,10 @@ class IntervalTraining:
     Initialization method of the IntervalTraining class.\n
 
     Args:
-        training: dict
+        training (dict):
             an interval training
-        tick_time: int
+        tick_time (int):
             tick time in milliseconds
-
-    Returns:
-        None
     """
 
     def __init__(self, training: dict, basic_data) -> None:
@@ -24,13 +21,10 @@ class IntervalTraining:
         Initialization method of the IntervalTraining class.\n
 
         Args:
-            training: dict
+            training (dict):
                 an interval training
-            tick_time: int
+            tick_time (int):
                 tick time in milliseconds
-
-        Returns:
-            None
         """
         self.file = training['file']
         self.name = training['interval'][0]['name']
@@ -57,7 +51,7 @@ class IntervalTraining:
         Method for comparing two IntervalTraining objects.\n
 
         Args:
-            __o: IntervalTraining
+            __o (IntervalTraining):
                 an interval training to be compared to
 
         Returns:
@@ -80,11 +74,8 @@ class IntervalTraining:
         Starting an interval training.\n
 
         Args:
-            write_log: bool
-                writing log if True
-
-        Returns:
-            None
+            write_log (bool):
+                if True, write log
         """
         # Writing the header of the training.
         if write_log:
@@ -104,13 +95,10 @@ class IntervalTraining:
         Starting a speed phase of an interval.\n
 
         Args:
-            interval: int
+            interval (int):
                 index of the interval
-            write_log: bool
-                writing log if True
-
-        Returns:
-            None
+            write_log (bool):
+                if True, write log
         """
         self.current_interval = interval, 'speed'
         self.speed_notification = True
@@ -149,10 +137,7 @@ class IntervalTraining:
             interval: int
                 index of the interval
             write_log: bool
-                writing log if True
-
-        Returns:
-            None
+                if True, write log
         """
         self.current_interval = interval, 'recovery'
         self.recovery_notification = True
