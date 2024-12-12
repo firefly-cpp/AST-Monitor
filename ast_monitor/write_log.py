@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime,timezone
 import time
 
 
@@ -14,7 +14,7 @@ class WriteLog:
             file (str): 
                 path to the log file
         """
-        time_s = datetime.utcnow().isoformat()
+        time_s = datetime.now(timezone.utc).isoformat()
         with open(file, 'a') as log:
             log.write(f'\n[{time_s}] {file}\n')
             log.write('Log parameters: HR_prop, HR_avg, HR_pred, t\n')
@@ -29,7 +29,7 @@ class WriteLog:
             digital_twin (DigitalTwin):
                 the Digital Twin
         """
-        time_s = datetime.utcnow().isoformat()
+        time_s = datetime.now(timezone.utc).isoformat()
         predicted_hr = '-'
         proposed_hr = str(int(digital_twin.proposed_heart_rate))
         average_hr = '-'
