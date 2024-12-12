@@ -245,6 +245,9 @@ class AST(QMainWindow, Ui_MainWindow):
     def load_training(self, show_feedback: bool = True) -> None:
         """
         Loading an interval training from a JSON file.
+        Args:
+            show_feedback (bool):
+                if True, show notification for successful training
         """
         # Getting all available trainings.
         trainings = glob.glob(os.path.join(os.path.dirname(
