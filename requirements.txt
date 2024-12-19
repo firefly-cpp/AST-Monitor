@@ -3,4 +3,5 @@ matplotlib
 geopy
 pyqt-feedback-flow
 tcxreader
-sport-activities-features
+sport-activities-features==0.4.5
+PyQt6-WebEngine
