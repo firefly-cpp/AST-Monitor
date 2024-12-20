@@ -41,7 +41,7 @@ class AST(QMainWindow, Ui_MainWindow):
             path to the file that contains GPS data
     """
 
-    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None) -> None:
+    def __init__(self, hr_data_path: str, gps_data_path: str, route_data_path=None, server_port: int=8000, logging :bool=True) -> None:
         """
         Initialization method for AST class.\n
         Args:
@@ -58,12 +58,14 @@ class AST(QMainWindow, Ui_MainWindow):
             rr = RouteReader(route_data_path)
             self.route = rr.read()
 
+        self.server_port = server_port
+        self.logging = logging
         self.basic_data = BasicData(hr_data_path, gps_data_path)
         self.initialize_GUI()
         self.map_initialized = False
         self.goals_processor = None
 
-        self.server_thread = HttpServerThread()
+        self.server_thread = HttpServerThread(self.server_port,self.logging)
         self.server_thread.start()
 
     def on_load_finished(self):
@@ -94,7 +96,7 @@ class AST(QMainWindow, Ui_MainWindow):
             self.channel.registerObject("MainWindow", self)
             self.view.page().setWebChannel(self.channel)
 
-            self.view.setUrl(QUrl("http://localhost:8000"))
+            self.view.setUrl(QUrl(f"http://localhost:{self.server_port}"))
             self.view.loadFinished.connect(self.on_load_finished)
 
             self.vb_map.addWidget(self.view)
@@ -490,26 +492,33 @@ class AST(QMainWindow, Ui_MainWindow):
 
         return time
 
+class CustomTCPServer(socketserver.TCPServer):
+    logging = True
+    
+    def __init__(self, server_address, RequestHandlerClass, bind_and_activate=True, logging=True):
+        super().__init__(server_address, RequestHandlerClass, bind_and_activate)        
+        self.logging = logging
 
 class HttpServerThread(QThread):
     signal = pyqtSignal(str)
 
-    def __init__(self):
+    def __init__(self, server_port: int, logging=True):
         """
         Initialization method for HttpServerThread class. The class is used for running a simple HTTP server that
         renders the Vue.js map component.
         """
         super().__init__()
         self.running = True
+        self.server_port = server_port
+        self.logging = logging
 
     def run(self):
         """
         Method that runs the HTTP server.
-        """
-        PORT = 8000
+        """        
         Handler = CustomHandler
-        with socketserver.TCPServer(("", PORT), Handler) as httpd:
-            self.signal.emit(f"Serving at http://localhost:{PORT}")
+        with CustomTCPServer(("", self.server_port), Handler,self.logging) as httpd:
+            self.signal.emit(f"Serving at http://localhost:{self.server_port}")
             while self.running:
                 httpd.handle_request()
 
