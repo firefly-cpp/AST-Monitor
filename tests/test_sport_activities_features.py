@@ -12,8 +12,8 @@ class TestTCXFile(TestCase):
             '15.tcx'
         )
         self.tcx_file = TCXFile()
-        self.data = self.tcx_file.read_one_file(filename)
-
+        self.tcx_exercise = self.tcx_file.read_one_file(filename)
+        self.data = self.tcx_file.extract_activity_data(self.tcx_exercise)
     def test_total_distance(self):
         self.assertAlmostEqual(self.data['total_distance'], 116366.98, 2)
 
