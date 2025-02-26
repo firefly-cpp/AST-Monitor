@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ast_monitor"
-version = "0.5.3"
+version = "0.5.4"
 description = "AST-Monitor is a wearable Raspberry Pi computer for cyclists"
 license = "MIT"
 authors = ["Iztok Fister Jr. <iztok@iztok-jr-fister.eu>", "Luka Lukač <luka.lukac@student.um.si>", "Alen Rajšp <alen.rajsp@um.si>"]
