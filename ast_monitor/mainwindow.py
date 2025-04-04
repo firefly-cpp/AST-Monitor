@@ -1241,8 +1241,9 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.widget_title.setCurrentIndex(0)
         self.stackedWidget.setCurrentIndex(2)
+        self.widget_title.setCurrentIndex(self.stackedWidget.currentIndex())
+        #self.widget_title.setCurrentIndex(0)
         self.swgt_interval_performance.setCurrentIndex(0)
         self.widget_training_data.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(0)
