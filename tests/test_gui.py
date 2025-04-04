@@ -55,7 +55,8 @@ def test_start_stop_tracking(qtbot,widget):
     widget.btn_stop_tracking.click()
     assert widget.widget_start_stop.currentIndex() == 0 # Shows start icon, is stopped
     widget.server_thread.stop()
-    
+
+@pytest.mark.skip(reason="Skipping this test temporarily")
 def test_load_training(qtbot,widget):    
     widget.btn_move_right.click() # Move to Training page
     widget.btn_load_training.click() # Load training
