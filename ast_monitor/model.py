@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+import socket
 import socketserver
 
 from PyQt6.QtCore import QThread, pyqtSignal
@@ -82,6 +83,10 @@ class AST(QMainWindow, Ui_MainWindow):
         """
         QMainWindow.__init__(self, flags=Qt.WindowType.FramelessWindowHint)
         Ui_MainWindow.__init__(self)
+        self._cleanup_complete = False
+        self.timer = None
+        self.view = None
+        self.channel = None
         self.setupUi(self)
 
         # Map setting (not working on Raspberry Pi
@@ -122,6 +127,51 @@ class AST(QMainWindow, Ui_MainWindow):
         self.timer = QTimer()
         self.timer.timeout.connect(self.render_data)
         self.timer.start(250)
+
+    def closeEvent(self, event):
+        """Release resources that Qt WebEngine keeps outside the widget tree."""
+        self.cleanup()
+        super().closeEvent(event)
+
+    def cleanup(self) -> None:
+        """
+        Stop background resources owned by the main window.
+
+        PyQt's WebEngine objects need an explicit deleteLater/processEvents cycle
+        in tests, otherwise Qt prints profile-release warnings at interpreter exit.
+        """
+        if self._cleanup_complete:
+            return
+        self._cleanup_complete = True
+
+        if self.timer is not None:
+            self.timer.stop()
+
+        if hasattr(self, "server_thread") and self.server_thread:
+            self.server_thread.stop()
+            self.server_thread.wait(3000)
+
+        if self.view is not None:
+            try:
+                self.view.loadFinished.disconnect(self.on_load_finished)
+            except (TypeError, RuntimeError):
+                pass
+            try:
+                self.view.stop()
+            except RuntimeError:
+                pass
+            try:
+                self.view.page().setWebChannel(None)
+            except RuntimeError:
+                pass
+            self.view.close()
+            self.view.setParent(None)
+            self.view.deleteLater()
+            self.view = None
+
+        if self.channel is not None:
+            self.channel.deleteLater()
+            self.channel = None
 
     def update_map_component(self, progress: float = None, remaining_distance: float = None,
                              remaining_ascent: float = None, speed: float = None,
@@ -493,6 +543,7 @@ class AST(QMainWindow, Ui_MainWindow):
         return time
 
 class CustomTCPServer(socketserver.TCPServer):
+    allow_reuse_address = True
     logging = True
     
     def __init__(self, server_address, RequestHandlerClass, bind_and_activate=True, logging=True):
@@ -511,17 +562,26 @@ class HttpServerThread(QThread):
         self.running = True
         self.server_port = server_port
         self.logging = logging
+        self.httpd = None
 
     def run(self):
         """
         Method that runs the HTTP server.
         """        
         Handler = CustomHandler
-        with CustomTCPServer(("", self.server_port), Handler,self.logging) as httpd:
+        with CustomTCPServer(("", self.server_port), Handler, logging=self.logging) as httpd:
+            httpd.timeout = 0.2
+            self.httpd = httpd
             self.signal.emit(f"Serving at http://localhost:{self.server_port}")
             while self.running:
                 httpd.handle_request()
+            self.httpd = None
 
     def stop(self):
         """Method that stops the HTTP server."""
         self.running = False
+        try:
+            with socket.create_connection(("127.0.0.1", self.server_port), timeout=0.2):
+                pass
+        except OSError:
+            pass

@@ -1,23 +1,36 @@
-import sys,os,random
+import os
+import random
 import pytest
+from PyQt6.QtCore import QEvent
+from PyQt6.QtWidgets import QApplication
 
 try:
     from ast_monitor.model import AST
 except ModuleNotFoundError:
-    sys.path.append('../')
+    import sys
+    sys.path.append("../")
     from ast_monitor.model import AST
-   
 
 
 @pytest.fixture
 def widget(qtbot):
-    hr_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sensor_data', 'hr.txt')
-    gps_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sensor_data', 'gps.txt')
-    route_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'development', 'routes', 'route.json')
-    random_port = random.randint(8000, 9000)    
-    window = AST(hr_data, gps_data, route_data,server_port=random_port,logging=False)
+    hr_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sensor_data", "hr.txt")
+    gps_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sensor_data", "gps.txt")
+    route_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "development", "routes", "route.json")
+    random_port = random.randint(8000, 9000)
+
+    window = AST(hr_data, gps_data, route_data, server_port=random_port, logging=False)
     qtbot.addWidget(window)
-    return window
+
+    yield window
+
+
+    window.cleanup()
+    window.close()
+    window.deleteLater()
+    QApplication.processEvents()
+    QApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+    qtbot.wait(100)
     
 
 def test_window_title(qtbot,widget):    
@@ -56,7 +69,6 @@ def test_start_stop_tracking(qtbot,widget):
     assert widget.widget_start_stop.currentIndex() == 0 # Shows start icon, is stopped
     widget.server_thread.stop()
 
-@pytest.mark.skip(reason="Skipping this test temporarily")
 def test_load_training(qtbot,widget):    
     widget.btn_move_right.click() # Move to Training page
     widget.btn_load_training.click() # Load training
